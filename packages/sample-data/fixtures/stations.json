@@ -1,0 +1,502 @@
+[
+  {
+    "station_id": "ST001",
+    "name": "Ariana Centre",
+    "latitude": 36.862,
+    "longitude": 10.193,
+    "region": "Tunis North",
+    "window_open": "05:00",
+    "window_close": "20:00",
+    "serving_warehouse_id": "WH-NOR",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 18000,
+        "safety_stock_l": 3000,
+        "current_level_l": 2571
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 20000,
+        "safety_stock_l": 3500,
+        "current_level_l": 9403
+      }
+    ]
+  },
+  {
+    "station_id": "ST002",
+    "name": "Raoued Coast",
+    "latitude": 36.905,
+    "longitude": 10.245,
+    "region": "Tunis North",
+    "window_open": "06:00",
+    "window_close": "18:00",
+    "serving_warehouse_id": "WH-NOR",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 12000,
+        "safety_stock_l": 2000,
+        "current_level_l": 5395
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 14000,
+        "safety_stock_l": 2500,
+        "current_level_l": 965
+      }
+    ]
+  },
+  {
+    "station_id": "ST003",
+    "name": "La Marsa Corniche",
+    "latitude": 36.888,
+    "longitude": 10.322,
+    "region": "Tunis North",
+    "window_open": "05:00",
+    "window_close": "19:00",
+    "serving_warehouse_id": "WH-NOR",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 12000,
+        "safety_stock_l": 2000,
+        "current_level_l": 1980
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 14000,
+        "safety_stock_l": 2500,
+        "current_level_l": 2505
+      }
+    ]
+  },
+  {
+    "station_id": "ST004",
+    "name": "Ennasr Avenue",
+    "latitude": 36.858,
+    "longitude": 10.163,
+    "region": "Tunis North",
+    "window_open": "05:00",
+    "window_close": "20:00",
+    "serving_warehouse_id": "WH-NOR",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 24000,
+        "safety_stock_l": 4000,
+        "current_level_l": 3001
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 28000,
+        "safety_stock_l": 5000,
+        "current_level_l": 2495
+      }
+    ]
+  },
+  {
+    "station_id": "ST005",
+    "name": "Borj Louzir",
+    "latitude": 36.872,
+    "longitude": 10.208,
+    "region": "Tunis North",
+    "window_open": "05:00",
+    "window_close": "20:00",
+    "serving_warehouse_id": "WH-NOR",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 18000,
+        "safety_stock_l": 3000,
+        "current_level_l": 459
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 20000,
+        "safety_stock_l": 3500,
+        "current_level_l": 3147
+      }
+    ]
+  },
+  {
+    "station_id": "ST007",
+    "name": "Mnihla Junction",
+    "latitude": 36.85,
+    "longitude": 10.12,
+    "region": "Tunis North",
+    "window_open": "06:00",
+    "window_close": "20:00",
+    "serving_warehouse_id": "WH-NOR",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 18000,
+        "safety_stock_l": 3000,
+        "current_level_l": 8425
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 20000,
+        "safety_stock_l": 3500,
+        "current_level_l": 4449
+      }
+    ]
+  },
+  {
+    "station_id": "ST006",
+    "name": "Le Kram Avenue",
+    "latitude": 36.835,
+    "longitude": 10.3,
+    "region": "Tunis Centre",
+    "window_open": "06:00",
+    "window_close": "19:00",
+    "serving_warehouse_id": "WH-RIV",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 24000,
+        "safety_stock_l": 4000,
+        "current_level_l": 4200
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 28000,
+        "safety_stock_l": 5000,
+        "current_level_l": 13572
+      }
+    ]
+  },
+  {
+    "station_id": "ST008",
+    "name": "Lac 1 Gateway",
+    "latitude": 36.825,
+    "longitude": 10.255,
+    "region": "Tunis Centre",
+    "window_open": "05:00",
+    "window_close": "20:00",
+    "serving_warehouse_id": "WH-RIV",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 12000,
+        "safety_stock_l": 2000,
+        "current_level_l": 1818
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 14000,
+        "safety_stock_l": 2500,
+        "current_level_l": 6589
+      }
+    ]
+  },
+  {
+    "station_id": "ST011",
+    "name": "Megrine Industrial",
+    "latitude": 36.765,
+    "longitude": 10.235,
+    "region": "Tunis Centre",
+    "window_open": "05:00",
+    "window_close": "20:00",
+    "serving_warehouse_id": "WH-RIV",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 24000,
+        "safety_stock_l": 4000,
+        "current_level_l": 2067
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 28000,
+        "safety_stock_l": 5000,
+        "current_level_l": 3818
+      }
+    ]
+  },
+  {
+    "station_id": "ST012",
+    "name": "Westside Terminal",
+    "latitude": 36.795,
+    "longitude": 10.2,
+    "region": "Tunis Centre",
+    "window_open": "08:00",
+    "window_close": "18:00",
+    "serving_warehouse_id": "WH-RIV",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 18000,
+        "safety_stock_l": 3000,
+        "current_level_l": 970
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 20000,
+        "safety_stock_l": 3500,
+        "current_level_l": 3213
+      }
+    ]
+  },
+  {
+    "station_id": "ST013",
+    "name": "Rades Port",
+    "latitude": 36.775,
+    "longitude": 10.28,
+    "region": "Tunis Centre",
+    "window_open": "05:00",
+    "window_close": "20:00",
+    "serving_warehouse_id": "WH-RIV",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 12000,
+        "safety_stock_l": 2000,
+        "current_level_l": 5325
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 14000,
+        "safety_stock_l": 2500,
+        "current_level_l": 1618
+      }
+    ]
+  },
+  {
+    "station_id": "ST014",
+    "name": "Harbor Road",
+    "latitude": 36.8,
+    "longitude": 10.18,
+    "region": "Tunis Centre",
+    "window_open": "05:00",
+    "window_close": "20:00",
+    "serving_warehouse_id": "WH-RIV",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 18000,
+        "safety_stock_l": 3000,
+        "current_level_l": 2154
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 20000,
+        "safety_stock_l": 3500,
+        "current_level_l": 423
+      }
+    ]
+  },
+  {
+    "station_id": "ST019",
+    "name": "Bardo Road",
+    "latitude": 36.81,
+    "longitude": 10.19,
+    "region": "Tunis Centre",
+    "window_open": "05:00",
+    "window_close": "20:00",
+    "serving_warehouse_id": "WH-RIV",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 24000,
+        "safety_stock_l": 4000,
+        "current_level_l": 11555
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 28000,
+        "safety_stock_l": 6000,
+        "current_level_l": 743
+      }
+    ]
+  },
+  {
+    "station_id": "ST009",
+    "name": "Ben Arous Centre",
+    "latitude": 36.715,
+    "longitude": 10.23,
+    "region": "Tunis South",
+    "window_open": "05:00",
+    "window_close": "20:00",
+    "serving_warehouse_id": "WH-SUD",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 18000,
+        "safety_stock_l": 3000,
+        "current_level_l": 738
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 20000,
+        "safety_stock_l": 3500,
+        "current_level_l": 3397
+      }
+    ]
+  },
+  {
+    "station_id": "ST010",
+    "name": "Hammam Lif Coast",
+    "latitude": 36.725,
+    "longitude": 10.335,
+    "region": "Tunis South",
+    "window_open": "06:00",
+    "window_close": "19:00",
+    "serving_warehouse_id": "WH-SUD",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 12000,
+        "safety_stock_l": 2000,
+        "current_level_l": 5756
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 14000,
+        "safety_stock_l": 2500,
+        "current_level_l": 1933
+      }
+    ]
+  },
+  {
+    "station_id": "ST015",
+    "name": "Mornag Plain",
+    "latitude": 36.67,
+    "longitude": 10.29,
+    "region": "Tunis South",
+    "window_open": "06:00",
+    "window_close": "20:00",
+    "serving_warehouse_id": "WH-SUD",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 18000,
+        "safety_stock_l": 3000,
+        "current_level_l": 3301
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 20000,
+        "safety_stock_l": 3500,
+        "current_level_l": 4610
+      }
+    ]
+  },
+  {
+    "station_id": "ST016",
+    "name": "Fouchana Road",
+    "latitude": 36.7,
+    "longitude": 10.17,
+    "region": "Tunis South",
+    "window_open": "05:00",
+    "window_close": "20:00",
+    "serving_warehouse_id": "WH-SUD",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 24000,
+        "safety_stock_l": 4000,
+        "current_level_l": 11636
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 28000,
+        "safety_stock_l": 5000,
+        "current_level_l": 3874
+      }
+    ]
+  },
+  {
+    "station_id": "ST017",
+    "name": "Mohamedia",
+    "latitude": 36.675,
+    "longitude": 10.155,
+    "region": "Tunis South",
+    "window_open": "06:00",
+    "window_close": "19:00",
+    "serving_warehouse_id": "WH-SUD",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 12000,
+        "safety_stock_l": 2000,
+        "current_level_l": null
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 14000,
+        "safety_stock_l": 2500,
+        "current_level_l": null
+      }
+    ]
+  },
+  {
+    "station_id": "ST018",
+    "name": "Borj Cedria",
+    "latitude": 36.705,
+    "longitude": 10.4,
+    "region": "Tunis South",
+    "window_open": "06:00",
+    "window_close": "19:00",
+    "serving_warehouse_id": "WH-SUD",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 12000,
+        "safety_stock_l": 2000,
+        "current_level_l": 1987
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 14000,
+        "safety_stock_l": 2500,
+        "current_level_l": 6653
+      }
+    ]
+  },
+  {
+    "station_id": "ST020",
+    "name": "Khelidia",
+    "latitude": 36.65,
+    "longitude": 10.255,
+    "region": "Tunis South",
+    "window_open": "06:00",
+    "window_close": "20:00",
+    "serving_warehouse_id": "WH-SUD",
+    "status": "active",
+    "tanks": [
+      {
+        "fuel_type_id": "P95",
+        "capacity_l": 12000,
+        "safety_stock_l": 2000,
+        "current_level_l": 1635
+      },
+      {
+        "fuel_type_id": "DIESEL",
+        "capacity_l": 14000,
+        "safety_stock_l": 2500,
+        "current_level_l": 6435
+      }
+    ]
+  }
+]

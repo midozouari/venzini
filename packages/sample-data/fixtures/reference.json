@@ -1,0 +1,39 @@
+{
+  "fuel_types": [
+    {
+      "fuel_type_id": "P95",
+      "name": "Petrol 95",
+      "display_order": 1
+    },
+    {
+      "fuel_type_id": "DIESEL",
+      "name": "Diesel",
+      "display_order": 2
+    }
+  ],
+  "warehouses": [
+    {
+      "warehouse_id": "WH-NOR",
+      "name": "La Soukra Depot",
+      "latitude": 36.88,
+      "longitude": 10.215
+    },
+    {
+      "warehouse_id": "WH-RIV",
+      "name": "Rives Depot",
+      "latitude": 36.79,
+      "longitude": 10.25
+    },
+    {
+      "warehouse_id": "WH-SUD",
+      "name": "Mornag Depot",
+      "latitude": 36.69,
+      "longitude": 10.27
+    }
+  ],
+  "regions": [
+    "Tunis North",
+    "Tunis Centre",
+    "Tunis South"
+  ]
+}

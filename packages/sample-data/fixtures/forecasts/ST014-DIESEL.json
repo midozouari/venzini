@@ -1,0 +1,126 @@
+{
+  "forecast_id": "FC-ST014-DIESEL-20261102",
+  "station_id": "ST014",
+  "fuel_type_id": "DIESEL",
+  "reference_date": "2026-11-02",
+  "status": "ok",
+  "model_version": "fc-sim-1.1.0",
+  "baseline": "own",
+  "baseline_note": null,
+  "daily": [
+    {
+      "date": "2026-11-03",
+      "litres": 725,
+      "confidence": 90,
+      "band_low": 675,
+      "band_high": 775
+    },
+    {
+      "date": "2026-11-04",
+      "litres": 685,
+      "confidence": 88,
+      "band_low": 643,
+      "band_high": 727
+    },
+    {
+      "date": "2026-11-05",
+      "litres": 675,
+      "confidence": 86,
+      "band_low": 631,
+      "band_high": 719
+    },
+    {
+      "date": "2026-11-06",
+      "litres": 771,
+      "confidence": 73,
+      "band_low": 723,
+      "band_high": 819
+    },
+    {
+      "date": "2026-11-07",
+      "litres": 689,
+      "confidence": 66,
+      "band_low": 594,
+      "band_high": 784
+    },
+    {
+      "date": "2026-11-08",
+      "litres": 579,
+      "confidence": 79,
+      "band_low": 527,
+      "band_high": 631
+    },
+    {
+      "date": "2026-11-09",
+      "litres": 742,
+      "confidence": 80,
+      "band_low": 701,
+      "band_high": 783
+    }
+  ],
+  "overall_confidence": 66,
+  "uncertain": true,
+  "uncertain_reason": "Confidence is 66%: weather data is missing for 2 of 7 days.",
+  "factors": [
+    {
+      "factor": "previous_orders",
+      "impact_pct": 5,
+      "available": true,
+      "explanation": "Deliveries in the last 28 days were 5% above sales."
+    },
+    {
+      "factor": "weather",
+      "impact_pct": -0.7,
+      "available": false,
+      "explanation": "Rainy weather (12 °C) on 05 Nov 2026 lowers demand by 5%."
+    },
+    {
+      "factor": "recent_sales",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "Recent Diesel sales average 652 L per day on Tuesdays."
+    },
+    {
+      "factor": "seasonality",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "November demand is usually 3% lower than average."
+    },
+    {
+      "factor": "current_tank_level",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "Current stock (423 L) runs out on 03 Nov 2026 if no delivery arrives."
+    }
+  ],
+  "recent_actuals": [
+    {
+      "date": "2026-10-27",
+      "litres": 646
+    },
+    {
+      "date": "2026-10-28",
+      "litres": 673
+    },
+    {
+      "date": "2026-10-29",
+      "litres": 664
+    },
+    {
+      "date": "2026-10-30",
+      "litres": 770
+    },
+    {
+      "date": "2026-10-31",
+      "litres": 692
+    },
+    {
+      "date": "2026-11-01",
+      "litres": 576
+    },
+    {
+      "date": "2026-11-02",
+      "litres": 702
+    }
+  ]
+}

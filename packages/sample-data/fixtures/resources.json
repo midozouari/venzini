@@ -1,0 +1,318 @@
+{
+  "2026-11-01": {
+    "delivery_day": "2026-11-01",
+    "resource_version_id": "RV-0188",
+    "version_no": 2,
+    "locked": true,
+    "updated_by": {
+      "id": "58b447f1-90c2-47ee-951b-0a3988121529",
+      "full_name": "Leila K."
+    },
+    "updated_at": "2026-10-31T15:20:00Z",
+    "tankers": [
+      {
+        "tanker_id": "T-01",
+        "capacity_l": 36000,
+        "compartments": [
+          12000,
+          12000,
+          12000
+        ],
+        "home_warehouse_id": "WH-RIV",
+        "available": true,
+        "open_trip": null
+      },
+      {
+        "tanker_id": "T-02",
+        "capacity_l": 32000,
+        "compartments": [
+          8000,
+          8000,
+          8000,
+          8000
+        ],
+        "home_warehouse_id": "WH-RIV",
+        "available": true,
+        "open_trip": null
+      },
+      {
+        "tanker_id": "T-03",
+        "capacity_l": 34000,
+        "compartments": [
+          10000,
+          8000,
+          8000,
+          8000
+        ],
+        "home_warehouse_id": "WH-NOR",
+        "available": true,
+        "open_trip": null
+      },
+      {
+        "tanker_id": "T-04",
+        "capacity_l": 30000,
+        "compartments": [
+          10000,
+          10000,
+          10000
+        ],
+        "home_warehouse_id": "WH-NOR",
+        "available": true,
+        "open_trip": null
+      },
+      {
+        "tanker_id": "T-05",
+        "capacity_l": 36000,
+        "compartments": [
+          9000,
+          9000,
+          9000,
+          9000
+        ],
+        "home_warehouse_id": "WH-SUD",
+        "available": true,
+        "open_trip": null
+      },
+      {
+        "tanker_id": "T-06",
+        "capacity_l": 30000,
+        "compartments": [
+          10000,
+          10000,
+          10000
+        ],
+        "home_warehouse_id": "WH-SUD",
+        "available": true,
+        "open_trip": null
+      }
+    ],
+    "drivers": [
+      {
+        "driver_id": "D-01",
+        "full_name": "Sami B.",
+        "home_warehouse_id": "WH-NOR",
+        "available": true
+      },
+      {
+        "driver_id": "D-02",
+        "full_name": "Hatem L.",
+        "home_warehouse_id": "WH-NOR",
+        "available": true
+      },
+      {
+        "driver_id": "D-03",
+        "full_name": "Walid M.",
+        "home_warehouse_id": "WH-SUD",
+        "available": true
+      },
+      {
+        "driver_id": "D-04",
+        "full_name": "Ali H.",
+        "home_warehouse_id": "WH-RIV",
+        "available": true
+      },
+      {
+        "driver_id": "D-05",
+        "full_name": "Marcus K.",
+        "home_warehouse_id": "WH-RIV",
+        "available": true
+      },
+      {
+        "driver_id": "D-06",
+        "full_name": "Nizar F.",
+        "home_warehouse_id": "WH-SUD",
+        "available": true
+      }
+    ],
+    "stock": [
+      {
+        "warehouse_id": "WH-NOR",
+        "fuel_type_id": "P95",
+        "stock_l": 285000
+      },
+      {
+        "warehouse_id": "WH-NOR",
+        "fuel_type_id": "DIESEL",
+        "stock_l": 402000
+      },
+      {
+        "warehouse_id": "WH-RIV",
+        "fuel_type_id": "P95",
+        "stock_l": 341000
+      },
+      {
+        "warehouse_id": "WH-RIV",
+        "fuel_type_id": "DIESEL",
+        "stock_l": 505000
+      },
+      {
+        "warehouse_id": "WH-SUD",
+        "fuel_type_id": "P95",
+        "stock_l": 52000
+      },
+      {
+        "warehouse_id": "WH-SUD",
+        "fuel_type_id": "DIESEL",
+        "stock_l": 371000
+      }
+    ]
+  },
+  "2026-11-03": {
+    "delivery_day": "2026-11-03",
+    "resource_version_id": "RV-0192",
+    "version_no": 3,
+    "locked": false,
+    "updated_by": {
+      "id": "5bcadd06-e665-45ec-98b7-475c245cb533",
+      "full_name": "Karim B."
+    },
+    "updated_at": "2026-11-01T16:40:00Z",
+    "tankers": [
+      {
+        "tanker_id": "T-01",
+        "capacity_l": 36000,
+        "compartments": [
+          12000,
+          12000,
+          12000
+        ],
+        "home_warehouse_id": "WH-RIV",
+        "available": true,
+        "open_trip": null
+      },
+      {
+        "tanker_id": "T-02",
+        "capacity_l": 32000,
+        "compartments": [
+          8000,
+          8000,
+          8000,
+          8000
+        ],
+        "home_warehouse_id": "WH-RIV",
+        "available": true,
+        "open_trip": null
+      },
+      {
+        "tanker_id": "T-03",
+        "capacity_l": 34000,
+        "compartments": [
+          10000,
+          8000,
+          8000,
+          8000
+        ],
+        "home_warehouse_id": "WH-NOR",
+        "available": true,
+        "open_trip": null
+      },
+      {
+        "tanker_id": "T-04",
+        "capacity_l": 30000,
+        "compartments": [
+          10000,
+          10000,
+          10000
+        ],
+        "home_warehouse_id": "WH-NOR",
+        "available": true,
+        "open_trip": null
+      },
+      {
+        "tanker_id": "T-05",
+        "capacity_l": 36000,
+        "compartments": [
+          9000,
+          9000,
+          9000,
+          9000
+        ],
+        "home_warehouse_id": "WH-SUD",
+        "available": true,
+        "open_trip": null
+      },
+      {
+        "tanker_id": "T-06",
+        "capacity_l": 30000,
+        "compartments": [
+          10000,
+          10000,
+          10000
+        ],
+        "home_warehouse_id": "WH-SUD",
+        "available": false,
+        "open_trip": null
+      }
+    ],
+    "drivers": [
+      {
+        "driver_id": "D-01",
+        "full_name": "Sami B.",
+        "home_warehouse_id": "WH-NOR",
+        "available": true
+      },
+      {
+        "driver_id": "D-02",
+        "full_name": "Hatem L.",
+        "home_warehouse_id": "WH-NOR",
+        "available": true
+      },
+      {
+        "driver_id": "D-03",
+        "full_name": "Walid M.",
+        "home_warehouse_id": "WH-SUD",
+        "available": true
+      },
+      {
+        "driver_id": "D-04",
+        "full_name": "Ali H.",
+        "home_warehouse_id": "WH-RIV",
+        "available": true
+      },
+      {
+        "driver_id": "D-05",
+        "full_name": "Marcus K.",
+        "home_warehouse_id": "WH-RIV",
+        "available": true
+      },
+      {
+        "driver_id": "D-06",
+        "full_name": "Nizar F.",
+        "home_warehouse_id": "WH-SUD",
+        "available": true
+      }
+    ],
+    "stock": [
+      {
+        "warehouse_id": "WH-NOR",
+        "fuel_type_id": "P95",
+        "stock_l": 260000
+      },
+      {
+        "warehouse_id": "WH-NOR",
+        "fuel_type_id": "DIESEL",
+        "stock_l": 380000
+      },
+      {
+        "warehouse_id": "WH-RIV",
+        "fuel_type_id": "P95",
+        "stock_l": 320000
+      },
+      {
+        "warehouse_id": "WH-RIV",
+        "fuel_type_id": "DIESEL",
+        "stock_l": 480000
+      },
+      {
+        "warehouse_id": "WH-SUD",
+        "fuel_type_id": "P95",
+        "stock_l": 17700
+      },
+      {
+        "warehouse_id": "WH-SUD",
+        "fuel_type_id": "DIESEL",
+        "stock_l": 350000
+      }
+    ]
+  }
+}

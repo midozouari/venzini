@@ -1,0 +1,11 @@
+{
+  "now": "2026-11-02T07:00:00Z",
+  "reference_date": "2026-11-02",
+  "default_delivery_day": "2026-11-03",
+  "time_zone": "Africa/Tunis",
+  "seed": 42,
+  "model_versions": {
+    "forecast": "fc-sim-1.1.0",
+    "templates": "tpl-1.1.0"
+  }
+}

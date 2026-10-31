@@ -1,0 +1,671 @@
+{
+  "as_of": "2026-11-02T07:00:00Z",
+  "delivery_day": "2026-11-03",
+  "kpis": {
+    "high_risk_stations": 3,
+    "tankers_available": 5,
+    "tankers_total": 6,
+    "warehouse_stock": [
+      {
+        "warehouse_id": "WH-NOR",
+        "fuel_type_id": "P95",
+        "stock_l": 260000
+      },
+      {
+        "warehouse_id": "WH-NOR",
+        "fuel_type_id": "DIESEL",
+        "stock_l": 380000
+      },
+      {
+        "warehouse_id": "WH-RIV",
+        "fuel_type_id": "P95",
+        "stock_l": 320000
+      },
+      {
+        "warehouse_id": "WH-RIV",
+        "fuel_type_id": "DIESEL",
+        "stock_l": 480000
+      },
+      {
+        "warehouse_id": "WH-SUD",
+        "fuel_type_id": "P95",
+        "stock_l": 17700
+      },
+      {
+        "warehouse_id": "WH-SUD",
+        "fuel_type_id": "DIESEL",
+        "stock_l": 350000
+      }
+    ],
+    "plan_status": null
+  },
+  "stations": [
+    {
+      "station_id": "ST001",
+      "name": "Ariana Centre",
+      "latitude": 36.862,
+      "longitude": 10.193,
+      "serving_warehouse_id": "WH-NOR",
+      "risk_level": "low",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 2571,
+          "capacity_l": 18000,
+          "level_pct": 14,
+          "safety_stock_l": 3000,
+          "risk_level": "low",
+          "hours_to_stockout": 96
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 9403,
+          "capacity_l": 20000,
+          "level_pct": 47,
+          "safety_stock_l": 3500,
+          "risk_level": "low",
+          "hours_to_stockout": null
+        }
+      ]
+    },
+    {
+      "station_id": "ST002",
+      "name": "Raoued Coast",
+      "latitude": 36.905,
+      "longitude": 10.245,
+      "serving_warehouse_id": "WH-NOR",
+      "risk_level": "medium",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 5395,
+          "capacity_l": 12000,
+          "level_pct": 45,
+          "safety_stock_l": 2000,
+          "risk_level": "low",
+          "hours_to_stockout": null
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 965,
+          "capacity_l": 14000,
+          "level_pct": 7,
+          "safety_stock_l": 2500,
+          "risk_level": "medium",
+          "hours_to_stockout": 50
+        }
+      ]
+    },
+    {
+      "station_id": "ST003",
+      "name": "La Marsa Corniche",
+      "latitude": 36.888,
+      "longitude": 10.322,
+      "serving_warehouse_id": "WH-NOR",
+      "risk_level": "low",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 1980,
+          "capacity_l": 12000,
+          "level_pct": 17,
+          "safety_stock_l": 2000,
+          "risk_level": "low",
+          "hours_to_stockout": 110
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 2505,
+          "capacity_l": 14000,
+          "level_pct": 18,
+          "safety_stock_l": 2500,
+          "risk_level": "low",
+          "hours_to_stockout": 130
+        }
+      ]
+    },
+    {
+      "station_id": "ST004",
+      "name": "Ennasr Avenue",
+      "latitude": 36.858,
+      "longitude": 10.163,
+      "serving_warehouse_id": "WH-NOR",
+      "risk_level": "medium",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 3001,
+          "capacity_l": 24000,
+          "level_pct": 13,
+          "safety_stock_l": 4000,
+          "risk_level": "low",
+          "hours_to_stockout": 80
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 2495,
+          "capacity_l": 28000,
+          "level_pct": 9,
+          "safety_stock_l": 5000,
+          "risk_level": "medium",
+          "hours_to_stockout": 60
+        }
+      ]
+    },
+    {
+      "station_id": "ST005",
+      "name": "Borj Louzir",
+      "latitude": 36.872,
+      "longitude": 10.208,
+      "serving_warehouse_id": "WH-NOR",
+      "risk_level": "high",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 459,
+          "capacity_l": 18000,
+          "level_pct": 3,
+          "safety_stock_l": 3000,
+          "risk_level": "high",
+          "hours_to_stockout": 18
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 3147,
+          "capacity_l": 20000,
+          "level_pct": 16,
+          "safety_stock_l": 3500,
+          "risk_level": "low",
+          "hours_to_stockout": 100
+        }
+      ]
+    },
+    {
+      "station_id": "ST007",
+      "name": "Mnihla Junction",
+      "latitude": 36.85,
+      "longitude": 10.12,
+      "serving_warehouse_id": "WH-NOR",
+      "risk_level": "low",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 8425,
+          "capacity_l": 18000,
+          "level_pct": 47,
+          "safety_stock_l": 3000,
+          "risk_level": "low",
+          "hours_to_stockout": null
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 4449,
+          "capacity_l": 20000,
+          "level_pct": 22,
+          "safety_stock_l": 3500,
+          "risk_level": "low",
+          "hours_to_stockout": 140
+        }
+      ]
+    },
+    {
+      "station_id": "ST006",
+      "name": "Le Kram Avenue",
+      "latitude": 36.835,
+      "longitude": 10.3,
+      "serving_warehouse_id": "WH-RIV",
+      "risk_level": "low",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 4200,
+          "capacity_l": 24000,
+          "level_pct": 18,
+          "safety_stock_l": 4000,
+          "risk_level": "low",
+          "hours_to_stockout": 110
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 13572,
+          "capacity_l": 28000,
+          "level_pct": 48,
+          "safety_stock_l": 5000,
+          "risk_level": "low",
+          "hours_to_stockout": null
+        }
+      ]
+    },
+    {
+      "station_id": "ST008",
+      "name": "Lac 1 Gateway",
+      "latitude": 36.825,
+      "longitude": 10.255,
+      "serving_warehouse_id": "WH-RIV",
+      "risk_level": "low",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 1818,
+          "capacity_l": 12000,
+          "level_pct": 15,
+          "safety_stock_l": 2000,
+          "risk_level": "low",
+          "hours_to_stockout": 100
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 6589,
+          "capacity_l": 14000,
+          "level_pct": 47,
+          "safety_stock_l": 2500,
+          "risk_level": "low",
+          "hours_to_stockout": null
+        }
+      ]
+    },
+    {
+      "station_id": "ST011",
+      "name": "Megrine Industrial",
+      "latitude": 36.765,
+      "longitude": 10.235,
+      "serving_warehouse_id": "WH-RIV",
+      "risk_level": "medium",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 2067,
+          "capacity_l": 24000,
+          "level_pct": 9,
+          "safety_stock_l": 4000,
+          "risk_level": "medium",
+          "hours_to_stockout": 60
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 3818,
+          "capacity_l": 28000,
+          "level_pct": 14,
+          "safety_stock_l": 5000,
+          "risk_level": "low",
+          "hours_to_stockout": 90
+        }
+      ]
+    },
+    {
+      "station_id": "ST012",
+      "name": "Westside Terminal",
+      "latitude": 36.795,
+      "longitude": 10.2,
+      "serving_warehouse_id": "WH-RIV",
+      "risk_level": "medium",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 970,
+          "capacity_l": 18000,
+          "level_pct": 5,
+          "safety_stock_l": 3000,
+          "risk_level": "medium",
+          "hours_to_stockout": 40.5
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 3213,
+          "capacity_l": 20000,
+          "level_pct": 16,
+          "safety_stock_l": 3500,
+          "risk_level": "low",
+          "hours_to_stockout": 110
+        }
+      ]
+    },
+    {
+      "station_id": "ST013",
+      "name": "Rades Port",
+      "latitude": 36.775,
+      "longitude": 10.28,
+      "serving_warehouse_id": "WH-RIV",
+      "risk_level": "low",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 5325,
+          "capacity_l": 12000,
+          "level_pct": 44,
+          "safety_stock_l": 2000,
+          "risk_level": "low",
+          "hours_to_stockout": null
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 1618,
+          "capacity_l": 14000,
+          "level_pct": 12,
+          "safety_stock_l": 2500,
+          "risk_level": "low",
+          "hours_to_stockout": 85
+        }
+      ]
+    },
+    {
+      "station_id": "ST014",
+      "name": "Harbor Road",
+      "latitude": 36.8,
+      "longitude": 10.18,
+      "serving_warehouse_id": "WH-RIV",
+      "risk_level": "high",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 2154,
+          "capacity_l": 18000,
+          "level_pct": 12,
+          "safety_stock_l": 3000,
+          "risk_level": "low",
+          "hours_to_stockout": 75
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 423,
+          "capacity_l": 20000,
+          "level_pct": 2,
+          "safety_stock_l": 3500,
+          "risk_level": "high",
+          "hours_to_stockout": 14
+        }
+      ]
+    },
+    {
+      "station_id": "ST019",
+      "name": "Bardo Road",
+      "latitude": 36.81,
+      "longitude": 10.19,
+      "serving_warehouse_id": "WH-RIV",
+      "risk_level": "high",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 11555,
+          "capacity_l": 24000,
+          "level_pct": 48,
+          "safety_stock_l": 4000,
+          "risk_level": "low",
+          "hours_to_stockout": null
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 743,
+          "capacity_l": 28000,
+          "level_pct": 3,
+          "safety_stock_l": 6000,
+          "risk_level": "high",
+          "hours_to_stockout": 20
+        }
+      ]
+    },
+    {
+      "station_id": "ST009",
+      "name": "Ben Arous Centre",
+      "latitude": 36.715,
+      "longitude": 10.23,
+      "serving_warehouse_id": "WH-SUD",
+      "risk_level": "medium",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 738,
+          "capacity_l": 18000,
+          "level_pct": 4,
+          "safety_stock_l": 3000,
+          "risk_level": "medium",
+          "hours_to_stockout": 30
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 3397,
+          "capacity_l": 20000,
+          "level_pct": 17,
+          "safety_stock_l": 3500,
+          "risk_level": "low",
+          "hours_to_stockout": 115
+        }
+      ]
+    },
+    {
+      "station_id": "ST010",
+      "name": "Hammam Lif Coast",
+      "latitude": 36.725,
+      "longitude": 10.335,
+      "serving_warehouse_id": "WH-SUD",
+      "risk_level": "low",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 5756,
+          "capacity_l": 12000,
+          "level_pct": 48,
+          "safety_stock_l": 2000,
+          "risk_level": "low",
+          "hours_to_stockout": null
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 1933,
+          "capacity_l": 14000,
+          "level_pct": 14,
+          "safety_stock_l": 2500,
+          "risk_level": "low",
+          "hours_to_stockout": 95
+        }
+      ]
+    },
+    {
+      "station_id": "ST015",
+      "name": "Mornag Plain",
+      "latitude": 36.67,
+      "longitude": 10.29,
+      "serving_warehouse_id": "WH-SUD",
+      "risk_level": "low",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 3301,
+          "capacity_l": 18000,
+          "level_pct": 18,
+          "safety_stock_l": 3000,
+          "risk_level": "low",
+          "hours_to_stockout": 125
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 4610,
+          "capacity_l": 20000,
+          "level_pct": 23,
+          "safety_stock_l": 3500,
+          "risk_level": "low",
+          "hours_to_stockout": 150
+        }
+      ]
+    },
+    {
+      "station_id": "ST016",
+      "name": "Fouchana Road",
+      "latitude": 36.7,
+      "longitude": 10.17,
+      "serving_warehouse_id": "WH-SUD",
+      "risk_level": "low",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 11636,
+          "capacity_l": 24000,
+          "level_pct": 48,
+          "safety_stock_l": 4000,
+          "risk_level": "low",
+          "hours_to_stockout": null
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 3874,
+          "capacity_l": 28000,
+          "level_pct": 14,
+          "safety_stock_l": 5000,
+          "risk_level": "low",
+          "hours_to_stockout": 88
+        }
+      ]
+    },
+    {
+      "station_id": "ST017",
+      "name": "Mohamedia",
+      "latitude": 36.675,
+      "longitude": 10.155,
+      "serving_warehouse_id": "WH-SUD",
+      "risk_level": null,
+      "data_available": false,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": null,
+          "capacity_l": 12000,
+          "level_pct": null,
+          "safety_stock_l": 2000,
+          "risk_level": null,
+          "hours_to_stockout": null
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": null,
+          "capacity_l": 14000,
+          "level_pct": null,
+          "safety_stock_l": 2500,
+          "risk_level": null,
+          "hours_to_stockout": null
+        }
+      ]
+    },
+    {
+      "station_id": "ST018",
+      "name": "Borj Cedria",
+      "latitude": 36.705,
+      "longitude": 10.4,
+      "serving_warehouse_id": "WH-SUD",
+      "risk_level": "low",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 1987,
+          "capacity_l": 12000,
+          "level_pct": 17,
+          "safety_stock_l": 2000,
+          "risk_level": "low",
+          "hours_to_stockout": 105
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 6653,
+          "capacity_l": 14000,
+          "level_pct": 48,
+          "safety_stock_l": 2500,
+          "risk_level": "low",
+          "hours_to_stockout": null
+        }
+      ]
+    },
+    {
+      "station_id": "ST020",
+      "name": "Khelidia",
+      "latitude": 36.65,
+      "longitude": 10.255,
+      "serving_warehouse_id": "WH-SUD",
+      "risk_level": "low",
+      "data_available": true,
+      "tanks": [
+        {
+          "fuel_type_id": "P95",
+          "current_level_l": 1635,
+          "capacity_l": 12000,
+          "level_pct": 14,
+          "safety_stock_l": 2000,
+          "risk_level": "low",
+          "hours_to_stockout": 92
+        },
+        {
+          "fuel_type_id": "DIESEL",
+          "current_level_l": 6435,
+          "capacity_l": 14000,
+          "level_pct": 46,
+          "safety_stock_l": 2500,
+          "risk_level": "low",
+          "hours_to_stockout": null
+        }
+      ]
+    }
+  ],
+  "warehouses": [
+    {
+      "warehouse_id": "WH-NOR",
+      "name": "La Soukra Depot",
+      "latitude": 36.88,
+      "longitude": 10.215
+    },
+    {
+      "warehouse_id": "WH-RIV",
+      "name": "Rives Depot",
+      "latitude": 36.79,
+      "longitude": 10.25
+    },
+    {
+      "warehouse_id": "WH-SUD",
+      "name": "Mornag Depot",
+      "latitude": 36.69,
+      "longitude": 10.27
+    }
+  ],
+  "alerts": [
+    {
+      "station_id": "ST014",
+      "fuel_type_id": "DIESEL",
+      "hours_to_stockout": 14,
+      "reason": "ST014 is high risk: current Diesel stock covers 14 hours of forecast demand."
+    },
+    {
+      "station_id": "ST005",
+      "fuel_type_id": "P95",
+      "hours_to_stockout": 18,
+      "reason": "ST005 is high risk: current Petrol 95 stock covers 18 hours of forecast demand."
+    },
+    {
+      "station_id": "ST019",
+      "fuel_type_id": "DIESEL",
+      "hours_to_stockout": 20,
+      "reason": "ST019 is high risk: current Diesel stock covers 20 hours of forecast demand."
+    }
+  ],
+  "data_unavailable": [
+    {
+      "station_id": "ST017",
+      "code": "ERR-DATA-01",
+      "reason": "No tank level"
+    }
+  ]
+}

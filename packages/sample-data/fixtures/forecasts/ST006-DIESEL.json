@@ -1,0 +1,120 @@
+{
+  "forecast_id": "FC-ST006-DIESEL-20261102",
+  "station_id": "ST006",
+  "fuel_type_id": "DIESEL",
+  "reference_date": "2026-11-02",
+  "status": "ok",
+  "model_version": "fc-sim-1.1.0",
+  "baseline": "own",
+  "baseline_note": null,
+  "daily": [
+    {
+      "date": "2026-11-03",
+      "litres": 980,
+      "confidence": 91,
+      "band_low": 929,
+      "band_high": 1031
+    },
+    {
+      "date": "2026-11-04",
+      "litres": 1052,
+      "confidence": 89,
+      "band_low": 1001,
+      "band_high": 1103
+    },
+    {
+      "date": "2026-11-05",
+      "litres": 1081,
+      "confidence": 88,
+      "band_low": 1032,
+      "band_high": 1130
+    },
+    {
+      "date": "2026-11-06",
+      "litres": 1174,
+      "confidence": 73,
+      "band_low": 1099,
+      "band_high": 1249
+    },
+    {
+      "date": "2026-11-07",
+      "litres": 1060,
+      "confidence": 72,
+      "band_low": 1012,
+      "band_high": 1108
+    },
+    {
+      "date": "2026-11-08",
+      "litres": 863,
+      "confidence": 81,
+      "band_low": 809,
+      "band_high": 917
+    },
+    {
+      "date": "2026-11-09",
+      "litres": 962,
+      "confidence": 80,
+      "band_low": 915,
+      "band_high": 1009
+    }
+  ],
+  "overall_confidence": 72,
+  "uncertain": false,
+  "uncertain_reason": null,
+  "factors": [
+    {
+      "factor": "previous_orders",
+      "impact_pct": 5,
+      "available": true,
+      "explanation": "Deliveries in the last 28 days were 5% above sales."
+    },
+    {
+      "factor": "weather",
+      "impact_pct": -0.7,
+      "available": false,
+      "explanation": "Rainy weather (12 °C) on 05 Nov 2026 lowers demand by 5%."
+    },
+    {
+      "factor": "recent_sales",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "Recent Diesel sales average 963 L per day on Tuesdays."
+    },
+    {
+      "factor": "seasonality",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "November demand is usually 4% lower than average."
+    }
+  ],
+  "recent_actuals": [
+    {
+      "date": "2026-10-27",
+      "litres": 912
+    },
+    {
+      "date": "2026-10-28",
+      "litres": 984
+    },
+    {
+      "date": "2026-10-29",
+      "litres": 999
+    },
+    {
+      "date": "2026-10-30",
+      "litres": 1164
+    },
+    {
+      "date": "2026-10-31",
+      "litres": 1023
+    },
+    {
+      "date": "2026-11-01",
+      "litres": 814
+    },
+    {
+      "date": "2026-11-02",
+      "litres": 950
+    }
+  ]
+}

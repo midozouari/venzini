@@ -56,9 +56,17 @@ Venzini is a fuel demand forecasting and delivery planning web platform. This re
    - **Commit messages never contain a `Co-Authored-By` line or any Claude/AI attribution.**
 4. The user is not experienced with these tools: explain any command they need to run themselves in simple words.
 
+## Sample data decisions (approved by the user)
+
+- Stations are ST001–ST020. The SDD's ST032 is **ST012 "Westside Terminal"**. Any SDD example with ST021 must map to an existing station; tell the user which.
+- Risk mix on 03 Nov 2026: 3 high, 5 medium, 11 low, plus 1 station with data unavailable (ST017).
+- Distances follow ALG-09 (Floyd–Warshall, 50 km/h ≤ 12 km, 70 km/h above); ignore the straight line × 1.3 rule in SDD 5.11.3. Forecast model version: `fc-sim-1.1.0`.
+- Demo clock: 02 Nov 2026 08:00 Tunis time (it runs on from there); delivery day 03 Nov 2026; 01 Nov is a decided past day.
+- Fixtures are generated (`pnpm --filter @venzini/sample-data generate`) and committed; a test fails when they are out of date. Never edit them by hand.
+
 ## Steps
 
 - Step 0: move files, scaffold, configs, CI, README, CLAUDE.md. ✅
-- Step 1: contracts, sample-data generator and fixtures, MSW handlers with role checks and in-memory session state (SDD 7.1, 7.2).
+- Step 1: contracts, sample-data generator and fixtures, MSW handlers with role checks and in-memory session state (SDD 7.1, 7.2). ✅
 - Step 2: screens of SDD 7.3: (a) app shell, login, network; (b) forecast and totals, resources and trips; (c) planner and approvals with the scripted edit outcomes; (d) history and administration.
 - Step 3: hidden developer toolbar (scenarios, forced errors), the Playwright MVP suite (every screen and flow per role, AC-21), the final README.

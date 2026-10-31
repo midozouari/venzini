@@ -1,0 +1,132 @@
+{
+  "forecast_id": "FC-ST020-P95-20261102",
+  "station_id": "ST020",
+  "fuel_type_id": "P95",
+  "reference_date": "2026-11-02",
+  "status": "ok",
+  "model_version": "fc-sim-1.1.0",
+  "baseline": "similar_stations",
+  "baseline_note": "Little sales history for ST020 Petrol 95: forecast based on similar stations, confidence 60%.",
+  "daily": [
+    {
+      "date": "2026-11-03",
+      "litres": 417,
+      "confidence": 60,
+      "band_low": 408,
+      "band_high": 426
+    },
+    {
+      "date": "2026-11-04",
+      "litres": 408,
+      "confidence": 60,
+      "band_low": 388,
+      "band_high": 428
+    },
+    {
+      "date": "2026-11-05",
+      "litres": 429,
+      "confidence": 60,
+      "band_low": 406,
+      "band_high": 452
+    },
+    {
+      "date": "2026-11-06",
+      "litres": 457,
+      "confidence": 60,
+      "band_low": 431,
+      "band_high": 483
+    },
+    {
+      "date": "2026-11-07",
+      "litres": 461,
+      "confidence": 60,
+      "band_low": 444,
+      "band_high": 478
+    },
+    {
+      "date": "2026-11-08",
+      "litres": 329,
+      "confidence": 60,
+      "band_low": 313,
+      "band_high": 345
+    },
+    {
+      "date": "2026-11-09",
+      "litres": 401,
+      "confidence": 60,
+      "band_low": 391,
+      "band_high": 411
+    }
+  ],
+  "overall_confidence": 60,
+  "uncertain": true,
+  "uncertain_reason": "Little sales history for ST020 Petrol 95: forecast based on similar stations, confidence 60%.",
+  "factors": [
+    {
+      "factor": "previous_orders",
+      "impact_pct": -1.3,
+      "available": true,
+      "explanation": "Deliveries in the last 28 days were 1% below sales."
+    },
+    {
+      "factor": "weather",
+      "impact_pct": -0.7,
+      "available": true,
+      "explanation": "Rainy weather (19 °C) on 08 Nov 2026 lowers demand by 5%."
+    },
+    {
+      "factor": "local_events",
+      "impact_pct": 0.7,
+      "available": true,
+      "explanation": "The Mornag wine fair on 07 Nov 2026 raises expected demand by 5%."
+    },
+    {
+      "factor": "recent_sales",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "Recent Petrol 95 sales average 421 L per day on Tuesdays."
+    },
+    {
+      "factor": "seasonality",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "November demand is usually 5% lower than average."
+    },
+    {
+      "factor": "current_tank_level",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "Current stock (1,635 L) runs out on 06 Nov 2026 if no delivery arrives."
+    }
+  ],
+  "recent_actuals": [
+    {
+      "date": "2026-10-27",
+      "litres": 412
+    },
+    {
+      "date": "2026-10-28",
+      "litres": 417
+    },
+    {
+      "date": "2026-10-29",
+      "litres": 425
+    },
+    {
+      "date": "2026-10-30",
+      "litres": 439
+    },
+    {
+      "date": "2026-10-31",
+      "litres": 454
+    },
+    {
+      "date": "2026-11-01",
+      "litres": 334
+    },
+    {
+      "date": "2026-11-02",
+      "litres": 403
+    }
+  ]
+}

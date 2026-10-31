@@ -1,0 +1,1786 @@
+[
+  {
+    "entry_id": "1b4e0361-207a-4e42-b04a-5c3954f967f1",
+    "decided_at": "2026-10-31T16:04:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "rejected",
+    "station_id": "ST004",
+    "plan_label": "not dispatched",
+    "cost_diff_usd": null,
+    "cost_diff_pct": null,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2140",
+    "stop_id": "S-14",
+    "delivery_day": "2026-11-01",
+    "original_recommendation": {
+      "plan_id": "PL-2140",
+      "station_id": "ST004",
+      "station_name": "Ennasr Avenue",
+      "tanker_id": "T-04",
+      "est_arrival": "2026-11-01T10:11:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 5500
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2140",
+      "station_id": "ST004",
+      "station_name": "Ennasr Avenue",
+      "tanker_id": "T-04",
+      "est_arrival": "2026-11-01T10:11:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 5500
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": null,
+    "cost_final": null,
+    "note": "Delivery already arranged by the station.",
+    "input_versions": {
+      "resource_version": "RV-0150",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "c82e4056-09ee-4353-a3f3-f801ccb3c6ed"
+  },
+  {
+    "entry_id": "b0348559-7310-41de-ba5e-16ce0deca510",
+    "decided_at": "2026-10-31T14:05:00Z",
+    "manager": {
+      "id": "e2fa1c9a-f4a0-48dc-8d72-177e4d7d87e6",
+      "full_name": "Youssef T."
+    },
+    "scope": "action",
+    "decision": "rejected",
+    "station_id": "ST013",
+    "plan_label": "not dispatched",
+    "cost_diff_usd": null,
+    "cost_diff_pct": null,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2142",
+    "stop_id": "S-05",
+    "delivery_day": "2026-11-01",
+    "original_recommendation": {
+      "plan_id": "PL-2142",
+      "station_id": "ST013",
+      "station_name": "Rades Port",
+      "tanker_id": "T-02",
+      "est_arrival": "2026-11-01T11:09:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 6300
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2142",
+      "station_id": "ST013",
+      "station_name": "Rades Port",
+      "tanker_id": "T-02",
+      "est_arrival": "2026-11-01T11:09:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 6300
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": null,
+    "cost_final": null,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0151",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "56521a77-9130-4881-98ba-5a2fa9be354e"
+  },
+  {
+    "entry_id": "201d78ab-9595-4eb8-a415-03eb4a501cf4",
+    "decided_at": "2026-10-30T16:58:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST016",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2144",
+    "stop_id": "S-07",
+    "delivery_day": "2026-10-31",
+    "original_recommendation": {
+      "plan_id": "PL-2144",
+      "station_id": "ST016",
+      "station_name": "Fouchana Road",
+      "tanker_id": "T-05",
+      "est_arrival": "2026-10-31T14:00:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 9200
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2144",
+      "station_id": "ST016",
+      "station_name": "Fouchana Road",
+      "tanker_id": "T-05",
+      "est_arrival": "2026-10-31T14:00:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 9200
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 363.6,
+    "cost_final": 363.6,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0152",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "597855e0-a384-40e1-a9eb-22504a5f142b"
+  },
+  {
+    "entry_id": "7492e13d-f2b3-4ef9-9490-fd48f510f424",
+    "decided_at": "2026-10-30T15:30:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "plan",
+    "decision": "approved",
+    "station_id": null,
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2146",
+    "stop_id": null,
+    "delivery_day": "2026-10-31",
+    "original_recommendation": {
+      "plan_id": "PL-2146",
+      "routes": 6,
+      "stops": 14,
+      "total_litres": 143800
+    },
+    "final_version": {
+      "plan_id": "PL-2146",
+      "routes": 6,
+      "stops": 14,
+      "total_litres": 143800
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 402.2,
+    "cost_final": 402.2,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0153",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "229ca482-b15d-4785-9c66-c629263ff9f8"
+  },
+  {
+    "entry_id": "ba6aafc3-04d7-4355-b600-300925f42383",
+    "decided_at": "2026-10-29T14:21:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST015",
+    "plan_label": "modified",
+    "cost_diff_usd": 8.6,
+    "cost_diff_pct": 2.4,
+    "risk_count": 1,
+    "max_severity": "low",
+    "plan_id": "PL-2148",
+    "stop_id": "S-08",
+    "delivery_day": "2026-10-30",
+    "original_recommendation": {
+      "plan_id": "PL-2148",
+      "station_id": "ST015",
+      "station_name": "Mornag Plain",
+      "tanker_id": "T-05",
+      "est_arrival": "2026-10-30T09:30:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 3600
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2148",
+      "station_id": "ST015",
+      "station_name": "Mornag Plain",
+      "tanker_id": "T-06",
+      "est_arrival": "2026-10-30T09:30:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 3600
+        }
+      ]
+    },
+    "was_edited": true,
+    "edits": [
+      {
+        "edit_id": "E-005",
+        "kind": "move",
+        "at": "2026-10-29T14:21:00Z",
+        "summary": "Moved ST015 to tanker T-06."
+      }
+    ],
+    "risks_shown": [
+      {
+        "type": "RISK-04",
+        "severity": "low",
+        "reason": "This change makes ST015 arrive 101 min later than planned."
+      }
+    ],
+    "cost_optimal": 360.9,
+    "cost_final": 369.5,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0154",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "79dc13b1-25da-4668-a834-0cb358149c0a"
+  },
+  {
+    "entry_id": "ee61e3fc-1e90-4fca-bc67-d16d18e71a07",
+    "decided_at": "2026-10-28T15:41:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST008",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2150",
+    "stop_id": "S-04",
+    "delivery_day": "2026-10-29",
+    "original_recommendation": {
+      "plan_id": "PL-2150",
+      "station_id": "ST008",
+      "station_name": "Lac 1 Gateway",
+      "tanker_id": "T-01",
+      "est_arrival": "2026-10-29T10:40:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 9100
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2150",
+      "station_id": "ST008",
+      "station_name": "Lac 1 Gateway",
+      "tanker_id": "T-01",
+      "est_arrival": "2026-10-29T10:40:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 9100
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 375.7,
+    "cost_final": 375.7,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0155",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "0e71639f-82e8-4f67-bf04-a03e51751e5b"
+  },
+  {
+    "entry_id": "b66c9f1d-bdec-446c-9a68-7ef29551eb2b",
+    "decided_at": "2026-10-28T15:24:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST016",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2152",
+    "stop_id": "S-01",
+    "delivery_day": "2026-10-29",
+    "original_recommendation": {
+      "plan_id": "PL-2152",
+      "station_id": "ST016",
+      "station_name": "Fouchana Road",
+      "tanker_id": "T-06",
+      "est_arrival": "2026-10-29T06:42:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 10900
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2152",
+      "station_id": "ST016",
+      "station_name": "Fouchana Road",
+      "tanker_id": "T-06",
+      "est_arrival": "2026-10-29T06:42:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 10900
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 342.7,
+    "cost_final": 342.7,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0156",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "dc58a0e8-52ac-4b7a-9fea-ee8216a243fb"
+  },
+  {
+    "entry_id": "59789624-8e41-4c83-9a94-809733fafaed",
+    "decided_at": "2026-10-27T16:01:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST020",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2154",
+    "stop_id": "S-18",
+    "delivery_day": "2026-10-28",
+    "original_recommendation": {
+      "plan_id": "PL-2154",
+      "station_id": "ST020",
+      "station_name": "Khelidia",
+      "tanker_id": "T-05",
+      "est_arrival": "2026-10-28T08:13:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 3600
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2154",
+      "station_id": "ST020",
+      "station_name": "Khelidia",
+      "tanker_id": "T-05",
+      "est_arrival": "2026-10-28T08:13:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 3600
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 382.3,
+    "cost_final": 382.3,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0157",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "a90a752b-dfa5-4e03-8b65-728ccafdceac"
+  },
+  {
+    "entry_id": "86d2ca4e-ed93-43c1-875a-abde49751c7b",
+    "decided_at": "2026-10-26T16:11:00Z",
+    "manager": {
+      "id": "e2fa1c9a-f4a0-48dc-8d72-177e4d7d87e6",
+      "full_name": "Youssef T."
+    },
+    "scope": "action",
+    "decision": "rejected",
+    "station_id": "ST004",
+    "plan_label": "not dispatched",
+    "cost_diff_usd": null,
+    "cost_diff_pct": null,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2156",
+    "stop_id": "S-15",
+    "delivery_day": "2026-10-27",
+    "original_recommendation": {
+      "plan_id": "PL-2156",
+      "station_id": "ST004",
+      "station_name": "Ennasr Avenue",
+      "tanker_id": "T-03",
+      "est_arrival": "2026-10-27T13:11:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 10300
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2156",
+      "station_id": "ST004",
+      "station_name": "Ennasr Avenue",
+      "tanker_id": "T-03",
+      "est_arrival": "2026-10-27T13:11:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 10300
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": null,
+    "cost_final": null,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0158",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "b5148217-0054-4286-9108-d142b21c3196"
+  },
+  {
+    "entry_id": "f705f256-07c9-4433-b772-5122f397f4ec",
+    "decided_at": "2026-10-26T14:52:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST018",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2158",
+    "stop_id": "S-04",
+    "delivery_day": "2026-10-27",
+    "original_recommendation": {
+      "plan_id": "PL-2158",
+      "station_id": "ST018",
+      "station_name": "Borj Cedria",
+      "tanker_id": "T-05",
+      "est_arrival": "2026-10-27T05:26:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 7700
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2158",
+      "station_id": "ST018",
+      "station_name": "Borj Cedria",
+      "tanker_id": "T-05",
+      "est_arrival": "2026-10-27T05:26:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 7700
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 336.2,
+    "cost_final": 336.2,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0159",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "48694352-3896-43a1-994c-d03deedc0a88"
+  },
+  {
+    "entry_id": "3994fb54-4d94-45b3-9740-45cd01f76cc9",
+    "decided_at": "2026-10-25T16:55:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "rejected",
+    "station_id": "ST013",
+    "plan_label": "not dispatched",
+    "cost_diff_usd": null,
+    "cost_diff_pct": null,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2161",
+    "stop_id": "S-16",
+    "delivery_day": "2026-10-26",
+    "original_recommendation": {
+      "plan_id": "PL-2161",
+      "station_id": "ST013",
+      "station_name": "Rades Port",
+      "tanker_id": "T-01",
+      "est_arrival": "2026-10-26T13:05:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 9300
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2161",
+      "station_id": "ST013",
+      "station_name": "Rades Port",
+      "tanker_id": "T-01",
+      "est_arrival": "2026-10-26T13:05:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 9300
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": null,
+    "cost_final": null,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0160",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "bb6eddcc-8bb5-4d63-9cd9-664195e2002f"
+  },
+  {
+    "entry_id": "200b9ae2-fdf1-48d6-b8de-9cc46109de42",
+    "decided_at": "2026-10-24T16:10:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST003",
+    "plan_label": "modified",
+    "cost_diff_usd": 15.6,
+    "cost_diff_pct": 4.7,
+    "risk_count": 3,
+    "max_severity": "low",
+    "plan_id": "PL-2165",
+    "stop_id": "S-17",
+    "delivery_day": "2026-10-25",
+    "original_recommendation": {
+      "plan_id": "PL-2165",
+      "station_id": "ST003",
+      "station_name": "La Marsa Corniche",
+      "tanker_id": "T-03",
+      "est_arrival": "2026-10-25T13:05:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 4100
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2165",
+      "station_id": "ST003",
+      "station_name": "La Marsa Corniche",
+      "tanker_id": "T-04",
+      "est_arrival": "2026-10-25T13:05:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 4100
+        }
+      ]
+    },
+    "was_edited": true,
+    "edits": [
+      {
+        "edit_id": "E-013",
+        "kind": "move",
+        "at": "2026-10-24T16:10:00Z",
+        "summary": "Moved ST003 to tanker T-04."
+      }
+    ],
+    "risks_shown": [
+      {
+        "type": "RISK-04",
+        "severity": "low",
+        "reason": "This change makes ST003 arrive 66 min later than planned."
+      },
+      {
+        "type": "RISK-05",
+        "severity": "low",
+        "reason": "This change adds 14.7 km (+1.9%) of distance to the plan."
+      },
+      {
+        "type": "RISK-05",
+        "severity": "low",
+        "reason": "This change adds 16.4 km (+3.6%) of distance to the plan."
+      }
+    ],
+    "cost_optimal": 331.3,
+    "cost_final": 346.9,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0162",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "e3ac9e60-cc0e-4f68-9632-1d5e3a725c3b"
+  },
+  {
+    "entry_id": "b5679ea4-93ea-4858-bb49-aedb6a97d0b1",
+    "decided_at": "2026-10-24T15:46:00Z",
+    "manager": {
+      "id": "e2fa1c9a-f4a0-48dc-8d72-177e4d7d87e6",
+      "full_name": "Youssef T."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST005",
+    "plan_label": "modified",
+    "cost_diff_usd": 9.7,
+    "cost_diff_pct": 2.6,
+    "risk_count": 1,
+    "max_severity": "medium",
+    "plan_id": "PL-2163",
+    "stop_id": "S-03",
+    "delivery_day": "2026-10-25",
+    "original_recommendation": {
+      "plan_id": "PL-2163",
+      "station_id": "ST005",
+      "station_name": "Borj Louzir",
+      "tanker_id": "T-03",
+      "est_arrival": "2026-10-25T09:46:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 5600
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2163",
+      "station_id": "ST005",
+      "station_name": "Borj Louzir",
+      "tanker_id": "T-04",
+      "est_arrival": "2026-10-25T09:46:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 5600
+        }
+      ]
+    },
+    "was_edited": true,
+    "edits": [
+      {
+        "edit_id": "E-012",
+        "kind": "move",
+        "at": "2026-10-24T15:46:00Z",
+        "summary": "Moved ST005 to tanker T-04."
+      }
+    ],
+    "risks_shown": [
+      {
+        "type": "RISK-04",
+        "severity": "medium",
+        "reason": "This change makes ST005 arrive 109 min later than planned."
+      }
+    ],
+    "cost_optimal": 366.2,
+    "cost_final": 375.9,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0161",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "796ee0a8-1be7-4528-bffb-bd3b226cf7ec"
+  },
+  {
+    "entry_id": "11ebfd70-19fc-44d9-91e7-16d6a96e0bf4",
+    "decided_at": "2026-10-23T15:07:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "plan",
+    "decision": "approved",
+    "station_id": null,
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2167",
+    "stop_id": null,
+    "delivery_day": "2026-10-24",
+    "original_recommendation": {
+      "plan_id": "PL-2167",
+      "routes": 6,
+      "stops": 17,
+      "total_litres": 128100
+    },
+    "final_version": {
+      "plan_id": "PL-2167",
+      "routes": 6,
+      "stops": 17,
+      "total_litres": 128100
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 351,
+    "cost_final": 351,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0163",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "bacd13b6-954a-43c8-a72e-cb0d98a06dc1"
+  },
+  {
+    "entry_id": "9dc6b059-4062-4e0a-b641-53e50b428c2b",
+    "decided_at": "2026-10-22T16:22:00Z",
+    "manager": {
+      "id": "e2fa1c9a-f4a0-48dc-8d72-177e4d7d87e6",
+      "full_name": "Youssef T."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST013",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2169",
+    "stop_id": "S-18",
+    "delivery_day": "2026-10-23",
+    "original_recommendation": {
+      "plan_id": "PL-2169",
+      "station_id": "ST013",
+      "station_name": "Rades Port",
+      "tanker_id": "T-01",
+      "est_arrival": "2026-10-23T11:02:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 3200
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2169",
+      "station_id": "ST013",
+      "station_name": "Rades Port",
+      "tanker_id": "T-01",
+      "est_arrival": "2026-10-23T11:02:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 3200
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 335.2,
+    "cost_final": 335.2,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0164",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "2d4a580b-281c-4862-adb7-d86ff28c5005"
+  },
+  {
+    "entry_id": "7ee7fcfa-d3e0-49c3-b074-33ca750948a1",
+    "decided_at": "2026-10-22T15:52:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST018",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2171",
+    "stop_id": "S-13",
+    "delivery_day": "2026-10-23",
+    "original_recommendation": {
+      "plan_id": "PL-2171",
+      "station_id": "ST018",
+      "station_name": "Borj Cedria",
+      "tanker_id": "T-05",
+      "est_arrival": "2026-10-23T05:08:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 10900
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2171",
+      "station_id": "ST018",
+      "station_name": "Borj Cedria",
+      "tanker_id": "T-05",
+      "est_arrival": "2026-10-23T05:08:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 10900
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 364.5,
+    "cost_final": 364.5,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0165",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "f75b34a1-d2c1-4f93-9868-273bf54a237a"
+  },
+  {
+    "entry_id": "2770234c-9b03-4001-a9e7-4f27aae80969",
+    "decided_at": "2026-10-21T17:00:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST013",
+    "plan_label": "modified",
+    "cost_diff_usd": 10,
+    "cost_diff_pct": 2.9,
+    "risk_count": 3,
+    "max_severity": "medium",
+    "plan_id": "PL-2173",
+    "stop_id": "S-04",
+    "delivery_day": "2026-10-22",
+    "original_recommendation": {
+      "plan_id": "PL-2173",
+      "station_id": "ST013",
+      "station_name": "Rades Port",
+      "tanker_id": "T-01",
+      "est_arrival": "2026-10-22T06:50:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 9100
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2173",
+      "station_id": "ST013",
+      "station_name": "Rades Port",
+      "tanker_id": "T-02",
+      "est_arrival": "2026-10-22T06:50:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 9100
+        }
+      ]
+    },
+    "was_edited": true,
+    "edits": [
+      {
+        "edit_id": "E-017",
+        "kind": "move",
+        "at": "2026-10-21T17:00:00Z",
+        "summary": "Moved ST013 to tanker T-02."
+      }
+    ],
+    "risks_shown": [
+      {
+        "type": "RISK-04",
+        "severity": "medium",
+        "reason": "This change makes ST013 arrive 54 min later than planned."
+      },
+      {
+        "type": "RISK-05",
+        "severity": "low",
+        "reason": "This change adds 7.5 km (+5.3%) of distance to the plan."
+      },
+      {
+        "type": "RISK-05",
+        "severity": "low",
+        "reason": "This change adds 13.3 km (+2.5%) of distance to the plan."
+      }
+    ],
+    "cost_optimal": 340.3,
+    "cost_final": 350.3,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0166",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "91521f3b-6903-433b-976f-37a5d735eb3a"
+  },
+  {
+    "entry_id": "86f2cbad-1c01-4f13-9e7a-755f7c919e54",
+    "decided_at": "2026-10-20T15:20:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST002",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2177",
+    "stop_id": "S-04",
+    "delivery_day": "2026-10-21",
+    "original_recommendation": {
+      "plan_id": "PL-2177",
+      "station_id": "ST002",
+      "station_name": "Raoued Coast",
+      "tanker_id": "T-04",
+      "est_arrival": "2026-10-21T08:31:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 10200
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2177",
+      "station_id": "ST002",
+      "station_name": "Raoued Coast",
+      "tanker_id": "T-04",
+      "est_arrival": "2026-10-21T08:31:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 10200
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 418.7,
+    "cost_final": 418.7,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0168",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "51a5f1ee-a6c6-4415-bca2-b72597a56de9"
+  },
+  {
+    "entry_id": "b70e3b54-1efc-4490-8fdb-d962bdd02df3",
+    "decided_at": "2026-10-20T14:45:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST001",
+    "plan_label": "modified",
+    "cost_diff_usd": 18.3,
+    "cost_diff_pct": 5.1,
+    "risk_count": 1,
+    "max_severity": "medium",
+    "plan_id": "PL-2175",
+    "stop_id": "S-17",
+    "delivery_day": "2026-10-21",
+    "original_recommendation": {
+      "plan_id": "PL-2175",
+      "station_id": "ST001",
+      "station_name": "Ariana Centre",
+      "tanker_id": "T-03",
+      "est_arrival": "2026-10-21T09:11:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 4200
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2175",
+      "station_id": "ST001",
+      "station_name": "Ariana Centre",
+      "tanker_id": "T-04",
+      "est_arrival": "2026-10-21T09:11:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 4200
+        }
+      ]
+    },
+    "was_edited": true,
+    "edits": [
+      {
+        "edit_id": "E-018",
+        "kind": "move",
+        "at": "2026-10-20T14:45:00Z",
+        "summary": "Moved ST001 to tanker T-04."
+      }
+    ],
+    "risks_shown": [
+      {
+        "type": "RISK-04",
+        "severity": "medium",
+        "reason": "This change makes ST001 arrive 128 min later than planned."
+      }
+    ],
+    "cost_optimal": 359,
+    "cost_final": 377.3,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0167",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "42aa5784-f64c-4968-828c-e24b70642d06"
+  },
+  {
+    "entry_id": "a7be1c36-d955-4bfb-83b9-a878b49c4e1b",
+    "decided_at": "2026-10-19T15:27:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST007",
+    "plan_label": "modified",
+    "cost_diff_usd": 13,
+    "cost_diff_pct": 3.1,
+    "risk_count": 1,
+    "max_severity": "low",
+    "plan_id": "PL-2179",
+    "stop_id": "S-07",
+    "delivery_day": "2026-10-20",
+    "original_recommendation": {
+      "plan_id": "PL-2179",
+      "station_id": "ST007",
+      "station_name": "Mnihla Junction",
+      "tanker_id": "T-04",
+      "est_arrival": "2026-10-20T08:22:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 5700
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2179",
+      "station_id": "ST007",
+      "station_name": "Mnihla Junction",
+      "tanker_id": "T-03",
+      "est_arrival": "2026-10-20T08:22:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 5700
+        }
+      ]
+    },
+    "was_edited": true,
+    "edits": [
+      {
+        "edit_id": "E-020",
+        "kind": "move",
+        "at": "2026-10-19T15:27:00Z",
+        "summary": "Moved ST007 to tanker T-03."
+      }
+    ],
+    "risks_shown": [
+      {
+        "type": "RISK-04",
+        "severity": "low",
+        "reason": "This change makes ST007 arrive 69 min later than planned."
+      }
+    ],
+    "cost_optimal": 422.8,
+    "cost_final": 435.8,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0169",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "94d335c5-91d3-4890-89ce-602ff401f9ad"
+  },
+  {
+    "entry_id": "9008955e-e33c-457a-89eb-c35edc01daa8",
+    "decided_at": "2026-10-18T16:26:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST019",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2182",
+    "stop_id": "S-09",
+    "delivery_day": "2026-10-19",
+    "original_recommendation": {
+      "plan_id": "PL-2182",
+      "station_id": "ST019",
+      "station_name": "Bardo Road",
+      "tanker_id": "T-02",
+      "est_arrival": "2026-10-19T07:53:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 4000
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2182",
+      "station_id": "ST019",
+      "station_name": "Bardo Road",
+      "tanker_id": "T-02",
+      "est_arrival": "2026-10-19T07:53:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 4000
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 443.8,
+    "cost_final": 443.8,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0170",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "cf601a13-d6dc-47ea-ad49-467f73ba5e0c"
+  },
+  {
+    "entry_id": "0023cc7d-2fba-4174-b30c-a467173f9092",
+    "decided_at": "2026-10-18T14:35:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST008",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2184",
+    "stop_id": "S-11",
+    "delivery_day": "2026-10-19",
+    "original_recommendation": {
+      "plan_id": "PL-2184",
+      "station_id": "ST008",
+      "station_name": "Lac 1 Gateway",
+      "tanker_id": "T-02",
+      "est_arrival": "2026-10-19T10:40:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 10100
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2184",
+      "station_id": "ST008",
+      "station_name": "Lac 1 Gateway",
+      "tanker_id": "T-02",
+      "est_arrival": "2026-10-19T10:40:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 10100
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 330.4,
+    "cost_final": 330.4,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0171",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "dd1f4308-319e-408c-aecc-c1d37f41d3eb"
+  },
+  {
+    "entry_id": "f77a08b4-fa8b-42e7-8a13-a61cefc6a90a",
+    "decided_at": "2026-10-17T16:39:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST011",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2186",
+    "stop_id": "S-10",
+    "delivery_day": "2026-10-18",
+    "original_recommendation": {
+      "plan_id": "PL-2186",
+      "station_id": "ST011",
+      "station_name": "Megrine Industrial",
+      "tanker_id": "T-02",
+      "est_arrival": "2026-10-18T06:24:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 6400
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2186",
+      "station_id": "ST011",
+      "station_name": "Megrine Industrial",
+      "tanker_id": "T-02",
+      "est_arrival": "2026-10-18T06:24:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 6400
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 392.4,
+    "cost_final": 392.4,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0172",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "3eae54eb-b353-4fb3-9450-12bf0aa2f1b3"
+  },
+  {
+    "entry_id": "a8267d17-62f8-4430-840c-6115ba20bed1",
+    "decided_at": "2026-10-16T16:56:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST013",
+    "plan_label": "modified",
+    "cost_diff_usd": 23.2,
+    "cost_diff_pct": 5.3,
+    "risk_count": 2,
+    "max_severity": "medium",
+    "plan_id": "PL-2190",
+    "stop_id": "S-06",
+    "delivery_day": "2026-10-17",
+    "original_recommendation": {
+      "plan_id": "PL-2190",
+      "station_id": "ST013",
+      "station_name": "Rades Port",
+      "tanker_id": "T-01",
+      "est_arrival": "2026-10-17T11:04:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 9600
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2190",
+      "station_id": "ST013",
+      "station_name": "Rades Port",
+      "tanker_id": "T-02",
+      "est_arrival": "2026-10-17T11:04:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 9600
+        }
+      ]
+    },
+    "was_edited": true,
+    "edits": [
+      {
+        "edit_id": "E-025",
+        "kind": "move",
+        "at": "2026-10-16T16:56:00Z",
+        "summary": "Moved ST013 to tanker T-02."
+      }
+    ],
+    "risks_shown": [
+      {
+        "type": "RISK-04",
+        "severity": "medium",
+        "reason": "This change makes ST013 arrive 133 min later than planned."
+      },
+      {
+        "type": "RISK-05",
+        "severity": "low",
+        "reason": "This change adds 13.0 km (+4.3%) of distance to the plan."
+      }
+    ],
+    "cost_optimal": 441,
+    "cost_final": 464.2,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0174",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "9f90a8aa-3c3e-4a3a-8fb3-3690f734b1ce"
+  },
+  {
+    "entry_id": "e956906d-efc2-4ef0-b80c-29fad68d97f0",
+    "decided_at": "2026-10-16T16:08:00Z",
+    "manager": {
+      "id": "e2fa1c9a-f4a0-48dc-8d72-177e4d7d87e6",
+      "full_name": "Youssef T."
+    },
+    "scope": "plan",
+    "decision": "approved",
+    "station_id": null,
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2188",
+    "stop_id": null,
+    "delivery_day": "2026-10-17",
+    "original_recommendation": {
+      "plan_id": "PL-2188",
+      "routes": 4,
+      "stops": 15,
+      "total_litres": 116800
+    },
+    "final_version": {
+      "plan_id": "PL-2188",
+      "routes": 4,
+      "stops": 15,
+      "total_litres": 116800
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 426.7,
+    "cost_final": 426.7,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0173",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "9dbe77fa-7baa-44a8-8274-61fe7cf80f40"
+  },
+  {
+    "entry_id": "6d8d0347-ef83-4606-a39f-7d6d23327a05",
+    "decided_at": "2026-10-15T16:54:00Z",
+    "manager": {
+      "id": "e2fa1c9a-f4a0-48dc-8d72-177e4d7d87e6",
+      "full_name": "Youssef T."
+    },
+    "scope": "action",
+    "decision": "rejected",
+    "station_id": "ST002",
+    "plan_label": "not dispatched",
+    "cost_diff_usd": null,
+    "cost_diff_pct": null,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2192",
+    "stop_id": "S-01",
+    "delivery_day": "2026-10-16",
+    "original_recommendation": {
+      "plan_id": "PL-2192",
+      "station_id": "ST002",
+      "station_name": "Raoued Coast",
+      "tanker_id": "T-04",
+      "est_arrival": "2026-10-16T11:43:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 10700
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2192",
+      "station_id": "ST002",
+      "station_name": "Raoued Coast",
+      "tanker_id": "T-04",
+      "est_arrival": "2026-10-16T11:43:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 10700
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": null,
+    "cost_final": null,
+    "note": "Station closed for maintenance.",
+    "input_versions": {
+      "resource_version": "RV-0175",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "a6cb3883-bf19-41d3-91cc-98801a275a16"
+  },
+  {
+    "entry_id": "a4239fe5-508c-4aae-995e-3b9d66c84550",
+    "decided_at": "2026-10-14T15:20:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST011",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2196",
+    "stop_id": "S-02",
+    "delivery_day": "2026-10-15",
+    "original_recommendation": {
+      "plan_id": "PL-2196",
+      "station_id": "ST011",
+      "station_name": "Megrine Industrial",
+      "tanker_id": "T-01",
+      "est_arrival": "2026-10-15T05:08:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 4900
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2196",
+      "station_id": "ST011",
+      "station_name": "Megrine Industrial",
+      "tanker_id": "T-01",
+      "est_arrival": "2026-10-15T05:08:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "DIESEL",
+          "litres": 4900
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 420.5,
+    "cost_final": 420.5,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0177",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "bb1ca183-57e6-4e9b-bbd8-4c2d27c991f5"
+  },
+  {
+    "entry_id": "8a4b1a31-34c7-4224-b133-ab95a2b47dd9",
+    "decided_at": "2026-10-14T14:00:00Z",
+    "manager": {
+      "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+      "full_name": "Sara M."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST003",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2194",
+    "stop_id": "S-04",
+    "delivery_day": "2026-10-15",
+    "original_recommendation": {
+      "plan_id": "PL-2194",
+      "station_id": "ST003",
+      "station_name": "La Marsa Corniche",
+      "tanker_id": "T-03",
+      "est_arrival": "2026-10-15T08:33:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 4300
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2194",
+      "station_id": "ST003",
+      "station_name": "La Marsa Corniche",
+      "tanker_id": "T-03",
+      "est_arrival": "2026-10-15T08:33:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 4300
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 352,
+    "cost_final": 352,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0176",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "8befc6fa-49bd-4f14-bfaf-f141d5a87a8b"
+  },
+  {
+    "entry_id": "f181b9f6-11d0-45df-b469-1629820d37e8",
+    "decided_at": "2026-10-13T14:25:00Z",
+    "manager": {
+      "id": "e2fa1c9a-f4a0-48dc-8d72-177e4d7d87e6",
+      "full_name": "Youssef T."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST019",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2198",
+    "stop_id": "S-10",
+    "delivery_day": "2026-10-14",
+    "original_recommendation": {
+      "plan_id": "PL-2198",
+      "station_id": "ST019",
+      "station_name": "Bardo Road",
+      "tanker_id": "T-01",
+      "est_arrival": "2026-10-14T07:20:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 4100
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2198",
+      "station_id": "ST019",
+      "station_name": "Bardo Road",
+      "tanker_id": "T-01",
+      "est_arrival": "2026-10-14T07:20:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 4100
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 438.9,
+    "cost_final": 438.9,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0178",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "b4c8c495-ba71-49fc-9ac5-e3e144416389"
+  },
+  {
+    "entry_id": "3049c2db-df1c-4fff-8912-84945111c59c",
+    "decided_at": "2026-10-12T15:38:00Z",
+    "manager": {
+      "id": "e2fa1c9a-f4a0-48dc-8d72-177e4d7d87e6",
+      "full_name": "Youssef T."
+    },
+    "scope": "action",
+    "decision": "approved",
+    "station_id": "ST005",
+    "plan_label": "as recommended",
+    "cost_diff_usd": 0,
+    "cost_diff_pct": 0,
+    "risk_count": 0,
+    "max_severity": null,
+    "plan_id": "PL-2200",
+    "stop_id": "S-17",
+    "delivery_day": "2026-10-13",
+    "original_recommendation": {
+      "plan_id": "PL-2200",
+      "station_id": "ST005",
+      "station_name": "Borj Louzir",
+      "tanker_id": "T-03",
+      "est_arrival": "2026-10-13T11:43:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 9800
+        }
+      ]
+    },
+    "final_version": {
+      "plan_id": "PL-2200",
+      "station_id": "ST005",
+      "station_name": "Borj Louzir",
+      "tanker_id": "T-03",
+      "est_arrival": "2026-10-13T11:43:00Z",
+      "quantities": [
+        {
+          "fuel_type_id": "P95",
+          "litres": 9800
+        }
+      ]
+    },
+    "was_edited": false,
+    "edits": [],
+    "risks_shown": [],
+    "cost_optimal": 323.2,
+    "cost_final": 323.2,
+    "note": null,
+    "input_versions": {
+      "resource_version": "RV-0179",
+      "forecast": "fc-sim-1.1.0",
+      "templates": "tpl-1.1.0"
+    },
+    "correlation_id": "d8119c13-95fa-4b85-82bc-8d316edbd711"
+  }
+]

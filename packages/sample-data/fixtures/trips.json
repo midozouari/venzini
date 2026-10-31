@@ -1,0 +1,122 @@
+[
+  {
+    "route_id": "R-07",
+    "plan_id": "PL-2204",
+    "delivery_day": "2026-11-01",
+    "trip_no": 1,
+    "tanker_id": "T-01",
+    "driver": {
+      "driver_id": "D-04",
+      "full_name": "Ali H."
+    },
+    "home_warehouse_id": "WH-RIV",
+    "est_departure": "2026-11-01T05:00:00Z",
+    "est_return": "2026-11-01T13:00:00Z",
+    "actual_departure": "2026-11-01T05:10:00Z",
+    "actual_return": "2026-11-01T13:55:00Z",
+    "trip_status": "returned",
+    "time_gap_min": 45,
+    "time_gap_pct": 9.4,
+    "cancel_reason": null
+  },
+  {
+    "route_id": "R-08",
+    "plan_id": "PL-2204",
+    "delivery_day": "2026-11-01",
+    "trip_no": 1,
+    "tanker_id": "T-02",
+    "driver": {
+      "driver_id": "D-05",
+      "full_name": "Marcus K."
+    },
+    "home_warehouse_id": "WH-RIV",
+    "est_departure": "2026-11-01T04:00:00Z",
+    "est_return": "2026-11-01T10:20:00Z",
+    "actual_departure": "2026-11-01T04:05:00Z",
+    "actual_return": "2026-11-01T10:15:00Z",
+    "trip_status": "returned",
+    "time_gap_min": -10,
+    "time_gap_pct": -2.6,
+    "cancel_reason": null
+  },
+  {
+    "route_id": "R-09",
+    "plan_id": "PL-2204",
+    "delivery_day": "2026-11-01",
+    "trip_no": 1,
+    "tanker_id": "T-03",
+    "driver": {
+      "driver_id": "D-01",
+      "full_name": "Sami B."
+    },
+    "home_warehouse_id": "WH-NOR",
+    "est_departure": "2026-11-01T04:00:00Z",
+    "est_return": "2026-11-01T11:40:00Z",
+    "actual_departure": null,
+    "actual_return": null,
+    "trip_status": "planned",
+    "time_gap_min": null,
+    "time_gap_pct": null,
+    "cancel_reason": null
+  },
+  {
+    "route_id": "R-10",
+    "plan_id": "PL-2204",
+    "delivery_day": "2026-11-01",
+    "trip_no": 1,
+    "tanker_id": "T-04",
+    "driver": {
+      "driver_id": "D-02",
+      "full_name": "Hatem L."
+    },
+    "home_warehouse_id": "WH-NOR",
+    "est_departure": "2026-11-01T04:00:00Z",
+    "est_return": "2026-11-01T09:50:00Z",
+    "actual_departure": "2026-11-01T04:00:00Z",
+    "actual_return": "2026-11-01T10:20:00Z",
+    "trip_status": "returned",
+    "time_gap_min": 30,
+    "time_gap_pct": 8.6,
+    "cancel_reason": null
+  },
+  {
+    "route_id": "R-11",
+    "plan_id": "PL-2204",
+    "delivery_day": "2026-11-01",
+    "trip_no": 1,
+    "tanker_id": "T-06",
+    "driver": {
+      "driver_id": "D-06",
+      "full_name": "Nizar F."
+    },
+    "home_warehouse_id": "WH-SUD",
+    "est_departure": "2026-11-01T04:00:00Z",
+    "est_return": "2026-11-01T12:30:00Z",
+    "actual_departure": "2026-11-01T04:20:00Z",
+    "actual_return": null,
+    "trip_status": "departed",
+    "time_gap_min": null,
+    "time_gap_pct": null,
+    "cancel_reason": null
+  },
+  {
+    "route_id": "R-12",
+    "plan_id": "PL-2204",
+    "delivery_day": "2026-11-01",
+    "trip_no": 1,
+    "tanker_id": "T-05",
+    "driver": {
+      "driver_id": "D-03",
+      "full_name": "Walid M."
+    },
+    "home_warehouse_id": "WH-SUD",
+    "est_departure": "2026-11-01T04:30:00Z",
+    "est_return": "2026-11-01T11:00:00Z",
+    "actual_departure": null,
+    "actual_return": null,
+    "trip_status": "planned",
+    "time_gap_min": null,
+    "time_gap_pct": null,
+    "cancel_reason": null
+  }
+]

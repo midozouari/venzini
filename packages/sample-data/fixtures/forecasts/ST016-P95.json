@@ -1,0 +1,126 @@
+{
+  "forecast_id": "FC-ST016-P95-20261102",
+  "station_id": "ST016",
+  "fuel_type_id": "P95",
+  "reference_date": "2026-11-02",
+  "status": "ok",
+  "model_version": "fc-sim-1.1.0",
+  "baseline": "own",
+  "baseline_note": null,
+  "daily": [
+    {
+      "date": "2026-11-03",
+      "litres": 915,
+      "confidence": 93,
+      "band_low": 893,
+      "band_high": 937
+    },
+    {
+      "date": "2026-11-04",
+      "litres": 907,
+      "confidence": 89,
+      "band_low": 863,
+      "band_high": 951
+    },
+    {
+      "date": "2026-11-05",
+      "litres": 952,
+      "confidence": 87,
+      "band_low": 893,
+      "band_high": 1011
+    },
+    {
+      "date": "2026-11-06",
+      "litres": 993,
+      "confidence": 85,
+      "band_low": 939,
+      "band_high": 1047
+    },
+    {
+      "date": "2026-11-07",
+      "litres": 1071,
+      "confidence": 84,
+      "band_low": 1020,
+      "band_high": 1122
+    },
+    {
+      "date": "2026-11-08",
+      "litres": 726,
+      "confidence": 81,
+      "band_low": 679,
+      "band_high": 773
+    },
+    {
+      "date": "2026-11-09",
+      "litres": 872,
+      "confidence": 81,
+      "band_low": 838,
+      "band_high": 906
+    }
+  ],
+  "overall_confidence": 81,
+  "uncertain": false,
+  "uncertain_reason": null,
+  "factors": [
+    {
+      "factor": "previous_orders",
+      "impact_pct": 2.2,
+      "available": true,
+      "explanation": "Deliveries in the last 28 days were 2% above sales."
+    },
+    {
+      "factor": "weather",
+      "impact_pct": -0.7,
+      "available": true,
+      "explanation": "Rainy weather (19 °C) on 08 Nov 2026 lowers demand by 5%."
+    },
+    {
+      "factor": "local_events",
+      "impact_pct": 0.7,
+      "available": true,
+      "explanation": "The Mornag wine fair on 07 Nov 2026 raises expected demand by 5%."
+    },
+    {
+      "factor": "recent_sales",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "Recent Petrol 95 sales average 879 L per day on Tuesdays."
+    },
+    {
+      "factor": "seasonality",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "November demand is usually 6% lower than average."
+    }
+  ],
+  "recent_actuals": [
+    {
+      "date": "2026-10-27",
+      "litres": 875
+    },
+    {
+      "date": "2026-10-28",
+      "litres": 887
+    },
+    {
+      "date": "2026-10-29",
+      "litres": 917
+    },
+    {
+      "date": "2026-10-30",
+      "litres": 955
+    },
+    {
+      "date": "2026-10-31",
+      "litres": 977
+    },
+    {
+      "date": "2026-11-01",
+      "litres": 716
+    },
+    {
+      "date": "2026-11-02",
+      "litres": 833
+    }
+  ]
+}

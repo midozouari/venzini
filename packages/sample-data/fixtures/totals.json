@@ -1,0 +1,470 @@
+{
+  "network": {
+    "P95": {
+      "level": "network",
+      "fuel_type_id": "P95",
+      "reference_date": "2026-11-02",
+      "groups": [
+        {
+          "warehouse_id": null,
+          "days": [
+            {
+              "date": "2026-11-03",
+              "total_l": 12018,
+              "band_low": 11564,
+              "band_high": 12472,
+              "uncertain_share_pct": 3.5
+            },
+            {
+              "date": "2026-11-04",
+              "total_l": 11816,
+              "band_low": 11279,
+              "band_high": 12353,
+              "uncertain_share_pct": 3.5
+            },
+            {
+              "date": "2026-11-05",
+              "total_l": 12764,
+              "band_low": 12071,
+              "band_high": 13457,
+              "uncertain_share_pct": 3.4
+            },
+            {
+              "date": "2026-11-06",
+              "total_l": 13354,
+              "band_low": 12463,
+              "band_high": 14245,
+              "uncertain_share_pct": 3.4
+            },
+            {
+              "date": "2026-11-07",
+              "total_l": 13468,
+              "band_low": 12869,
+              "band_high": 14067,
+              "uncertain_share_pct": 3.4
+            },
+            {
+              "date": "2026-11-08",
+              "total_l": 9997,
+              "band_low": 9436,
+              "band_high": 10558,
+              "uncertain_share_pct": 3.3
+            },
+            {
+              "date": "2026-11-09",
+              "total_l": 11873,
+              "band_low": 11359,
+              "band_high": 12387,
+              "uncertain_share_pct": 3.4
+            }
+          ]
+        }
+      ],
+      "excluded": []
+    },
+    "DIESEL": {
+      "level": "network",
+      "fuel_type_id": "DIESEL",
+      "reference_date": "2026-11-02",
+      "groups": [
+        {
+          "warehouse_id": null,
+          "days": [
+            {
+              "date": "2026-11-03",
+              "total_l": 13541,
+              "band_low": 13026,
+              "band_high": 14056,
+              "uncertain_share_pct": 5.4
+            },
+            {
+              "date": "2026-11-04",
+              "total_l": 13462,
+              "band_low": 12867,
+              "band_high": 14057,
+              "uncertain_share_pct": 5.1
+            },
+            {
+              "date": "2026-11-05",
+              "total_l": 14418,
+              "band_low": 13628,
+              "band_high": 15208,
+              "uncertain_share_pct": 4.7
+            },
+            {
+              "date": "2026-11-06",
+              "total_l": 14995,
+              "band_low": 13952,
+              "band_high": 16038,
+              "uncertain_share_pct": 5.1
+            },
+            {
+              "date": "2026-11-07",
+              "total_l": 14791,
+              "band_low": 14051,
+              "band_high": 15531,
+              "uncertain_share_pct": 4.7
+            },
+            {
+              "date": "2026-11-08",
+              "total_l": 11398,
+              "band_low": 10745,
+              "band_high": 12051,
+              "uncertain_share_pct": 5.1
+            },
+            {
+              "date": "2026-11-09",
+              "total_l": 13406,
+              "band_low": 12806,
+              "band_high": 14006,
+              "uncertain_share_pct": 5.5
+            }
+          ]
+        }
+      ],
+      "excluded": []
+    }
+  },
+  "warehouse": {
+    "P95": {
+      "level": "warehouse",
+      "fuel_type_id": "P95",
+      "reference_date": "2026-11-02",
+      "groups": [
+        {
+          "warehouse_id": "WH-NOR",
+          "days": [
+            {
+              "date": "2026-11-03",
+              "total_l": 3544,
+              "band_low": 3425,
+              "band_high": 3663,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-04",
+              "total_l": 3386,
+              "band_low": 3279,
+              "band_high": 3493,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-05",
+              "total_l": 4069,
+              "band_low": 3818,
+              "band_high": 4320,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-06",
+              "total_l": 3879,
+              "band_low": 3550,
+              "band_high": 4208,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-07",
+              "total_l": 3931,
+              "band_low": 3780,
+              "band_high": 4082,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-08",
+              "total_l": 2950,
+              "band_low": 2776,
+              "band_high": 3124,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-09",
+              "total_l": 3397,
+              "band_low": 3249,
+              "band_high": 3545,
+              "uncertain_share_pct": 0
+            }
+          ]
+        },
+        {
+          "warehouse_id": "WH-RIV",
+          "days": [
+            {
+              "date": "2026-11-03",
+              "total_l": 4643,
+              "band_low": 4403,
+              "band_high": 4883,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-04",
+              "total_l": 4664,
+              "band_low": 4422,
+              "band_high": 4906,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-05",
+              "total_l": 4689,
+              "band_low": 4472,
+              "band_high": 4906,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-06",
+              "total_l": 5306,
+              "band_low": 4987,
+              "band_high": 5625,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-07",
+              "total_l": 5074,
+              "band_low": 4804,
+              "band_high": 5344,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-08",
+              "total_l": 3974,
+              "band_low": 3748,
+              "band_high": 4200,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-09",
+              "total_l": 4673,
+              "band_low": 4422,
+              "band_high": 4924,
+              "uncertain_share_pct": 0
+            }
+          ]
+        },
+        {
+          "warehouse_id": "WH-SUD",
+          "days": [
+            {
+              "date": "2026-11-03",
+              "total_l": 3831,
+              "band_low": 3736,
+              "band_high": 3926,
+              "uncertain_share_pct": 10.9
+            },
+            {
+              "date": "2026-11-04",
+              "total_l": 3766,
+              "band_low": 3578,
+              "band_high": 3954,
+              "uncertain_share_pct": 10.8
+            },
+            {
+              "date": "2026-11-05",
+              "total_l": 4006,
+              "band_low": 3781,
+              "band_high": 4231,
+              "uncertain_share_pct": 10.7
+            },
+            {
+              "date": "2026-11-06",
+              "total_l": 4169,
+              "band_low": 3926,
+              "band_high": 4412,
+              "uncertain_share_pct": 11
+            },
+            {
+              "date": "2026-11-07",
+              "total_l": 4463,
+              "band_low": 4285,
+              "band_high": 4641,
+              "uncertain_share_pct": 10.3
+            },
+            {
+              "date": "2026-11-08",
+              "total_l": 3073,
+              "band_low": 2912,
+              "band_high": 3234,
+              "uncertain_share_pct": 10.7
+            },
+            {
+              "date": "2026-11-09",
+              "total_l": 3803,
+              "band_low": 3688,
+              "band_high": 3918,
+              "uncertain_share_pct": 10.5
+            }
+          ]
+        }
+      ],
+      "excluded": []
+    },
+    "DIESEL": {
+      "level": "warehouse",
+      "fuel_type_id": "DIESEL",
+      "reference_date": "2026-11-02",
+      "groups": [
+        {
+          "warehouse_id": "WH-NOR",
+          "days": [
+            {
+              "date": "2026-11-03",
+              "total_l": 4091,
+              "band_low": 3962,
+              "band_high": 4220,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-04",
+              "total_l": 3917,
+              "band_low": 3806,
+              "band_high": 4028,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-05",
+              "total_l": 4512,
+              "band_low": 4235,
+              "band_high": 4789,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-06",
+              "total_l": 4451,
+              "band_low": 4074,
+              "band_high": 4828,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-07",
+              "total_l": 4341,
+              "band_low": 4162,
+              "band_high": 4520,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-08",
+              "total_l": 3482,
+              "band_low": 3299,
+              "band_high": 3665,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-09",
+              "total_l": 3898,
+              "band_low": 3715,
+              "band_high": 4081,
+              "uncertain_share_pct": 0
+            }
+          ]
+        },
+        {
+          "warehouse_id": "WH-RIV",
+          "days": [
+            {
+              "date": "2026-11-03",
+              "total_l": 5194,
+              "band_low": 4911,
+              "band_high": 5477,
+              "uncertain_share_pct": 14
+            },
+            {
+              "date": "2026-11-04",
+              "total_l": 5348,
+              "band_low": 5062,
+              "band_high": 5634,
+              "uncertain_share_pct": 12.8
+            },
+            {
+              "date": "2026-11-05",
+              "total_l": 5320,
+              "band_low": 5066,
+              "band_high": 5574,
+              "uncertain_share_pct": 12.7
+            },
+            {
+              "date": "2026-11-06",
+              "total_l": 5848,
+              "band_low": 5478,
+              "band_high": 6218,
+              "uncertain_share_pct": 13.2
+            },
+            {
+              "date": "2026-11-07",
+              "total_l": 5512,
+              "band_low": 5140,
+              "band_high": 5884,
+              "uncertain_share_pct": 12.5
+            },
+            {
+              "date": "2026-11-08",
+              "total_l": 4480,
+              "band_low": 4203,
+              "band_high": 4757,
+              "uncertain_share_pct": 12.9
+            },
+            {
+              "date": "2026-11-09",
+              "total_l": 5256,
+              "band_low": 4979,
+              "band_high": 5533,
+              "uncertain_share_pct": 14.1
+            }
+          ]
+        },
+        {
+          "warehouse_id": "WH-SUD",
+          "days": [
+            {
+              "date": "2026-11-03",
+              "total_l": 4256,
+              "band_low": 4153,
+              "band_high": 4359,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-04",
+              "total_l": 4197,
+              "band_low": 3999,
+              "band_high": 4395,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-05",
+              "total_l": 4586,
+              "band_low": 4327,
+              "band_high": 4845,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-06",
+              "total_l": 4696,
+              "band_low": 4400,
+              "band_high": 4992,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-07",
+              "total_l": 4938,
+              "band_low": 4749,
+              "band_high": 5127,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-08",
+              "total_l": 3436,
+              "band_low": 3243,
+              "band_high": 3629,
+              "uncertain_share_pct": 0
+            },
+            {
+              "date": "2026-11-09",
+              "total_l": 4252,
+              "band_low": 4112,
+              "band_high": 4392,
+              "uncertain_share_pct": 0
+            }
+          ]
+        }
+      ],
+      "excluded": []
+    }
+  }
+}

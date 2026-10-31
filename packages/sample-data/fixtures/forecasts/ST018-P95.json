@@ -1,0 +1,132 @@
+{
+  "forecast_id": "FC-ST018-P95-20261102",
+  "station_id": "ST018",
+  "fuel_type_id": "P95",
+  "reference_date": "2026-11-02",
+  "status": "ok",
+  "model_version": "fc-sim-1.1.0",
+  "baseline": "own",
+  "baseline_note": null,
+  "daily": [
+    {
+      "date": "2026-11-03",
+      "litres": 425,
+      "confidence": 93,
+      "band_low": 413,
+      "band_high": 437
+    },
+    {
+      "date": "2026-11-04",
+      "litres": 427,
+      "confidence": 88,
+      "band_low": 401,
+      "band_high": 453
+    },
+    {
+      "date": "2026-11-05",
+      "litres": 465,
+      "confidence": 87,
+      "band_low": 438,
+      "band_high": 492
+    },
+    {
+      "date": "2026-11-06",
+      "litres": 477,
+      "confidence": 85,
+      "band_low": 448,
+      "band_high": 506
+    },
+    {
+      "date": "2026-11-07",
+      "litres": 514,
+      "confidence": 85,
+      "band_low": 496,
+      "band_high": 532
+    },
+    {
+      "date": "2026-11-08",
+      "litres": 360,
+      "confidence": 82,
+      "band_low": 340,
+      "band_high": 380
+    },
+    {
+      "date": "2026-11-09",
+      "litres": 442,
+      "confidence": 82,
+      "band_low": 433,
+      "band_high": 451
+    }
+  ],
+  "overall_confidence": 82,
+  "uncertain": false,
+  "uncertain_reason": null,
+  "factors": [
+    {
+      "factor": "previous_orders",
+      "impact_pct": 2.2,
+      "available": true,
+      "explanation": "Deliveries in the last 28 days were 2% above sales."
+    },
+    {
+      "factor": "weather",
+      "impact_pct": -0.7,
+      "available": true,
+      "explanation": "Rainy weather (19 °C) on 08 Nov 2026 lowers demand by 5%."
+    },
+    {
+      "factor": "local_events",
+      "impact_pct": 0.7,
+      "available": true,
+      "explanation": "The Mornag wine fair on 07 Nov 2026 raises expected demand by 5%."
+    },
+    {
+      "factor": "recent_sales",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "Recent Petrol 95 sales average 425 L per day on Tuesdays."
+    },
+    {
+      "factor": "seasonality",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "November demand is usually 5% lower than average."
+    },
+    {
+      "factor": "current_tank_level",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "Current stock (1,987 L) runs out on 07 Nov 2026 if no delivery arrives."
+    }
+  ],
+  "recent_actuals": [
+    {
+      "date": "2026-10-27",
+      "litres": 424
+    },
+    {
+      "date": "2026-10-28",
+      "litres": 421
+    },
+    {
+      "date": "2026-10-29",
+      "litres": 433
+    },
+    {
+      "date": "2026-10-30",
+      "litres": 447
+    },
+    {
+      "date": "2026-10-31",
+      "litres": 474
+    },
+    {
+      "date": "2026-11-01",
+      "litres": 339
+    },
+    {
+      "date": "2026-11-02",
+      "litres": 420
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "forecast_id": "FC-ST008-P95-20261102",
+  "station_id": "ST008",
+  "fuel_type_id": "P95",
+  "reference_date": "2026-11-02",
+  "status": "ok",
+  "model_version": "fc-sim-1.1.0",
+  "baseline": "own",
+  "baseline_note": null,
+  "daily": [
+    {
+      "date": "2026-11-03",
+      "litres": 400,
+      "confidence": 91,
+      "band_low": 380,
+      "band_high": 420
+    },
+    {
+      "date": "2026-11-04",
+      "litres": 438,
+      "confidence": 88,
+      "band_low": 411,
+      "band_high": 465
+    },
+    {
+      "date": "2026-11-05",
+      "litres": 424,
+      "confidence": 88,
+      "band_low": 405,
+      "band_high": 443
+    },
+    {
+      "date": "2026-11-06",
+      "litres": 482,
+      "confidence": 73,
+      "band_low": 453,
+      "band_high": 511
+    },
+    {
+      "date": "2026-11-07",
+      "litres": 443,
+      "confidence": 72,
+      "band_low": 423,
+      "band_high": 463
+    },
+    {
+      "date": "2026-11-08",
+      "litres": 353,
+      "confidence": 82,
+      "band_low": 334,
+      "band_high": 372
+    },
+    {
+      "date": "2026-11-09",
+      "litres": 441,
+      "confidence": 80,
+      "band_low": 418,
+      "band_high": 464
+    }
+  ],
+  "overall_confidence": 72,
+  "uncertain": false,
+  "uncertain_reason": null,
+  "factors": [
+    {
+      "factor": "weather",
+      "impact_pct": -0.7,
+      "available": false,
+      "explanation": "Rainy weather (12 °C) on 05 Nov 2026 lowers demand by 5%."
+    },
+    {
+      "factor": "previous_orders",
+      "impact_pct": 0.4,
+      "available": true,
+      "explanation": "Deliveries in the last 28 days were 0% above sales."
+    },
+    {
+      "factor": "recent_sales",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "Recent Petrol 95 sales average 412 L per day on Tuesdays."
+    },
+    {
+      "factor": "seasonality",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "November demand is usually 5% lower than average."
+    },
+    {
+      "factor": "current_tank_level",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "Current stock (1,818 L) runs out on 07 Nov 2026 if no delivery arrives."
+    }
+  ],
+  "recent_actuals": [
+    {
+      "date": "2026-10-27",
+      "litres": 396
+    },
+    {
+      "date": "2026-10-28",
+      "litres": 418
+    },
+    {
+      "date": "2026-10-29",
+      "litres": 440
+    },
+    {
+      "date": "2026-10-30",
+      "litres": 494
+    },
+    {
+      "date": "2026-10-31",
+      "litres": 440
+    },
+    {
+      "date": "2026-11-01",
+      "litres": 353
+    },
+    {
+      "date": "2026-11-02",
+      "litres": 409
+    }
+  ]
+}

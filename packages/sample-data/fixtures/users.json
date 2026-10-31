@@ -1,0 +1,65 @@
+[
+  {
+    "id": "6b2adf3c-0622-4f07-9927-a04eb3a10060",
+    "full_name": "Sara M.",
+    "login": "sara.m",
+    "role": "manager",
+    "status": "active",
+    "created_at": "2026-09-01T08:00:00Z",
+    "locked_for_min": null
+  },
+  {
+    "id": "5bcadd06-e665-45ec-98b7-475c245cb533",
+    "full_name": "Karim B.",
+    "login": "karim.b",
+    "role": "dispatcher",
+    "status": "active",
+    "created_at": "2026-09-01T08:05:00Z",
+    "locked_for_min": null
+  },
+  {
+    "id": "d02369b1-a2ba-489c-93b9-08aceb396d41",
+    "full_name": "Nadia A.",
+    "login": "nadia.a",
+    "role": "admin",
+    "status": "active",
+    "created_at": "2026-09-01T07:55:00Z",
+    "locked_for_min": null
+  },
+  {
+    "id": "e2fa1c9a-f4a0-48dc-8d72-177e4d7d87e6",
+    "full_name": "Youssef T.",
+    "login": "youssef.t",
+    "role": "manager",
+    "status": "active",
+    "created_at": "2026-09-08T09:30:00Z",
+    "locked_for_min": null
+  },
+  {
+    "id": "58b447f1-90c2-47ee-951b-0a3988121529",
+    "full_name": "Leila K.",
+    "login": "leila.k",
+    "role": "dispatcher",
+    "status": "active",
+    "created_at": "2026-09-15T10:00:00Z",
+    "locked_for_min": null
+  },
+  {
+    "id": "595230f3-e8f2-4a96-8d22-e60c0683397c",
+    "full_name": "Omar B.",
+    "login": "omar.b",
+    "role": "dispatcher",
+    "status": "inactive",
+    "created_at": "2026-09-02T11:20:00Z",
+    "locked_for_min": null
+  },
+  {
+    "id": "3b725e47-b35c-4f26-a37b-99fe884514cb",
+    "full_name": "Rania M.",
+    "login": "rania.m",
+    "role": "manager",
+    "status": "active",
+    "created_at": "2026-10-05T08:45:00Z",
+    "locked_for_min": 12
+  }
+]

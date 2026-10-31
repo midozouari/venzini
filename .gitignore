@@ -26,3 +26,6 @@ private-data/
 .DS_Store
 .vscode/
 .idea/
+
+# Local tool folders
+.qodo/

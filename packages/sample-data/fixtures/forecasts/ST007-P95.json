@@ -1,0 +1,126 @@
+{
+  "forecast_id": "FC-ST007-P95-20261102",
+  "station_id": "ST007",
+  "fuel_type_id": "P95",
+  "reference_date": "2026-11-02",
+  "status": "ok",
+  "model_version": "fc-sim-1.1.0",
+  "baseline": "own",
+  "baseline_note": null,
+  "daily": [
+    {
+      "date": "2026-11-03",
+      "litres": 655,
+      "confidence": 92,
+      "band_low": 630,
+      "band_high": 680
+    },
+    {
+      "date": "2026-11-04",
+      "litres": 592,
+      "confidence": 90,
+      "band_low": 570,
+      "band_high": 614
+    },
+    {
+      "date": "2026-11-05",
+      "litres": 749,
+      "confidence": 86,
+      "band_low": 695,
+      "band_high": 803
+    },
+    {
+      "date": "2026-11-06",
+      "litres": 699,
+      "confidence": 84,
+      "band_low": 644,
+      "band_high": 754
+    },
+    {
+      "date": "2026-11-07",
+      "litres": 701,
+      "confidence": 85,
+      "band_low": 677,
+      "band_high": 725
+    },
+    {
+      "date": "2026-11-08",
+      "litres": 534,
+      "confidence": 82,
+      "band_low": 510,
+      "band_high": 558
+    },
+    {
+      "date": "2026-11-09",
+      "litres": 595,
+      "confidence": 80,
+      "band_low": 563,
+      "band_high": 627
+    }
+  ],
+  "overall_confidence": 80,
+  "uncertain": false,
+  "uncertain_reason": null,
+  "factors": [
+    {
+      "factor": "local_events",
+      "impact_pct": 1.1,
+      "available": true,
+      "explanation": "A football match on 05 Nov 2026 raises expected demand by 8%."
+    },
+    {
+      "factor": "previous_orders",
+      "impact_pct": -1.1,
+      "available": true,
+      "explanation": "Deliveries in the last 28 days were 1% below sales."
+    },
+    {
+      "factor": "weather",
+      "impact_pct": -0.7,
+      "available": true,
+      "explanation": "Rainy weather (14 °C) on 04 Nov 2026 lowers demand by 5%."
+    },
+    {
+      "factor": "recent_sales",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "Recent Petrol 95 sales average 635 L per day on Tuesdays."
+    },
+    {
+      "factor": "seasonality",
+      "impact_pct": 0,
+      "available": true,
+      "explanation": "November demand is usually 5% lower than average."
+    }
+  ],
+  "recent_actuals": [
+    {
+      "date": "2026-10-27",
+      "litres": 640
+    },
+    {
+      "date": "2026-10-28",
+      "litres": 663
+    },
+    {
+      "date": "2026-10-29",
+      "litres": 661
+    },
+    {
+      "date": "2026-10-30",
+      "litres": 704
+    },
+    {
+      "date": "2026-10-31",
+      "litres": 684
+    },
+    {
+      "date": "2026-11-01",
+      "litres": 560
+    },
+    {
+      "date": "2026-11-02",
+      "litres": 597
+    }
+  ]
+}
