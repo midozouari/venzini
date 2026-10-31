@@ -82,6 +82,19 @@ Venzini is a fuel demand forecasting and delivery planning web platform. This re
    - **Never commit secrets.**
    - **Commit messages never contain a `Co-Authored-By` line or any Claude/AI attribution.**
 4. The user is not experienced with these tools: explain any command they need to run themselves in simple words.
+5. **Prompt log (until the end of the project):** after every new prompt from the user, add the next entry to `docs/prompt_log.md` and commit it together with the work of that step. Use exactly this template, number entries in order ("Entry N – <short title>"), and separate entries with 2 empty lines:
+
+   ```text
+   Entry N – <short title>
+
+   * Prompt (exact):
+   * What Claude Code gave back (1–2 lines):
+   * What I accepted / rejected / changed:
+   * How I verified it (tests, manual trace, diff):
+   ```
+
+   - The prompt is copied word for word (from the session transcript under `~/.claude/projects/`), never from memory.
+   - "Accepted / rejected / changed" records what the user actually answered after the reply (options picked, corrections asked for); fill it in when the next prompt arrives.
 
 ## Sample data decisions (approved by the user)
 
