@@ -46,8 +46,9 @@ for (const r of ROLES)
     await expectHeading(page, r.title);
     const nav = page.getByRole('navigation', { name: 'Main' });
     await expect(nav.getByRole('list').getByRole('link')).toHaveText([...r.menu]);
-    await expect(page.getByText(r.name, { exact: true })).toBeVisible();
-    await expect(page.getByText(r.role, { exact: true })).toBeVisible();
+    const topBar = page.getByRole('banner');
+    await expect(topBar.getByText(r.name, { exact: true })).toBeVisible();
+    await expect(topBar.getByText(r.role, { exact: true })).toBeVisible();
   });
 
 test('a wrong password shows ERR-AUTH-01 and stays on the login page', async ({ page }) => {
