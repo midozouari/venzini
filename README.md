@@ -1,0 +1,126 @@
+<p align="center">
+  <img src="apps/web/public/logo.png" alt="Venzini" width="360">
+</p>
+
+# Venzini
+
+**An AI-Assisted Yield Management Platform for Data-Driven Optimization in the Petroleum Industry**
+
+## What is Venzini?
+
+Venzini is a web platform for a fuel distributor that runs a network of fuel stations, warehouses (depots) and tanker trucks. It helps the team:
+
+- **forecast fuel demand** for each station and fuel type (Petrol 95, Diesel) for the next 7 days, with a confidence level and the reasons behind each forecast;
+- **spot stations at risk** of running out of fuel (high, medium or low risk, from the hours left before the tank is empty);
+- **plan deliveries**: how many litres each station gets, which tanker serves it, and in what order, shown as routes on a map;
+- **edit the plan** (reorder stops, move a station to another tanker, change quantities) and see at once the extra cost, delay or overload that the change causes;
+- **keep people in control**: nothing is final until the operations manager approves it, and every decision is written to a history that nobody can change.
+
+Venzini has three roles:
+
+| Role                   | What they do                                                                                         |
+| ---------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Operations manager** | Watches the network, reads forecasts, generates and edits the delivery plan, approves or rejects it. |
+| **Dispatcher**         | Enters each day's available tankers, drivers and warehouse stock, and records actual trip times.     |
+| **System admin**       | Manages user accounts and station records.                                                           |
+
+## What the MVP covers
+
+This repository currently holds the **MVP** (minimum viable product): a clickable prototype of the real web app.
+
+- All **8 screens**: login, network overview, station forecast and totals, resources and trips, delivery planner, review and approve, decision history, administration.
+- All **11 use cases**, which you can click through for each role.
+- **Fake sample data only.** There is no server and no database. A small mock API runs inside your browser ([Mock Service Worker](https://mswjs.io/)) and answers the app with fake data.
+- **Nothing is saved.** Reloading the page resets everything to the initial sample data.
+- No real calculations: forecasts, plans and edit results are prepared in advance (scripted).
+
+The full version (a real server, database and planning engines) comes after the MVP. See the design document in [docs/](docs/).
+
+> **Current status:** Step 0 is done (project skeleton, tooling, CI). The mock API and the screens are being added step by step; this README is updated after each step.
+
+## Prerequisites
+
+You need two tools installed on your computer:
+
+1. **Node.js (LTS version, 24 or newer).** Node.js runs JavaScript outside the browser and is needed for the development tools. Download the "LTS" installer from [nodejs.org](https://nodejs.org/) and run it. To check, open a terminal and type `node --version`.
+2. **pnpm (version 12).** pnpm downloads the project's libraries. After installing Node.js, run this once in a terminal:
+
+   ```bash
+   npm install -g pnpm@12
+   ```
+
+   To check, type `pnpm --version`.
+
+## Install and run
+
+Open a terminal in the project folder and run:
+
+```bash
+pnpm install   # downloads all the libraries the project needs (first time, and after each update)
+pnpm dev       # starts the app on your computer
+```
+
+Then open **http://localhost:5173** in Chrome, Firefox or Edge. Use a window at least 1366 px wide.
+
+To stop the app, go back to the terminal and press `Ctrl + C`.
+
+## Demo accounts
+
+These accounts are fake and exist only inside the browser mock. They become usable when the login screen is built (Step 2). All three use the same password.
+
+| Role               | Login     | Password       |
+| ------------------ | --------- | -------------- |
+| Operations manager | `sara.m`  | `venzini-demo` |
+| Dispatcher         | `karim.b` | `venzini-demo` |
+| System admin       | `nadia.a` | `venzini-demo` |
+
+## Running the checks and tests
+
+| Command                                                               | What it does                                                                                                      |
+| --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `pnpm lint`                                                           | Checks the code for mistakes and banned patterns.                                                                 |
+| `pnpm typecheck`                                                      | Checks that the TypeScript types are consistent.                                                                  |
+| `pnpm test`                                                           | Runs the unit tests (Vitest).                                                                                     |
+| `pnpm build`                                                          | Builds the production version of the web app into `apps/web/dist/`.                                               |
+| `pnpm --filter @venzini/e2e exec playwright install chromium firefox` | One-time setup: downloads the test browsers used by the end-to-end tests. Edge must be installed on the computer. |
+| `pnpm e2e`                                                            | Runs the end-to-end tests (Playwright) in Chrome, Firefox and Edge. Starts the app by itself.                     |
+| `pnpm format`                                                         | Reformats all files with Prettier.                                                                                |
+
+The same checks run automatically on GitHub on every push (see `.github/workflows/ci.yml`).
+
+## Folder structure
+
+```
+venzini/
+├─ apps/
+│  └─ web/                 # the React web app (all screens)
+│     ├─ public/           # static files: logo.png, mock service worker
+│     └─ src/
+│        ├─ app/           # app shell, router, route guards, providers
+│        ├─ pages/         # one folder per screen
+│        ├─ features/      # shared feature parts (route map, stop list, forecast chart…)
+│        ├─ components/ui/ # base UI components (shadcn/ui)
+│        ├─ api/           # API client and data hooks (TanStack Query)
+│        ├─ stores/        # small view-state stores (Zustand)
+│        ├─ mocks/         # the browser mock API (MSW handlers)
+│        └─ lib/           # helpers: formatters, error messages
+├─ packages/
+│  ├─ contracts/           # shapes of every API request and response (Zod schemas)
+│  ├─ sample-data/         # generator of the fake sample data (fixed seed 42)
+│  └─ config/              # shared ESLint, Prettier and TypeScript settings
+├─ e2e/                    # end-to-end tests (Playwright)
+├─ docs/                   # project documents (PDF)
+├─ .github/workflows/      # continuous integration (GitHub Actions)
+├─ CLAUDE.md               # working rules for the AI coding assistant
+└─ README.md
+```
+
+## Documents
+
+The project documents are in [docs/](docs/):
+
+- `Venzini 1 - Requirement Elicitation FV.pdf`: stakeholders, user needs and use cases.
+- `Venzini 2 - SRS FV.pdf`: the Software Requirements Specification (what the system must do).
+- `Venzini 3 - SDD FV.pdf`: the Software Design Document (how it is built). Chapter 7 describes this MVP.
+
+Where the SRS and the SDD differ, this project follows the SDD.

@@ -1,0 +1,11 @@
+{
+  "name": "@venzini/config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./eslint": "./eslint.config.js",
+    "./prettier": "./prettier.config.js",
+    "./tsconfig.base.json": "./tsconfig.base.json"
+  }
+}

@@ -1,0 +1,7 @@
+pnpm-lock.yaml
+docs/
+apps/web/public/mockServiceWorker.js
+dist/
+coverage/
+playwright-report/
+test-results/

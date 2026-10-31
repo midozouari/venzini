@@ -1,0 +1,28 @@
+# Secrets
+.env
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+.vite/
+
+# Test reports
+coverage/
+playwright-report/
+test-results/
+
+# Logs
+*.log
+
+# Private data and database dumps (never commit real data)
+private-data/
+*.dump
+
+# OS and editor files
+.DS_Store
+.vscode/
+.idea/

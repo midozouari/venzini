@@ -1,0 +1,17 @@
+{
+  "name": "@venzini/e2e",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Playwright end-to-end tests: the MVP suite for AC-21 (SDD 8.1, 8.4)",
+  "type": "module",
+  "scripts": {
+    "e2e": "playwright test",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.6",
+    "@venzini/config": "workspace:*",
+    "typescript": "~6.0.3"
+  }
+}

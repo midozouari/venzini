@@ -1,0 +1,44 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import '@fontsource-variable/inter';
+@config '../tailwind.config.ts';
+
+/* Venzini design system v1 tokens (SDD 5.12.4, Figure 42). */
+:root {
+  --vz-navy-900: #021c45; /* brand: sidebar, primary buttons */
+  --vz-navy-700: #0b2e6b; /* hover, links */
+  --vz-focus: #3b6fd8; /* 2 px focus ring */
+  --vz-gray-900: #111827; /* body text */
+  --vz-gray-600: #4b5563; /* secondary text */
+  --vz-gray-300: #d0d4da; /* borders, dividers */
+  --vz-gray-50: #f5f6f8; /* page background */
+
+  /* Risk only (BR-09) */
+  --vz-risk-high: #c62828;
+  --vz-risk-medium: #e07b00;
+  --vz-risk-low: #2e7d32;
+
+  /* Route lines (FR-53) */
+  --vz-route-1: #1f5fbf;
+  --vz-route-2: #7b3fa0;
+  --vz-route-3: #0e7c86;
+  --vz-route-4: #8b5a2b;
+  --vz-route-5: #6b7280;
+  --vz-route-6: #0b2e6b;
+  --vz-route-7: #b0307a;
+  --vz-route-8: #111111;
+}
+
+body {
+  background-color: var(--vz-gray-50);
+  color: var(--vz-gray-900);
+  font-family: 'Inter Variable', Inter, system-ui, sans-serif;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Visible 2 px focus ring on every control (SDD 5.12.6, NFR-27). */
+:focus-visible {
+  outline: 2px solid var(--vz-focus);
+  outline-offset: 2px;
+}
