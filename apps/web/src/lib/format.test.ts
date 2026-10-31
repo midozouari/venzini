@@ -2,9 +2,12 @@ import { describe, expect, it } from 'vitest';
 import {
   formatDay,
   formatDayLong,
+  formatDayShort,
+  formatGap,
   formatHours,
   formatInstant,
   formatLitres,
+  formatSignedPct,
   formatTime,
   formatUsd,
   tomorrow,
@@ -33,5 +36,16 @@ describe('formats (NFR-31)', () => {
 
   it('gives tomorrow in Tunis', () => {
     expect(tomorrow(new Date('2026-11-02T23:30:00Z'))).toBe('2026-11-04');
+  });
+
+  it('writes signed shares, trip gaps and short axis dates', () => {
+    expect([formatSignedPct(8), formatSignedPct(-0.7), formatSignedPct(0)]).toEqual([
+      '+8%',
+      '−0.7%',
+      '+0%',
+    ]);
+    expect(formatGap(45, 9.4)).toBe('+45 min (+9.4%)'); // FR-84 example
+    expect(formatGap(-10, -2.6)).toBe('−10 min (−2.6%)');
+    expect(formatDayShort('2026-11-03')).toBe('03 Nov');
   });
 });

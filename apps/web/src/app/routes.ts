@@ -28,27 +28,24 @@ const ALL: Role[] = ['manager', 'dispatcher', 'admin'];
 
 export const SCREENS: ScreenDef[] = [
   { path: '/network', title: 'Network overview', roles: ['manager'], day: true },
-  { path: '/forecast', title: 'Station forecast', roles: ['manager'], step: '2b' },
-  { path: '/forecast/totals', title: 'Forecast totals', roles: ['manager'], step: '2b' },
+  { path: '/forecast', title: 'Station forecast', roles: ['manager'] },
+  { path: '/forecast/totals', title: 'Forecast totals', roles: ['manager'] },
   {
     path: '/resources',
     title: 'Resources',
     roles: ['dispatcher', 'manager'],
     day: true,
-    step: '2b',
   },
   {
     path: '/resources/trips',
     title: 'Trips',
     roles: ['dispatcher', 'manager'],
     day: true,
-    step: '2b',
   },
   {
     path: '/resources/warehouse-forecast',
     title: 'Warehouse forecast',
     roles: ['dispatcher'],
-    step: '2b',
   },
   { path: '/planner', title: 'Delivery planner', roles: ['manager'], day: true, step: '2c' },
   { path: '/approvals', title: 'Review and approve', roles: ['manager'], day: true, step: '2c' },

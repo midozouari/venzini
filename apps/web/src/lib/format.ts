@@ -11,6 +11,25 @@ export const formatLitres = (n: number) => `${grouped.format(n)} L`;
 export const formatUsd = (n: number) => `$${n.toFixed(2)}`;
 export const formatPct = (n: number) => `${Math.round(n)}%`;
 
+/** Signed share: 8 → "+8%", -0.7 → "−0.7%" (one decimal unless whole). */
+export function formatSignedPct(n: number): string {
+  const abs = Math.abs(n);
+  const text = Number.isInteger(abs) ? String(abs) : abs.toFixed(1);
+  return `${n < 0 ? '−' : '+'}${text}%`;
+}
+
+/** Estimated vs. actual trip duration (FR-84): "+45 min (+9.4%)". */
+export function formatGap(minutes: number, pct: number | null): string {
+  const sign = minutes < 0 ? '−' : '+';
+  const pctText = pct === null ? '' : ` (${pct < 0 ? '−' : '+'}${Math.abs(pct).toFixed(1)}%)`;
+  return `${sign}${Math.abs(minutes)} min${pctText}`;
+}
+
+/** "2026-11-03" → "03 Nov" (chart axes). */
+export function formatDayShort(day: string): string {
+  return `${day.slice(8, 10)} ${MONTHS[Number(day.slice(5, 7)) - 1]}`;
+}
+
 /** A delivery day "2026-11-03" → "03 Nov 2026" (no time-zone shift: it is already local). */
 export function formatDay(day: string): string {
   return `${day.slice(8, 10)} ${MONTHS[Number(day.slice(5, 7)) - 1]} ${day.slice(0, 4)}`;

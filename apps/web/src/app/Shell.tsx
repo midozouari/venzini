@@ -105,6 +105,8 @@ export function ContentArea({
     <main
       className={cn(
         'absolute inset-0 overflow-auto pb-[var(--vz-gap)] pl-[var(--vz-safe-left)] pr-[var(--vz-gap)] pt-[var(--vz-safe-top)]',
+        // Scrolled content disappears at the top bar's lower edge, not in the gap above it.
+        '[clip-path:inset(calc(var(--vz-safe-top)-var(--vz-gap))_0_0_0)]',
         className,
       )}
     >

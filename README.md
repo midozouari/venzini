@@ -36,7 +36,7 @@ This repository currently holds the **MVP** (minimum viable product): a clickabl
 
 The full version (a real server, database and planning engines) comes after the MVP. See the design document in [docs/](docs/).
 
-> **Current status:** Steps 0, 1 and 2a are done: project skeleton, tooling and CI; the fake sample data and the mock API; the login page, the app shell and the network overview. The other screens follow in Steps 2b–2d (their menu items already open a placeholder). This README is updated after each step.
+> **Current status:** Steps 0, 1, 2a and 2b are done: project skeleton, tooling and CI; the fake sample data and the mock API; the login page, the app shell and the network overview; the station forecast and totals; resources, trips and the warehouse forecast. The planner, approvals, history and administration follow in Steps 2c–2d (their menu items already open a placeholder). This README is updated after each step.
 
 ## The fake sample data
 
@@ -95,6 +95,8 @@ Good to know:
 - **Reloading the page logs you out.** The mock API keeps everything in the browser's memory, so a reload resets the data _and_ your session; just log in again.
 - `omar.b` is a deactivated account and `rania.m` is locked for a few minutes, so you can see those login errors.
 - After 28 idle minutes, a dialog asks whether you want to stay signed in; at 30 minutes you are signed out.
+- The demo trips are on **01 Nov 2026**: as `karim.b`, go back two days with the arrows in the top bar, then open **Trips**.
+- Interesting forecasts: **Harbor Road (ST014), Diesel** is uncertain (66%), and **Khelidia (ST020), Petrol 95** has little sales history.
 
 ## Running the checks and tests
 

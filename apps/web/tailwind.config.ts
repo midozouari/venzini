@@ -14,6 +14,8 @@ export default {
           'tint-strong': 'var(--vz-navy-tint-strong)',
         },
         focus: 'var(--vz-focus)',
+        note: { DEFAULT: 'var(--vz-note)', strong: 'var(--vz-note-strong)' },
+        band: 'var(--vz-band)',
         cream: 'var(--vz-cream)',
         // Text placed directly on the navy canvas.
         'on-navy': 'var(--vz-cream)',

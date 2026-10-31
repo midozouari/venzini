@@ -8,6 +8,9 @@ const baseURL = 'http://localhost:4173';
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
+  // Three browsers × axe-core checks are heavy: a few workers and a generous limit keep runs stable.
+  workers: process.env.CI ? 2 : 3,
+  timeout: 60_000,
   expect: { timeout: 10_000 },
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,

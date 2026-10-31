@@ -3,7 +3,12 @@ import { createQueryClient } from '@/api/queryClient';
 import { createBrowserRouter, RouterProvider, type RouteObject } from 'react-router';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { LoginPage } from '@/pages/login/LoginPage';
+import { ForecastPage } from '@/pages/forecast/ForecastPage';
+import { TotalsPage } from '@/pages/forecast/TotalsPage';
 import { NetworkPage } from '@/pages/network/NetworkPage';
+import { ResourcesPage } from '@/pages/resources/ResourcesPage';
+import { TripsPage } from '@/pages/resources/TripsPage';
+import { WarehouseForecastPage } from '@/pages/resources/WarehouseForecastPage';
 import { NotFound, Placeholder } from '@/pages/Placeholder';
 import { ErrorBoundary } from './ErrorBoundary';
 import { HomeRedirect, RequireRole, RequireSession } from './guards';
@@ -13,6 +18,11 @@ import { Shell } from './Shell';
 
 const BUILT: Record<string, React.ReactNode> = {
   '/network': <NetworkPage />,
+  '/forecast': <ForecastPage />,
+  '/forecast/totals': <TotalsPage />,
+  '/resources': <ResourcesPage />,
+  '/resources/trips': <TripsPage />,
+  '/resources/warehouse-forecast': <WarehouseForecastPage />,
 };
 
 function SessionLayout() {

@@ -198,3 +198,51 @@ Entry 8 – Map above the KPI row and the loading-error bug
 * What Claude Code gave back (1–2 lines): Swapped the map and the KPI row; found the bug's cause (the browser stops an idle service worker, the restarted mock worker forgets the page, requests hit the web server and the client showed the ERR-SYS-01 plan-edit message); added reconnect-and-retry and a separate "could not be reached" message (commit 367d9f2).
 * What I accepted / rejected / changed: Accepted both. Next, asked to set up this prompt log before Step 2b.
 * How I verified it (tests, manual trace, diff): Bug reproduced by stopping the worker in Chromium (requests answered 404 outside the worker), kept as a regression test; 4 API client unit tests; layout test at 1366×768; 148 e2e runs; GitHub CI green.
+
+
+Entry 9 – Step 2b plan request
+
+* Prompt (exact):
+
+  ```text
+  Ready for the Step 2b plan: forecast and totals (UI-03), resources, trips and warehouse forecast (UI-04).
+
+  Keep the same design rules: navy gradient canvas, floating cream panels, calm layout with essentials first and details on demand, hover/press states, blur only behind dialogs, smooth short transitions, risk colors only for risk.
+
+  For these screens in particular:
+  - Charts must look calm and premium: the forecast as a navy line with a soft light-navy confidence band, thin grid lines, clear tabular numbers, a tooltip on hover, no rainbow colors.
+  - Make the special forecast states obvious but calm: the uncertain forecast (ST014 Diesel, 66%) and the short-history one (ST020 Petrol 95, similar-stations baseline), with their explanation sentences.
+  - The dispatcher screens (karim.b) must stay simple: one main action per screen, clear warnings (open trip, locked day), confirmation before saving.
+
+  Show me the plan before building.
+  ```
+
+* What Claude Code gave back (1–2 lines): The Step 2b plan: hand-built SVG charts (navy line, soft light-navy band, dashed actuals, tooltip, table view), the uncertain and short-history forecast states, totals as small multiples, resources with a save confirmation, and trip dialogs. Flagged that the SDD only lets the dispatcher change availability and stock (UC-02 and FR-07 also mention capacities), and the hatched band of Figure 42.
+* What I accepted / rejected / changed: Approved the plan as it was: "OK, build Step 2b." (Entry 10).
+* How I verified it (tests, manual trace, diff): Plan only; reviewed against SDD 5.12 and 7.3 and SRS UI-03 and UI-04 before approving.
+
+
+Entry 10 – Build Step 2b
+
+* Prompt (exact):
+
+  ```text
+  OK, build Step 2b.
+  ```
+
+* What Claude Code gave back (1–2 lines): The station forecast and totals screens, resources, trips and the warehouse forecast, with the chart, the save confirmation and the trip dialogs. A screenshot review found and fixed a crowded date axis, a grey band, notes invisible on the navy canvas, content showing above the top bar and misaligned trip columns. The session stopped before the tests and the commit.
+* What I accepted / rejected / changed: Accepted the work so far; the session ended mid-step, so I asked to continue (Entry 11).
+* How I verified it (tests, manual trace, diff): Type-check; 49 web unit tests (chart scales, Tunis time, the change list); screenshots of every new screen and dialog at 1366×768.
+
+
+Entry 11 – Finish Step 2b
+
+* Prompt (exact):
+
+  ```text
+  Continue Step 2b from where you stopped. Do not start over: first check what is already done (git status and the files already written), then finish only the remaining parts of the approved Step 2b plan. Run all checks (lint, typecheck, tests, build, e2e), add the prompt-log entries for my prompts (including this one), then commit and push when everything passes.
+  ```
+
+* What Claude Code gave back (1–2 lines): Unit tests for the new formats; Playwright tests for the forecast states, totals (network = sum of warehouses), saving resources with the open-trip warning, the locked day, recording and cancelling trips, the manager's read-only view and the dispatcher's access limits; axe-core checks on every new screen and dialog; docs. Firefox timed out under parallel load, so the suite now runs on 3 workers with a 60 s limit per test. One planned item was dropped: "Start from the fleet list" for a day without resources, because the API offers no fleet list.
+* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* How I verified it (tests, manual trace, diff): Lint, format, type-check, 86 unit tests, build, and 119 browser tests in Chrome, Firefox and Edge (1 skipped: the Chromium-only worker-restart test in Firefox).

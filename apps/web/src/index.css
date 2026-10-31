@@ -15,6 +15,11 @@
   --vz-navy-tint: rgb(2 28 69 / 0.06);
   --vz-navy-tint-strong: rgb(2 28 69 / 0.1);
   --vz-focus: #3b6fd8;
+  /* Solid tinted cream for notes (callouts): readable on the navy canvas and inside panels. */
+  --vz-note: color-mix(in srgb, var(--vz-panel) 92%, var(--vz-navy-900));
+  --vz-note-strong: color-mix(in srgb, var(--vz-panel) 85%, var(--vz-navy-900));
+  /* Soft light-navy confidence band of charts (from the canvas blue). */
+  --vz-band: rgb(30 70 160 / 0.16);
 
   /*
    * Base canvas of the whole app (login included): a fixed navy gradient (user's design revision).
