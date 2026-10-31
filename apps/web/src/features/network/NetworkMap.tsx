@@ -1,0 +1,140 @@
+// Network map (FR-14, FR-47, FR-48): risk markers with a dark outline, an icon and a word in the
+// label, warehouse squares, and a calm, desaturated tile background (SDD 5.12.4).
+import type { Network, RiskLevel } from '@venzini/contracts';
+import L from 'leaflet';
+import { useEffect, useMemo, useRef } from 'react';
+import { MapContainer, Marker, TileLayer, Tooltip, useMap } from 'react-leaflet';
+
+type Station = Network['stations'][number];
+
+const ICON_SVG: Record<RiskLevel, string> = {
+  high: '<path d="M12 4 22 20H2Z" fill="currentColor"/><path d="M12 10v4M12 17h.01" stroke="var(--vz-risk-high)" stroke-width="2.4" stroke-linecap="round"/>',
+  medium:
+    '<path d="M12 6v8M12 18h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>',
+  low: '<path d="m6 12.5 4 4 8-9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>',
+};
+const WORD: Record<RiskLevel, string> = {
+  high: 'high risk',
+  medium: 'medium risk',
+  low: 'low risk',
+};
+
+function stationIcon(level: RiskLevel, selected: boolean) {
+  return L.divIcon({
+    className: '',
+    iconSize: [28, 28],
+    iconAnchor: [14, 14],
+    html: `<span class="vz-marker vz-marker--${level}${selected ? ' vz-marker--selected' : ''}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON_SVG[level]}</svg></span>`,
+  });
+}
+
+const warehouseIcon = L.divIcon({
+  className: '',
+  iconSize: [28, 28],
+  iconAnchor: [14, 14],
+  html: '<span class="vz-warehouse"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10 12 4l9 6v10H3Z M8 20v-6h8v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>',
+});
+
+function FitOnce({ points }: { points: [number, number][] }) {
+  const map = useMap();
+  const done = useRef(false);
+  useEffect(() => {
+    if (done.current || points.length === 0) return;
+    done.current = true;
+    // Room for the floating navigation, KPI row and risk panel.
+    map.fitBounds(L.latLngBounds(points), {
+      paddingTopLeft: [300, 220],
+      paddingBottomRight: [420, 40],
+    });
+  }, [map, points]);
+  return null;
+}
+
+export function NetworkMap({
+  network,
+  selected,
+  onSelect,
+  onTilesFailed,
+  onReady,
+}: {
+  network: Network;
+  selected: string | null;
+  onSelect: (stationId: string) => void;
+  onTilesFailed: () => void;
+  onReady?: (map: L.Map) => void;
+}) {
+  // End-to-end tests may set their own tile source (offline tiles, or a failing one).
+  const tileUrl =
+    window.__VENZINI_TEST__?.tileUrl ||
+    import.meta.env.VITE_MAP_TILE_URL ||
+    'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+  const withData = useMemo(
+    () =>
+      network.stations.filter(
+        (s): s is Station & { risk_level: RiskLevel } => s.data_available && s.risk_level !== null,
+      ),
+    [network.stations],
+  );
+  const points = useMemo<[number, number][]>(
+    () => [
+      ...network.stations.map((s) => [s.latitude, s.longitude] as [number, number]),
+      ...network.warehouses.map((w) => [w.latitude, w.longitude] as [number, number]),
+    ],
+    [network],
+  );
+
+  return (
+    <MapContainer
+      center={[36.79, 10.22]}
+      zoom={11}
+      zoomControl={false}
+      className="h-full w-full"
+      attributionControl
+      ref={(m) => {
+        if (m) onReady?.(m);
+      }}
+    >
+      <TileLayer
+        url={tileUrl}
+        className="vz-tiles"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        eventHandlers={{ tileerror: onTilesFailed }}
+      />
+      <FitOnce points={points} />
+      {network.warehouses.map((w) => (
+        <Marker
+          key={w.warehouse_id}
+          position={[w.latitude, w.longitude]}
+          icon={warehouseIcon}
+          title={`${w.name} (${w.warehouse_id}), warehouse`}
+          keyboard={false}
+        >
+          <Tooltip direction="top" offset={[0, -14]} className="vz-tip">
+            {w.name} · {w.warehouse_id}
+          </Tooltip>
+        </Marker>
+      ))}
+      {withData.map((s) => (
+        <Marker
+          key={s.station_id}
+          position={[s.latitude, s.longitude]}
+          icon={stationIcon(s.risk_level, s.station_id === selected)}
+          title={`${s.name} (${s.station_id}), ${WORD[s.risk_level]}`}
+          keyboard={false}
+          zIndexOffset={s.station_id === selected ? 1000 : s.risk_level === 'high' ? 500 : 0}
+          eventHandlers={{ click: () => onSelect(s.station_id) }}
+        >
+          {/* Default label: station name and ID only (FR-49). */}
+          <Tooltip
+            direction="top"
+            offset={[0, -14]}
+            className="vz-tip"
+            permanent={s.station_id === selected}
+          >
+            {s.name} · {s.station_id}
+          </Tooltip>
+        </Marker>
+      ))}
+    </MapContainer>
+  );
+}

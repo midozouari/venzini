@@ -1,24 +1,39 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import '@fontsource-variable/inter';
+@import 'leaflet/dist/leaflet.css';
 @config '../tailwind.config.ts';
 
-/* Venzini design system v1 tokens (SDD 5.12.4, Figure 42). */
+/*
+ * Venzini design system v1 (SDD 5.12.4, Figure 42), with the warm calm palette approved for the
+ * MVP. Components use these tokens through Tailwind names and never raw hex values.
+ */
 :root {
-  --vz-navy-900: #021c45; /* brand: sidebar, primary buttons */
-  --vz-navy-700: #0b2e6b; /* hover, links */
-  --vz-focus: #3b6fd8; /* 2 px focus ring */
-  --vz-gray-900: #111827; /* body text */
-  --vz-gray-600: #4b5563; /* secondary text */
-  --vz-gray-300: #d0d4da; /* borders, dividers */
-  --vz-gray-50: #f5f6f8; /* page background */
+  /* Brand: navy is the only brand color (text, headings, primary buttons, focus). */
+  --vz-navy-900: #021c45;
+  --vz-navy-700: #0b2e6b;
+  --vz-navy-tint: rgb(2 28 69 / 0.06);
+  --vz-navy-tint-strong: rgb(2 28 69 / 0.1);
+  --vz-focus: #3b6fd8;
 
-  /* Risk only (BR-09) */
+  /* Warm neutrals (replace SDD gray 50 / white / gray 300 / gray 600). */
+  --vz-canvas: #f7f3ec; /* base canvas */
+  --vz-panel: #fffdf9; /* floating panels and dialogs */
+  --vz-line: #e7e0d4; /* panel and card borders */
+  --vz-line-strong: #8c8270; /* form-field borders: 3.4:1 on canvas (WCAG 1.4.11) */
+  --vz-ink: #021c45; /* text and headings: 15.1:1 on canvas */
+  --vz-muted: #6b6358; /* secondary text: 5.4:1 on canvas */
+
+  /* Risk only (BR-09, BR-10), always with an icon and a word (NFR-10). */
   --vz-risk-high: #c62828;
   --vz-risk-medium: #e07b00;
   --vz-risk-low: #2e7d32;
+  --vz-risk-medium-ink: #8a4b00; /* text inside medium-risk labels: 6.2:1 */
+  --vz-risk-high-tint: rgb(198 40 40 / 0.09);
+  --vz-risk-medium-tint: rgb(224 123 0 / 0.12);
+  --vz-risk-low-tint: rgb(46 125 50 / 0.1);
 
-  /* Route lines (FR-53) */
+  /* Route lines (FR-53). */
   --vz-route-1: #1f5fbf;
   --vz-route-2: #7b3fa0;
   --vz-route-3: #0e7c86;
@@ -27,18 +42,179 @@
   --vz-route-6: #0b2e6b;
   --vz-route-7: #b0307a;
   --vz-route-8: #111111;
+
+  /* Layers: base → floating panels → dialogs, each with a slightly stronger soft shadow. */
+  --vz-shadow-panel: 0 1px 2px rgb(60 44 20 / 0.04), 0 6px 20px rgb(60 44 20 / 0.06);
+  --vz-shadow-float: 0 2px 4px rgb(60 44 20 / 0.05), 0 12px 32px rgb(60 44 20 / 0.1);
+  --vz-shadow-dialog: 0 8px 24px rgb(2 28 69 / 0.12), 0 32px 72px rgb(2 28 69 / 0.2);
+  --vz-radius-control: 10px;
+  --vz-radius-panel: 16px;
+  --vz-radius-dialog: 20px;
+
+  /* Motion: short and smooth, never bouncy. */
+  --vz-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Safe area of the content, beside the floating navigation and top bar. */
+  --vz-gap: 16px;
+  --vz-nav-width: 240px;
+  --vz-topbar-height: 64px;
+  --vz-safe-left: calc(var(--vz-nav-width) + 2 * var(--vz-gap));
+  --vz-safe-top: calc(var(--vz-topbar-height) + 2 * var(--vz-gap));
+}
+
+html,
+body,
+#root {
+  height: 100%;
 }
 
 body {
-  background-color: var(--vz-gray-50);
-  color: var(--vz-gray-900);
+  min-width: 1366px; /* SRS 13: desktop, at least 1366 px */
+  background-color: var(--vz-canvas);
+  color: var(--vz-ink);
   font-family: 'Inter Variable', Inter, system-ui, sans-serif;
   font-size: 15px;
+  line-height: 1.5;
   font-variant-numeric: tabular-nums;
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.01em;
 }
 
 /* Visible 2 px focus ring on every control (SDD 5.12.6, NFR-27). */
 :focus-visible {
   outline: 2px solid var(--vz-focus);
   outline-offset: 2px;
+}
+
+/* Calm map: the tiles are desaturated and warmed; data drawn on top keeps its colors. */
+.vz-tiles {
+  filter: grayscale(0.75) sepia(0.22) brightness(1.05) contrast(0.86);
+  opacity: 0.9;
+}
+.leaflet-container {
+  background: var(--vz-canvas);
+  font-family: inherit;
+}
+.leaflet-control-attribution {
+  background: rgb(255 253 249 / 0.85) !important;
+  color: var(--vz-muted) !important;
+  border-radius: 8px 0 0 0;
+}
+
+/* Respect reduced motion: transitions become near-instant (SDD 5.12, user request). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Map markers (Figure 42): filled risk circle, 2 px dark outline, icon; never color alone. */
+.vz-marker,
+.vz-legend-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 2px solid #1a1a1a;
+  color: #ffffff;
+}
+.vz-marker {
+  width: 28px;
+  height: 28px;
+  box-shadow: 0 2px 6px rgb(2 28 69 / 0.25);
+  transition:
+    transform 180ms var(--vz-ease),
+    box-shadow 180ms var(--vz-ease);
+  cursor: pointer;
+  animation: vz-pop-in 240ms var(--vz-ease) backwards;
+}
+.vz-marker svg {
+  width: 14px;
+  height: 14px;
+}
+.vz-marker:hover {
+  transform: translateY(-1px) scale(1.06);
+  box-shadow: 0 4px 12px rgb(2 28 69 / 0.3);
+}
+.vz-marker--selected {
+  transform: scale(1.12);
+  box-shadow:
+    0 0 0 4px var(--vz-panel),
+    0 0 0 7px var(--vz-navy-900),
+    0 6px 16px rgb(2 28 69 / 0.3);
+}
+.vz-legend-dot {
+  width: 20px;
+  height: 20px;
+  border-width: 1.5px;
+}
+.vz-marker--high {
+  background: var(--vz-risk-high);
+}
+.vz-marker--medium {
+  background: var(--vz-risk-medium);
+  color: #1a1a1a;
+}
+.vz-marker--low {
+  background: var(--vz-risk-low);
+}
+.vz-warehouse,
+.vz-legend-square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  background: var(--vz-navy-900);
+  color: var(--vz-panel);
+  border: 2px solid var(--vz-panel);
+  box-shadow: 0 2px 6px rgb(2 28 69 / 0.3);
+}
+.vz-warehouse {
+  width: 28px;
+  height: 28px;
+}
+.vz-warehouse svg {
+  width: 16px;
+  height: 16px;
+}
+.vz-legend-square {
+  width: 18px;
+  height: 18px;
+  border-width: 1.5px;
+}
+.leaflet-tooltip.vz-tip {
+  background: var(--vz-navy-900);
+  color: var(--vz-panel);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: var(--vz-shadow-float);
+}
+.leaflet-tooltip.vz-tip::before {
+  border-top-color: var(--vz-navy-900);
+}
+
+@keyframes vz-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

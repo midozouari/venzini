@@ -856,14 +856,14 @@
               "fuel_type_id": "DIESEL",
               "risk_level": "high",
               "hours_to_stockout": 20,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Diesel needs 11,700 L, but the tankers of WH-RIV have at most 22,500 L left"
             },
             {
               "station_id": "ST006",
               "fuel_type_id": "P95",
               "risk_level": "low",
               "hours_to_stockout": 110,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Petrol 95 needs 6,000 L, but the tankers of WH-RIV have at most 22,500 L left"
             }
           ],
           "fallback_forecast": [
@@ -2362,14 +2362,14 @@
               "fuel_type_id": "DIESEL",
               "risk_level": "high",
               "hours_to_stockout": 20,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Diesel needs 11,700 L, but the tankers of WH-RIV have at most 22,500 L left"
             },
             {
               "station_id": "ST006",
               "fuel_type_id": "P95",
               "risk_level": "low",
               "hours_to_stockout": 110,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Petrol 95 needs 6,000 L, but the tankers of WH-RIV have at most 22,500 L left"
             }
           ],
           "fallback_forecast": [
@@ -3835,14 +3835,14 @@
               "fuel_type_id": "DIESEL",
               "risk_level": "high",
               "hours_to_stockout": 20,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Diesel needs 11,700 L, but the tankers of WH-RIV have at most 22,500 L left"
             },
             {
               "station_id": "ST006",
               "fuel_type_id": "P95",
               "risk_level": "low",
               "hours_to_stockout": 110,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Petrol 95 needs 6,000 L, but the tankers of WH-RIV have at most 22,500 L left"
             }
           ],
           "fallback_forecast": [
@@ -5290,14 +5290,14 @@
               "fuel_type_id": "DIESEL",
               "risk_level": "high",
               "hours_to_stockout": 20,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Diesel needs 11,700 L, but the tankers of WH-RIV have at most 22,500 L left"
             },
             {
               "station_id": "ST006",
               "fuel_type_id": "P95",
               "risk_level": "low",
               "hours_to_stockout": 110,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Petrol 95 needs 6,000 L, but the tankers of WH-RIV have at most 22,500 L left"
             }
           ],
           "fallback_forecast": [
@@ -6729,14 +6729,14 @@
               "fuel_type_id": "DIESEL",
               "risk_level": "high",
               "hours_to_stockout": 20,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Diesel needs 11,700 L, but the tankers of WH-RIV have at most 11,500 L left"
             },
             {
               "station_id": "ST006",
               "fuel_type_id": "P95",
               "risk_level": "low",
               "hours_to_stockout": 110,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Petrol 95 does not fit the remaining tanker compartments at WH-RIV"
             }
           ],
           "fallback_forecast": [
@@ -8116,14 +8116,14 @@
               "fuel_type_id": "DIESEL",
               "risk_level": "high",
               "hours_to_stockout": 20,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Diesel needs 11,700 L, but the tankers of WH-RIV have at most 11,500 L left"
             },
             {
               "station_id": "ST006",
               "fuel_type_id": "P95",
               "risk_level": "low",
               "hours_to_stockout": 110,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Petrol 95 does not fit the remaining tanker compartments at WH-RIV"
             }
           ],
           "fallback_forecast": [
@@ -9503,14 +9503,14 @@
               "fuel_type_id": "DIESEL",
               "risk_level": "high",
               "hours_to_stockout": 20,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Diesel needs 11,700 L, but the tankers of WH-RIV have at most 11,500 L left"
             },
             {
               "station_id": "ST006",
               "fuel_type_id": "P95",
               "risk_level": "low",
               "hours_to_stockout": 110,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Petrol 95 does not fit the remaining tanker compartments at WH-RIV"
             }
           ],
           "fallback_forecast": [
@@ -10969,14 +10969,14 @@
               "fuel_type_id": "DIESEL",
               "risk_level": "high",
               "hours_to_stockout": 20,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Diesel needs 11,700 L, but the tankers of WH-RIV have at most 11,500 L left"
             },
             {
               "station_id": "ST006",
               "fuel_type_id": "P95",
               "risk_level": "low",
               "hours_to_stockout": 110,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Petrol 95 does not fit the remaining tanker compartments at WH-RIV"
             }
           ],
           "fallback_forecast": [
@@ -12375,14 +12375,14 @@
               "fuel_type_id": "DIESEL",
               "risk_level": "high",
               "hours_to_stockout": 20,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Diesel needs 11,700 L, but the tankers of WH-RIV have at most 11,500 L left"
             },
             {
               "station_id": "ST006",
               "fuel_type_id": "P95",
               "risk_level": "low",
               "hours_to_stockout": 110,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Petrol 95 does not fit the remaining tanker compartments at WH-RIV"
             }
           ],
           "fallback_forecast": [
@@ -13841,14 +13841,14 @@
               "fuel_type_id": "DIESEL",
               "risk_level": "high",
               "hours_to_stockout": 20,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Diesel needs 11,700 L, but the tankers of WH-RIV have at most 11,500 L left"
             },
             {
               "station_id": "ST006",
               "fuel_type_id": "P95",
               "risk_level": "low",
               "hours_to_stockout": 110,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Petrol 95 does not fit the remaining tanker compartments at WH-RIV"
             }
           ],
           "fallback_forecast": [
@@ -15247,14 +15247,14 @@
               "fuel_type_id": "DIESEL",
               "risk_level": "high",
               "hours_to_stockout": 20,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Diesel needs 11,700 L, but the tankers of WH-RIV have at most 11,500 L left"
             },
             {
               "station_id": "ST006",
               "fuel_type_id": "P95",
               "risk_level": "low",
               "hours_to_stockout": 110,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Petrol 95 does not fit the remaining tanker compartments at WH-RIV"
             }
           ],
           "fallback_forecast": [
@@ -16713,14 +16713,14 @@
               "fuel_type_id": "DIESEL",
               "risk_level": "high",
               "hours_to_stockout": 20,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Diesel needs 11,700 L, but the tankers of WH-RIV have at most 11,500 L left"
             },
             {
               "station_id": "ST006",
               "fuel_type_id": "P95",
               "risk_level": "low",
               "hours_to_stockout": 110,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Petrol 95 does not fit the remaining tanker compartments at WH-RIV"
             }
           ],
           "fallback_forecast": [
@@ -18128,7 +18128,7 @@
               "fuel_type_id": "P95",
               "risk_level": "low",
               "hours_to_stockout": 110,
-              "reason": "No tanker capacity left at WH-RIV."
+              "reason": "Petrol 95 does not fit the remaining tanker compartments at WH-RIV"
             }
           ],
           "fallback_forecast": [

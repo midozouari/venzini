@@ -44,6 +44,7 @@ import {
   tanker,
   tankKeyOf,
   toPlanView,
+  unservedReason,
   validatePlan,
   type PlanCalc,
   type PlanContext,
@@ -212,7 +213,7 @@ function unservedOf(
           hours_to_stockout: t.hours,
           reason: notDispatched.includes(s.id)
             ? 'Not dispatched: the manager rejected this delivery'
-            : `No tanker capacity left at ${ctx.serving.get(s.id)}.`,
+            : unservedReason(ctx, plan, s.id),
         };
       }),
     );

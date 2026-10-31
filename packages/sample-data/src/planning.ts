@@ -369,6 +369,47 @@ export function validatePlan(ctx: PlanContext, plan: PlanCalc): void {
 }
 
 /** Could a station still be added to any trip of its warehouse (capacity, compartments, window)? */
+/**
+ * The first check that stops a station from joining any trip of its warehouse, as a plain
+ * reason (FR-38). Every trip and position is tried; capacity, compartments (BR-31), delivery
+ * window (BR-07) and depot hours are told apart.
+ */
+export function unservedReason(ctx: PlanContext, plan: PlanCalc, stationId: string): string {
+  const wh = ctx.serving.get(stationId)!;
+  const needs = neededFuels(ctx, stationId);
+  const fuels = needs.map((n) => fuelName(n.fuel)).join(' and ');
+  const litres = sum(needs.map((n) => n.litres));
+  const specs = plan.routes.map((r) => r.spec);
+  const failures = new Set<'capacity' | 'compartments' | 'window'>();
+  specs.forEach((spec, i) => {
+    if (tanker(spec.tanker).warehouse !== wh) return;
+    for (let pos = 0; pos <= spec.stations.length; pos++) {
+      const stations = [...spec.stations];
+      stations.splice(pos, 0, stationId);
+      const trial = buildRoutes(
+        ctx,
+        specs.map((s, j) => (j === i ? { ...s, stations } : s)),
+        plan.routes.map((r) => r.route_id),
+      );
+      const r = trial.routes[i]!;
+      if (r.litres > sum(tanker(spec.tanker).compartments)) failures.add('capacity');
+      else if (!r.compartments) failures.add('compartments');
+      else failures.add('window');
+    }
+  });
+  if (failures.has('compartments'))
+    return `${fuels} does not fit the remaining tanker compartments at ${wh}`;
+  if (failures.has('capacity')) {
+    const free = Math.max(
+      ...plan.routes
+        .filter((r) => tanker(r.spec.tanker).warehouse === wh)
+        .map((r) => sum(tanker(r.spec.tanker).compartments) - r.litres),
+    );
+    return `${fuels} needs ${formatLitres(litres)}, but the tankers of ${wh} have at most ${formatLitres(free)} left`;
+  }
+  return `no tanker of ${wh} can reach it inside its delivery window`;
+}
+
 export function fitsAnywhere(ctx: PlanContext, plan: PlanCalc, stationId: string): boolean {
   const wh = ctx.serving.get(stationId);
   const specs = plan.routes.map((r) => r.spec);

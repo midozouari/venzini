@@ -117,6 +117,16 @@ describe('optimal plan for 03 Nov 2026 (UI-05, SDD 7.2)', () => {
     expect(view.routes.filter((r) => r.trip_no === 2).map((r) => r.tanker_id)).toEqual(['T-05']);
   });
 
+  it('explains why each station is unserved (FR-38)', () => {
+    const reasons = Object.fromEntries(
+      f.optimal.view.unserved.map((u) => [u.station_id, u.reason]),
+    );
+    expect(reasons).toEqual({
+      ST019: 'Diesel needs 11,700 L, but the tankers of WH-RIV have at most 11,500 L left',
+      ST006: 'Petrol 95 does not fit the remaining tanker compartments at WH-RIV',
+    });
+  });
+
   it('respects every hard rule, and the unserved stations really fit on no tanker', () => {
     const state = buildState();
     expect(() => validatePlan(state.ctx, state.optimal)).not.toThrow();

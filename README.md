@@ -36,7 +36,7 @@ This repository currently holds the **MVP** (minimum viable product): a clickabl
 
 The full version (a real server, database and planning engines) comes after the MVP. See the design document in [docs/](docs/).
 
-> **Current status:** Steps 0 and 1 are done: project skeleton, tooling and CI; the fake sample data and the mock API that answers every `/api/v1` request in the browser. The screens come next (Step 2). This README is updated after each step.
+> **Current status:** Steps 0, 1 and 2a are done: project skeleton, tooling and CI; the fake sample data and the mock API; the login page, the app shell and the network overview. The other screens follow in Steps 2b–2d (their menu items already open a placeholder). This README is updated after each step.
 
 ## The fake sample data
 
@@ -82,13 +82,19 @@ To stop the app, go back to the terminal and press `Ctrl + C`.
 
 ## Demo accounts
 
-These accounts are fake and exist only inside the browser mock. The mock API already accepts them; the login screen arrives in Step 2. All three use the same password.
+These accounts are fake and exist only inside the browser mock. All three use the same password. Each role lands on its own home page and sees only its own menu.
 
 | Role               | Login     | Password       |
 | ------------------ | --------- | -------------- |
 | Operations manager | `sara.m`  | `venzini-demo` |
 | Dispatcher         | `karim.b` | `venzini-demo` |
 | System admin       | `nadia.a` | `venzini-demo` |
+
+Good to know:
+
+- **Reloading the page logs you out.** The mock API keeps everything in the browser's memory, so a reload resets the data _and_ your session; just log in again.
+- `omar.b` is a deactivated account and `rania.m` is locked for a few minutes, so you can see those login errors.
+- After 28 idle minutes, a dialog asks whether you want to stay signed in; at 30 minutes you are signed out.
 
 ## Running the checks and tests
 
@@ -99,7 +105,7 @@ These accounts are fake and exist only inside the browser mock. The mock API alr
 | `pnpm test`                                                           | Runs the unit tests (Vitest).                                                                                     |
 | `pnpm build`                                                          | Builds the production version of the web app into `apps/web/dist/`.                                               |
 | `pnpm --filter @venzini/e2e exec playwright install chromium firefox` | One-time setup: downloads the test browsers used by the end-to-end tests. Edge must be installed on the computer. |
-| `pnpm e2e`                                                            | Runs the end-to-end tests (Playwright) in Chrome, Firefox and Edge. Starts the app by itself.                     |
+| `pnpm e2e`                                                            | Runs the end-to-end tests (Playwright) in Chrome, Firefox and Edge. Builds the app and starts it by itself.       |
 | `pnpm format`                                                         | Reformats all files with Prettier.                                                                                |
 
 The same checks run automatically on GitHub on every push (see `.github/workflows/ci.yml`).
@@ -135,6 +141,7 @@ venzini/
 
 The project documents are in [docs/](docs/):
 
+- `Venzini 0 - Project Proposal FV.pdf`: the project idea, goals and scope.
 - `Venzini 1 - Requirement Elicitation FV.pdf`: stakeholders, user needs and use cases.
 - `Venzini 2 - SRS FV.pdf`: the Software Requirements Specification (what the system must do).
 - `Venzini 3 - SDD FV.pdf`: the Software Design Document (how it is built). Chapter 7 describes this MVP.

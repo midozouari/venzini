@@ -21,18 +21,43 @@ Venzini is a fuel demand forecasting and delivery planning web platform. This re
 
 - **Fake sample data only. Never real data.** Fixtures come from `packages/sample-data` (deterministic, seed 42).
 
-## Logo (strict)
+## Logo and favicon (strict)
 
-- The only logo is `apps/web/public/logo.png`. Use that exact file everywhere the logo appears (login page, app header, favicon). Alt text: `Venzini`.
-- Never draw, generate, recreate, trace, recolor, crop or replace it, and never make an SVG or text version. The only thing allowed is **resized copies of the same file** (e.g. a favicon) that keep the aspect ratio.
+- **Logo:** the only logo is `apps/web/public/logo.png` (navy artwork on a transparent background). Use that exact file wherever the logo appears (login page, navigation panel). Alt text: `Venzini`.
+  - Never draw, generate, recreate, trace, recolor, crop or replace it, and never make an SVG or text version. Only **resized copies of the same file**, keeping the aspect ratio, are allowed.
+  - Because it is navy on transparent, always place it on a light surface (panel `#FFFDF9`), never directly on navy.
+- **Favicon:** the user's own square mark `apps/web/public/favicon.png` (the "VE" mark, 1:1). Use it exactly as it is.
+  - Only **resized copies** are allowed (`favicon-16.png`, `favicon-32.png`, `apple-touch-icon.png` 180 px, …). Never redraw, recolor, crop, pad or change its background (it is transparent).
+  - The favicon is never made from `logo.png`.
 
-## Design system (SDD 5.12.4, Figure 42)
+## Design system (SDD 5.12.4, Figure 42, with the user's approved visual direction)
 
-- Use only the tokens defined as CSS variables in `apps/web/src/index.css` and mapped in `apps/web/tailwind.config.ts`. Components never use raw hex values.
-- Navy `#021C45` is the only brand color.
-- Risk colors `#C62828` (high), `#E07B00` (medium) and `#2E7D32` (low) are **used only for risk**. They are never used for routes or buttons, and they always come with an icon or a word.
-- Route lines use the 8 route tokens only (never red, orange or green).
-- Inter typeface. Litres "34,000 L", times 24 h, dates "05 Nov 2026", money "$412.35". Minimum width 1366 px. Keyboard path for every action. Visible 2 px focus ring.
+- **Tokens only:** use the CSS variables in `apps/web/src/index.css`, mapped in `apps/web/tailwind.config.ts`. Components never use raw hex values. When merging classes, `cn()` knows the custom text sizes (`text-title`, `text-section`, `text-body`, `text-caption`, `text-kpi`).
+- **Palette:**
+  - warm cream base canvas `#F7F3EC`, warm off-white panels `#FFFDF9` and borders `#E7E0D4`;
+  - form-field borders `#8C8270` (WCAG 1.4.11);
+  - navy `#021C45` for text, headings, primary buttons and focus (the only brand color);
+  - warm grey `#6B6358` for secondary text.
+- **Risk colors** `#C62828` (high), `#E07B00` (medium) and `#2E7D32` (low) are **used only for risk**, always with an icon and a word. Medium-risk label text uses `#8A4B00` for contrast. Never on buttons or routes (BR-09, BR-10).
+- **Route lines:** the 8 route tokens only.
+- **Feeling:** calm, premium, never overwhelming:
+  - essentials first, details on demand (expand, drawers, tooltips);
+  - generous spacing; one main action per screen;
+  - few large numbers rather than dense tables.
+- **Layers:**
+  1. full-bleed base (the map, or the cream canvas);
+  2. solid floating panels (16 px radius, thin border, soft shadow, **no blur**), 16 px from the edges, with the 240 px navigation panel on the left and the 64 px top bar;
+  3. dialogs and edit panels (20 px radius, strongest shadow). **Only** behind them is the app blurred (6 px) and dimmed with navy.
+- **Motion:** 150–300 ms, ease-out; fade, slide, gentle scale; never bouncy or slow; respect `prefers-reduced-motion`.
+- **Interactive states on everything clickable:**
+  - hover: tone shift, 1 px lift, bigger shadow;
+  - press: scale 98%;
+  - keyboard: 2 px focus ring.
+- **Buttons:** primary = solid navy (Approve); secondary = off-white with a thin border and an icon (Reject = ✕). Destructive actions ("Reject all"…) always open a confirmation dialog.
+- **Login:** deep navy canvas with the logo on a floating off-white card.
+- **Formats and layout:** Inter, tabular digits. Litres "34,000 L", 24 h times, dates "05 Nov 2026", money "$412.35". Minimum width 1366 px. A keyboard path for every action.
+- **Unserved stations:** always show their reason in full (FR-38), using TPL-UNS-01 wording, never hidden behind a click.
+- **Test hook:** e2e tests set map tiles through `window.__VENZINI_TEST__.tileUrl`, because the MSW worker fetches every request itself and Playwright cannot stub it.
 
 ## Stack and structure (MVP subset of SDD Appendix B)
 
@@ -68,5 +93,5 @@ Venzini is a fuel demand forecasting and delivery planning web platform. This re
 
 - Step 0: move files, scaffold, configs, CI, README, CLAUDE.md. ✅
 - Step 1: contracts, sample-data generator and fixtures, MSW handlers with role checks and in-memory session state (SDD 7.1, 7.2). ✅
-- Step 2: screens of SDD 7.3: (a) app shell, login, network; (b) forecast and totals, resources and trips; (c) planner and approvals with the scripted edit outcomes; (d) history and administration.
+- Step 2: screens of SDD 7.3: (a) app shell, login, network ✅; (b) forecast and totals, resources and trips; (c) planner and approvals with the scripted edit outcomes; (d) history and administration.
 - Step 3: hidden developer toolbar (scenarios, forced errors), the Playwright MVP suite (every screen and flow per role, AC-21), the final README.

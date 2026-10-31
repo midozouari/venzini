@@ -1,0 +1,115 @@
+// Layout shell (SDD 5.12.1): full-bleed base canvas, with a floating navigation panel and a
+// floating top bar above it.
+import { ROLE_HOME } from '@venzini/contracts';
+import { LogOut } from 'lucide-react';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router';
+import { useLogout, useMe, usePlanOfDay } from '@/api/hooks';
+import { Button } from '@/components/ui/button';
+import { DayPicker } from '@/components/ui/day-picker';
+import { PlanStatusChip } from '@/components/ui/status-chip';
+import { ROLE_LABEL } from '@/lib/format';
+import { cn } from '@/lib/utils';
+import { useDayStore } from '@/stores/day';
+import { MENU, screenFor } from './routes';
+
+export function Shell() {
+  const { data: me } = useMe();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const logout = useLogout();
+  const day = useDayStore((s) => s.day);
+  const screen = screenFor(location.pathname);
+  const isManager = me?.user.role === 'manager';
+  const plan = usePlanOfDay(day, isManager && !!screen?.day);
+  if (!me) return null;
+
+  return (
+    <div className="relative h-full w-full overflow-hidden bg-canvas">
+      {/* Base canvas: each screen fills it (the map on map screens). */}
+      <div className="absolute inset-0 isolate z-0">
+        <Outlet />
+      </div>
+
+      <nav
+        aria-label="Main"
+        className="absolute bottom-4 left-4 top-4 z-30 flex w-[var(--vz-nav-width)] flex-col rounded-panel border border-line bg-panel p-4 shadow-float animate-in fade-in-0 slide-in-from-left-2 duration-300"
+      >
+        <a href={ROLE_HOME[me.user.role]} className="mb-8 block rounded-control px-2 pt-2">
+          <img src="/logo.png" alt="Venzini" className="h-auto w-full" />
+        </a>
+        <ul className="flex flex-col gap-1">
+          {me.pages.map((page) => {
+            const item = MENU[page];
+            const Icon = item.icon;
+            return (
+              <li key={page}>
+                <NavLink
+                  to={item.path}
+                  end={item.path === '/resources'}
+                  className={({ isActive }) =>
+                    cn(
+                      'flex h-10 items-center gap-3 rounded-control px-3 text-body transition-[background-color,color,transform] duration-150 ease-vz active:scale-[0.98]',
+                      isActive
+                        ? 'bg-navy-tint-strong font-semibold text-ink'
+                        : 'text-muted hover:bg-navy-tint hover:text-ink',
+                    )
+                  }
+                >
+                  <Icon aria-hidden className="size-[18px]" />
+                  {item.label}
+                </NavLink>
+              </li>
+            );
+          })}
+        </ul>
+        <div className="mt-auto border-t border-line pt-4">
+          <Button
+            variant="quiet"
+            className="w-full justify-start px-3"
+            onClick={() =>
+              logout.mutate(undefined, { onSettled: () => navigate('/login', { replace: true }) })
+            }
+          >
+            <LogOut aria-hidden />
+            Log out
+          </Button>
+        </div>
+      </nav>
+
+      <header className="absolute left-[var(--vz-safe-left)] right-4 top-4 z-30 flex h-[var(--vz-topbar-height)] items-center gap-4 rounded-panel border border-line bg-panel px-6 shadow-float animate-in fade-in-0 slide-in-from-top-2 duration-300">
+        <h1 className="text-section text-ink">{screen?.title ?? 'Venzini'}</h1>
+        {screen?.day ? (
+          <div className="ml-4 flex items-center gap-3">
+            <DayPicker />
+            {isManager ? <PlanStatusChip status={plan.data?.plan.status ?? null} /> : null}
+          </div>
+        ) : null}
+        <div className="ml-auto text-right">
+          <p className="text-body font-semibold leading-tight text-ink">{me.user.full_name}</p>
+          <p className="text-caption text-muted">{ROLE_LABEL[me.user.role]}</p>
+        </div>
+      </header>
+    </div>
+  );
+}
+
+/** Content area of non-map screens: the cream canvas beside the floating panels. */
+export function ContentArea({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <main
+      className={cn(
+        'absolute inset-0 overflow-auto pb-4 pl-[var(--vz-safe-left)] pr-4 pt-[var(--vz-safe-top)]',
+        'bg-[radial-gradient(1200px_480px_at_60%_-10%,var(--vz-navy-tint),transparent_70%)]',
+        className,
+      )}
+    >
+      {children}
+    </main>
+  );
+}
