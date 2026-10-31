@@ -6,7 +6,6 @@ import {
   CSRF_HEADER,
   CSRF_VALUE,
   ErrorBody,
-  formatMessage,
 } from '@venzini/contracts';
 import type { z } from 'zod';
 
@@ -35,27 +34,65 @@ export const markSession = (active: boolean) => {
 
 type Method = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
+/**
+ * Shown when a request never reached the Venzini API (no answer, or an answer without our
+ * correlation ID). It is not an SRS error code; the SRS messages stay for the API's own errors.
+ */
+export const UNREACHABLE_CODE = 'CLIENT-UNREACHABLE';
+export const UNREACHABLE_MESSAGE = 'Venzini could not be reached. Please try again.';
+
+/**
+ * Optional repair step, run once when a request did not reach the API, before a single retry.
+ * The MVP uses it to reconnect the browser mock API after the browser restarted its worker.
+ */
+let recovery: (() => Promise<void>) | null = null;
+let recovering: Promise<void> | null = null;
+export function setApiRecovery(fn: (() => Promise<void>) | null) {
+  recovery = fn;
+}
+async function recover(): Promise<void> {
+  if (!recovery) return;
+  // Requests failing together share one repair.
+  recovering ??= recovery().finally(() => {
+    recovering = null;
+  });
+  await recovering;
+}
+
+const unreachable = (status = 0, correlationId?: string) =>
+  new ApiError(status, UNREACHABLE_CODE, UNREACHABLE_MESSAGE, undefined, undefined, correlationId);
+
+async function send(method: Method, path: string, body: unknown): Promise<Response | null> {
+  try {
+    return await fetch(`${API_BASE_PATH}${path}`, {
+      method,
+      credentials: 'same-origin',
+      headers: {
+        Accept: 'application/json',
+        ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}),
+        ...(method !== 'GET' ? { [CSRF_HEADER]: CSRF_VALUE } : {}),
+      },
+      body: body !== undefined ? JSON.stringify(body) : undefined,
+    });
+  } catch {
+    return null;
+  }
+}
+
+/** Every answer of the Venzini API carries a correlation ID (SDD 5.6.1). */
+const fromApi = (res: Response | null): boolean => !!res?.headers.get(CORRELATION_HEADER);
+
 export async function request<S extends z.ZodType>(
   method: Method,
   path: string,
   options: { body?: unknown; schema?: S } = {},
 ): Promise<z.infer<S>> {
-  const write = method !== 'GET';
-  let res: Response;
-  try {
-    res = await fetch(`${API_BASE_PATH}${path}`, {
-      method,
-      credentials: 'same-origin',
-      headers: {
-        Accept: 'application/json',
-        ...(options.body !== undefined ? { 'Content-Type': 'application/json' } : {}),
-        ...(write ? { [CSRF_HEADER]: CSRF_VALUE } : {}),
-      },
-      body: options.body !== undefined ? JSON.stringify(options.body) : undefined,
-    });
-  } catch {
-    throw new ApiError(0, 'ERR-SYS-01', 'The server could not be reached. Please try again.');
+  let res = await send(method, path, options.body);
+  if (!fromApi(res) && recovery) {
+    await recover();
+    res = await send(method, path, options.body);
   }
+  if (!res || !fromApi(res)) throw unreachable(res?.status ?? 0);
 
   const correlationId = res.headers.get(CORRELATION_HEADER) ?? undefined;
   if (res.status === 204) return undefined as z.infer<S>;
@@ -72,14 +109,7 @@ export async function request<S extends z.ZodType>(
           parsed.data.error.details,
           correlationId,
         )
-      : new ApiError(
-          res.status,
-          'ERR-SYS-01',
-          formatMessage('ERR-SYS-01'),
-          undefined,
-          undefined,
-          correlationId,
-        );
+      : unreachable(res.status, correlationId);
     if (err.code === 'ERR-AUTH-05' && hadSession) {
       hadSession = false;
       window.dispatchEvent(new CustomEvent(SESSION_EXPIRED_EVENT));

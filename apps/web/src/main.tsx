@@ -1,12 +1,15 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { setApiRecovery } from './api/client';
 import { App } from './app/App';
 import './index.css';
 
 async function enableMocks() {
   if (import.meta.env.VITE_USE_MOCKS !== 'true') return;
-  const { worker } = await import('./mocks/browser');
-  await worker.start({ onUnhandledFrame: 'bypass' });
+  const { startMocks, reconnectMocks } = await import('./mocks/browser');
+  await startMocks();
+  // If the browser restarted the mock worker, reconnect it and retry the request once.
+  setApiRecovery(reconnectMocks);
 }
 
 void enableMocks().then(() => {

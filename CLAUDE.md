@@ -58,6 +58,7 @@ Venzini is a fuel demand forecasting and delivery planning web platform. This re
 - **Login:** the same navy canvas, with the logo on a floating off-white card.
 - **Formats and layout:** Inter, tabular digits. Litres "34,000 L", 24 h times, dates "05 Nov 2026", money "$412.35". Minimum width 1366 px. A keyboard path for every action.
 - **Unserved stations:** always show their reason in full (FR-38), using TPL-UNS-01 wording, never hidden behind a click.
+- **Mock worker reconnection:** browsers stop an idle service worker; the restarted worker forgets the page and lets `/api/v1` requests through to the web server. The API client treats any answer without `X-Correlation-Id` as "not from the API": in the MVP it reconnects the mock worker once and retries (`setApiRecovery` in `main.tsx`). Such failures show the client message "Venzini could not be reached. Please try again.", never the plan-edit wording of ERR-SYS-01.
 - **Test hook:** e2e tests set map tiles through `window.__VENZINI_TEST__.tileUrl`, because the MSW worker fetches every request itself and Playwright cannot stub it.
 
 ## Stack and structure (MVP subset of SDD Appendix B)

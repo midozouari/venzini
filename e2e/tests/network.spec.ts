@@ -90,7 +90,9 @@ test.describe('network overview', () => {
     );
   });
 
-  test('keeps the map in its own card: nothing overlaps it (design revision)', async ({ page }) => {
+  test('puts the map card on top and the KPI row below it, all visible without scrolling', async ({
+    page,
+  }) => {
     await stubTiles(page);
     await login(page, 'sara.m');
     await expect(page.locator('.vz-marker')).toHaveCount(19);
@@ -100,9 +102,15 @@ test.describe('network overview', () => {
     const risk = (await page
       .getByRole('heading', { name: 'Stations at highest risk' })
       .boundingBox())!;
-    expect(kpis.y + kpis.height).toBeLessThanOrEqual(map.y); // KPI row above the map
+    expect(map.y + map.height).toBeLessThanOrEqual(kpis.y); // map above the KPI row
     expect(map.x + map.width).toBeLessThanOrEqual(risk.x); // risk panel to the right
     expect(map.height).toBeGreaterThan(300);
+    // At 1366×768 the KPI cards and the main action stay on screen, with no page scroll.
+    expect(kpis.y + kpis.height).toBeLessThanOrEqual(768);
+    await expect(page.getByRole('link', { name: 'Plan deliveries' })).toBeInViewport({ ratio: 1 });
+    expect(await page.evaluate(() => document.documentElement.scrollHeight)).toBeLessThanOrEqual(
+      768,
+    );
   });
 
   test('shows the warehouse stock in a dialog, without resizing the map', async ({ page }) => {
@@ -122,5 +130,31 @@ test.describe('network overview', () => {
     expect((await map.boundingBox())!.height).toBeCloseTo(before.height, 0);
     await page.keyboard.press('Escape');
     await expect(dialog).toBeHidden();
+  });
+
+  // Regression: browsers stop an idle service worker (e.g. in a background tab). The restarted
+  // worker no longer knew the page, requests reached the web server, and the risk panel showed
+  // "The network could not be loaded" with the plan-edit wording of ERR-SYS-01.
+  test('keeps working after the browser restarts the mock worker', async ({
+    page,
+    browserName,
+  }) => {
+    test.skip(browserName !== 'chromium', 'stopping a service worker needs Chromium DevTools');
+    await stubTiles(page);
+    await login(page, 'sara.m');
+    await expect(page.locator('.vz-marker')).toHaveCount(19);
+    const cdp = await page.context().newCDPSession(page);
+    await cdp.send('ServiceWorker.enable');
+    await cdp.send('ServiceWorker.stopAllWorkers');
+
+    await page.getByRole('button', { name: 'Next day' }).click();
+    await expect(page.getByRole('region', { name: 'Key figures' })).toContainText(
+      'No resources uploaded for this day.',
+    );
+    await page.getByRole('button', { name: 'Previous day' }).click();
+    await expect(
+      page.getByRole('list', { name: 'Stockout alerts' }).getByRole('button'),
+    ).toHaveCount(3);
+    await expect(page.getByText('The network could not be loaded')).toHaveCount(0);
   });
 });
