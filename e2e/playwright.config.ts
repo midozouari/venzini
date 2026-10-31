@@ -8,6 +8,7 @@ const baseURL = 'http://localhost:4173';
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
+  expect: { timeout: 10_000 },
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : 'list',

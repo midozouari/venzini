@@ -16,13 +16,38 @@
   --vz-navy-tint-strong: rgb(2 28 69 / 0.1);
   --vz-focus: #3b6fd8;
 
-  /* Warm neutrals (replace SDD gray 50 / white / gray 300 / gray 600). */
-  --vz-canvas: #f7f3ec; /* base canvas */
+  /*
+   * Base canvas of the whole app (login included): a fixed navy gradient (user's design revision).
+   * Text placed directly on it is cream: at least 8.7:1 even at the brightest glow.
+   */
+  --vz-canvas:
+    radial-gradient(
+      ellipse 55% 55% at 50% 0%,
+      rgba(30, 70, 160, 0.85) 0%,
+      rgba(11, 46, 107, 0.5) 40%,
+      rgba(2, 28, 69, 0) 75%
+    ),
+    radial-gradient(
+      ellipse 45% 50% at 0% 100%,
+      rgba(30, 70, 160, 0.75) 0%,
+      rgba(11, 46, 107, 0.4) 45%,
+      rgba(2, 28, 69, 0) 80%
+    ),
+    radial-gradient(
+      ellipse 45% 50% at 100% 100%,
+      rgba(30, 70, 160, 0.75) 0%,
+      rgba(11, 46, 107, 0.4) 45%,
+      rgba(2, 28, 69, 0) 80%
+    ),
+    #021c45;
+
+  /* Warm neutrals of the panels (replace SDD white / gray 300 / gray 600). */
+  --vz-cream: #f7f3ec; /* text on the navy canvas; quiet surfaces inside panels */
   --vz-panel: #fffdf9; /* floating panels and dialogs */
   --vz-line: #e7e0d4; /* panel and card borders */
-  --vz-line-strong: #8c8270; /* form-field borders: 3.4:1 on canvas (WCAG 1.4.11) */
-  --vz-ink: #021c45; /* text and headings: 15.1:1 on canvas */
-  --vz-muted: #6b6358; /* secondary text: 5.4:1 on canvas */
+  --vz-line-strong: #8c8270; /* form-field borders: 3.7:1 on panels (WCAG 1.4.11) */
+  --vz-ink: #021c45; /* text and headings on panels: 16.5:1 */
+  --vz-muted: #6b6358; /* secondary text on panels: 5.8:1 */
 
   /* Risk only (BR-09, BR-10), always with an icon and a word (NFR-10). */
   --vz-risk-high: #c62828;
@@ -44,9 +69,10 @@
   --vz-route-8: #111111;
 
   /* Layers: base → floating panels → dialogs, each with a slightly stronger soft shadow. */
-  --vz-shadow-panel: 0 1px 2px rgb(60 44 20 / 0.04), 0 6px 20px rgb(60 44 20 / 0.06);
-  --vz-shadow-float: 0 2px 4px rgb(60 44 20 / 0.05), 0 12px 32px rgb(60 44 20 / 0.1);
-  --vz-shadow-dialog: 0 8px 24px rgb(2 28 69 / 0.12), 0 32px 72px rgb(2 28 69 / 0.2);
+  /* Shadows are slightly stronger, as the panels float on the navy canvas. */
+  --vz-shadow-panel: 0 1px 2px rgb(0 8 30 / 0.18), 0 8px 24px rgb(0 8 30 / 0.2);
+  --vz-shadow-float: 0 2px 6px rgb(0 8 30 / 0.22), 0 16px 40px rgb(0 8 30 / 0.28);
+  --vz-shadow-dialog: 0 12px 32px rgb(0 8 30 / 0.32), 0 36px 88px rgb(0 8 30 / 0.42);
   --vz-radius-control: 10px;
   --vz-radius-panel: 16px;
   --vz-radius-dialog: 20px;
@@ -55,7 +81,7 @@
   --vz-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 
   /* Safe area of the content, beside the floating navigation and top bar. */
-  --vz-gap: 16px;
+  --vz-gap: 20px; /* between every floating panel and the window edges */
   --vz-nav-width: 240px;
   --vz-topbar-height: 64px;
   --vz-safe-left: calc(var(--vz-nav-width) + 2 * var(--vz-gap));
@@ -68,9 +94,21 @@ body,
   height: 100%;
 }
 
+/* The page itself never scrolls (no scrollbars shifting the layout); screens scroll inside their
+   own areas, and the root scrolls only when the window is smaller than the content. */
+body {
+  overflow: hidden;
+}
+#root {
+  overflow: auto;
+}
+
 body {
   min-width: 1366px; /* SRS 13: desktop, at least 1366 px */
-  background-color: var(--vz-canvas);
+  /* The navy canvas is fixed: it fills the window and never scrolls with the content. */
+  background: var(--vz-canvas);
+  background-attachment: fixed;
+  background-size: 100% 100%;
   color: var(--vz-ink);
   font-family: 'Inter Variable', Inter, system-ui, sans-serif;
   font-size: 15px;
@@ -99,7 +137,7 @@ h3 {
   opacity: 0.9;
 }
 .leaflet-container {
-  background: var(--vz-canvas);
+  background: var(--vz-cream);
   font-family: inherit;
 }
 .leaflet-control-attribution {

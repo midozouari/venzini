@@ -33,28 +33,29 @@ Venzini is a fuel demand forecasting and delivery planning web platform. This re
 ## Design system (SDD 5.12.4, Figure 42, with the user's approved visual direction)
 
 - **Tokens only:** use the CSS variables in `apps/web/src/index.css`, mapped in `apps/web/tailwind.config.ts`. Components never use raw hex values. When merging classes, `cn()` knows the custom text sizes (`text-title`, `text-section`, `text-body`, `text-caption`, `text-kpi`).
-- **Palette:**
-  - warm cream base canvas `#F7F3EC`, warm off-white panels `#FFFDF9` and borders `#E7E0D4`;
-  - form-field borders `#8C8270` (WCAG 1.4.11);
-  - navy `#021C45` for text, headings, primary buttons and focus (the only brand color);
-  - warm grey `#6B6358` for secondary text.
+- **Canvas (whole app, login included):** the fixed navy gradient `--vz-canvas` on the `body`. It fills the window and never scrolls with the content. Screens never paint their own page background; they place panels on this canvas.
+  - The exact value is radial gradients `rgba(30,70,160,…)` / `rgba(11,46,107,…)` at the top centre and both bottom corners, over `#021C45`; see `index.css`.
+  - **Text placed directly on the canvas is cream `#F7F3EC`** (`text-on-navy`), at least 8.7:1 even at the brightest glow. Navy text never sits on the canvas.
+- **Panels, cards and dialogs** are warm off-white `#FFFDF9` with borders `#E7E0D4`; `#F7F3EC` (`cream`) is used for quiet surfaces inside panels. Form-field borders are `#8C8270` (WCAG 1.4.11).
+- **Text inside panels:** navy `#021C45` for text, headings, primary buttons and focus (the only brand color); warm grey `#6B6358` for secondary text.
 - **Risk colors** `#C62828` (high), `#E07B00` (medium) and `#2E7D32` (low) are **used only for risk**, always with an icon and a word. Medium-risk label text uses `#8A4B00` for contrast. Never on buttons or routes (BR-09, BR-10).
 - **Route lines:** the 8 route tokens only.
 - **Feeling:** calm, premium, never overwhelming:
   - essentials first, details on demand (expand, drawers, tooltips);
   - generous spacing; one main action per screen;
   - few large numbers rather than dense tables.
-- **Layers:**
-  1. full-bleed base (the map, or the cream canvas);
-  2. solid floating panels (16 px radius, thin border, soft shadow, **no blur**), 16 px from the edges, with the 240 px navigation panel on the left and the 64 px top bar;
+- **Layout and layers:**
+  1. the navy canvas;
+  2. solid floating panels (16 px radius, thin border, soft shadow, slightly stronger on navy, **no blur**) with **20 px gaps** between panels and from the window edges (`--vz-gap`): the 240 px navigation panel on the left, the 64 px top bar on top, then each screen's own panels in the remaining area (`ContentArea`, or the screen's own grid using `--vz-safe-left`, `--vz-safe-top`, `--vz-gap`);
   3. dialogs and edit panels (20 px radius, strongest shadow). **Only** behind them is the app blurred (6 px) and dimmed with navy.
+- **Maps sit inside their own rounded card**, never full-screen. Nothing overlaps a map except its own legend and controls inside the card. Details that would push the layout (such as the stock list) open in a dialog. The map tiles and their warm filter stay as they are.
 - **Motion:** 150–300 ms, ease-out; fade, slide, gentle scale; never bouncy or slow; respect `prefers-reduced-motion`.
 - **Interactive states on everything clickable:**
   - hover: tone shift, 1 px lift, bigger shadow;
   - press: scale 98%;
   - keyboard: 2 px focus ring.
 - **Buttons:** primary = solid navy (Approve); secondary = off-white with a thin border and an icon (Reject = ✕). Destructive actions ("Reject all"…) always open a confirmation dialog.
-- **Login:** deep navy canvas with the logo on a floating off-white card.
+- **Login:** the same navy canvas, with the logo on a floating off-white card.
 - **Formats and layout:** Inter, tabular digits. Litres "34,000 L", 24 h times, dates "05 Nov 2026", money "$412.35". Minimum width 1366 px. A keyboard path for every action.
 - **Unserved stations:** always show their reason in full (FR-38), using TPL-UNS-01 wording, never hidden behind a click.
 - **Test hook:** e2e tests set map tiles through `window.__VENZINI_TEST__.tileUrl`, because the MSW worker fetches every request itself and Playwright cannot stub it.

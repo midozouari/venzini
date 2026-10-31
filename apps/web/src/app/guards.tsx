@@ -16,7 +16,7 @@ export function RequireSession() {
   const location = useLocation();
   if (me.isPending)
     return (
-      <div className="flex h-full items-center justify-center bg-canvas">
+      <div className="flex h-full items-center justify-center">
         <Skeleton className="h-40 w-96 rounded-panel" />
       </div>
     );

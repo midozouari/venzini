@@ -7,7 +7,7 @@ import { Button } from './button';
 export function DayPicker() {
   const { day, shift } = useDayStore();
   return (
-    <div className="flex items-center gap-1 rounded-full border border-line bg-canvas/60 p-1">
+    <div className="flex items-center gap-1 rounded-full border border-line bg-cream/60 p-1">
       <Button
         variant="ghost"
         size="icon"

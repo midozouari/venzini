@@ -18,7 +18,7 @@ export class ErrorBoundary extends Component<{ children: ReactNode }, { error: E
     if (!error) return this.props.children;
     const correlation = error instanceof ApiError ? error.correlationId : undefined;
     return (
-      <div className="flex h-full items-center justify-center bg-canvas p-8">
+      <div className="flex h-full items-center justify-center p-8">
         <Panel className="w-[480px]">
           <EmptyState
             icon={RefreshCw}

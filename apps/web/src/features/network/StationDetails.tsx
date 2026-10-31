@@ -77,10 +77,7 @@ export function StationDetails({
             const pct = t.level_pct;
             const safetyPct = Math.round((t.safety_stock_l / t.capacity_l) * 100);
             return (
-              <li
-                key={t.fuel_type_id}
-                className="rounded-panel border border-line bg-canvas/50 p-4"
-              >
+              <li key={t.fuel_type_id} className="rounded-panel border border-line bg-cream/50 p-4">
                 <div className="flex items-center justify-between">
                   <h3 className="text-body font-semibold text-ink">
                     {FUEL[t.fuel_type_id] ?? t.fuel_type_id}

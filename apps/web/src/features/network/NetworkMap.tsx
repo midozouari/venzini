@@ -35,17 +35,41 @@ const warehouseIcon = L.divIcon({
   html: '<span class="vz-warehouse"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10 12 4l9 6v10H3Z M8 20v-6h8v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>',
 });
 
-function FitOnce({ points }: { points: [number, number][] }) {
+/**
+ * Fits the stations into the map card, and keeps the map in step with the card when its size
+ * changes (first layout, window, KPI row). It stops re-fitting once the user pans or zooms.
+ */
+function FitToCard({ points }: { points: [number, number][] }) {
   const map = useMap();
-  const done = useRef(false);
+  const userMoved = useRef(false);
   useEffect(() => {
-    if (done.current || points.length === 0) return;
-    done.current = true;
-    // Room for the floating navigation, KPI row and risk panel.
-    map.fitBounds(L.latLngBounds(points), {
-      paddingTopLeft: [300, 220],
-      paddingBottomRight: [420, 40],
+    if (points.length === 0) return;
+    let fitting = false;
+    const fit = () => {
+      const { x, y } = map.getSize();
+      if (x < 100 || y < 100) return; // the card has no real size yet
+      fitting = true;
+      map.fitBounds(L.latLngBounds(points), {
+        paddingTopLeft: [32, 32],
+        paddingBottomRight: [32, 72], // room for the legend
+        animate: false,
+      });
+      fitting = false;
+    };
+    const onUserMove = () => {
+      if (!fitting) userMoved.current = true;
+    };
+    map.on('zoomstart dragstart', onUserMove);
+    const observer = new ResizeObserver(() => {
+      map.invalidateSize({ pan: false });
+      if (!userMoved.current) fit();
     });
+    observer.observe(map.getContainer());
+    fit();
+    return () => {
+      observer.disconnect();
+      map.off('zoomstart dragstart', onUserMove);
+    };
   }, [map, points]);
   return null;
 }
@@ -100,7 +124,7 @@ export function NetworkMap({
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         eventHandlers={{ tileerror: onTilesFailed }}
       />
-      <FitOnce points={points} />
+      <FitToCard points={points} />
       {network.warehouses.map((w) => (
         <Marker
           key={w.warehouse_id}

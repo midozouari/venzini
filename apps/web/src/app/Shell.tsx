@@ -1,4 +1,4 @@
-// Layout shell (SDD 5.12.1): full-bleed base canvas, with a floating navigation panel and a
+// Layout shell (SDD 5.12.1): the fixed navy canvas (body), with a floating navigation panel and a
 // floating top bar above it.
 import { ROLE_HOME } from '@venzini/contracts';
 import { LogOut } from 'lucide-react';
@@ -24,7 +24,7 @@ export function Shell() {
   if (!me) return null;
 
   return (
-    <div className="relative h-full w-full overflow-hidden bg-canvas">
+    <div className="relative h-full w-full overflow-hidden">
       {/* Base canvas: each screen fills it (the map on map screens). */}
       <div className="absolute inset-0 isolate z-0">
         <Outlet />
@@ -32,7 +32,7 @@ export function Shell() {
 
       <nav
         aria-label="Main"
-        className="absolute bottom-4 left-4 top-4 z-30 flex w-[var(--vz-nav-width)] flex-col rounded-panel border border-line bg-panel p-4 shadow-float animate-in fade-in-0 slide-in-from-left-2 duration-300"
+        className="absolute bottom-[var(--vz-gap)] left-[var(--vz-gap)] top-[var(--vz-gap)] z-30 flex w-[var(--vz-nav-width)] flex-col rounded-panel border border-line bg-panel p-4 shadow-float animate-in fade-in-0 slide-in-from-left-2 duration-300"
       >
         <a href={ROLE_HOME[me.user.role]} className="mb-8 block rounded-control px-2 pt-2">
           <img src="/logo.png" alt="Venzini" className="h-auto w-full" />
@@ -76,7 +76,7 @@ export function Shell() {
         </div>
       </nav>
 
-      <header className="absolute left-[var(--vz-safe-left)] right-4 top-4 z-30 flex h-[var(--vz-topbar-height)] items-center gap-4 rounded-panel border border-line bg-panel px-6 shadow-float animate-in fade-in-0 slide-in-from-top-2 duration-300">
+      <header className="absolute left-[var(--vz-safe-left)] right-[var(--vz-gap)] top-[var(--vz-gap)] z-30 flex h-[var(--vz-topbar-height)] items-center gap-4 rounded-panel border border-line bg-panel px-6 shadow-float animate-in fade-in-0 slide-in-from-top-2 duration-300">
         <h1 className="text-section text-ink">{screen?.title ?? 'Venzini'}</h1>
         {screen?.day ? (
           <div className="ml-4 flex items-center gap-3">
@@ -93,7 +93,7 @@ export function Shell() {
   );
 }
 
-/** Content area of non-map screens: the cream canvas beside the floating panels. */
+/** Content area of every screen: the space beside the floating navigation and top bar. */
 export function ContentArea({
   children,
   className,
@@ -104,8 +104,7 @@ export function ContentArea({
   return (
     <main
       className={cn(
-        'absolute inset-0 overflow-auto pb-4 pl-[var(--vz-safe-left)] pr-4 pt-[var(--vz-safe-top)]',
-        'bg-[radial-gradient(1200px_480px_at_60%_-10%,var(--vz-navy-tint),transparent_70%)]',
+        'absolute inset-0 overflow-auto pb-[var(--vz-gap)] pl-[var(--vz-safe-left)] pr-[var(--vz-gap)] pt-[var(--vz-safe-top)]',
         className,
       )}
     >

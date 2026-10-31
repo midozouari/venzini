@@ -1,4 +1,4 @@
-// UI-01 Login (UC-01, FR-01): deep navy canvas with the logo on a floating off-white card.
+// UI-01 Login (UC-01, FR-01): the app's navy canvas with the logo on a floating off-white card.
 import { zodResolver } from '@hookform/resolvers/zod';
 import { formatMessage, ROLE_HOME } from '@venzini/contracts';
 import { Eye, EyeOff } from 'lucide-react';
@@ -65,12 +65,7 @@ export function LoginPage() {
   const notice = serverError ?? (expired ? formatMessage('ERR-AUTH-05') : null);
 
   return (
-    <main className="relative flex min-h-full items-center justify-center overflow-hidden bg-navy-900 px-6 py-16">
-      {/* Slow, very subtle glow on the navy canvas. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_520px_at_50%_-8%,rgb(59_111_216/0.22),transparent_65%),radial-gradient(700px_500px_at_100%_110%,rgb(247_243_236/0.07),transparent_60%)]"
-      />
+    <main className="relative flex min-h-full items-center justify-center overflow-hidden px-6 py-16">
       <div className="relative w-[460px] animate-in fade-in-0 slide-in-from-bottom-3 duration-500 ease-out">
         <div className="rounded-dialog border border-line bg-panel px-10 pb-10 pt-12 shadow-dialog">
           <img src="/logo.png" alt="Venzini" className="mx-auto h-auto w-full max-w-[340px]" />
@@ -118,7 +113,7 @@ export function LoginPage() {
             </Button>
           </form>
         </div>
-        <p className="mt-6 text-center text-caption text-panel/70">
+        <p className="mt-6 text-center text-caption text-on-navy">
           MVP prototype · fake sample data only
         </p>
       </div>

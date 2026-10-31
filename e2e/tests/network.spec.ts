@@ -12,7 +12,7 @@ test.describe('network overview', () => {
     await expect(page.locator('.vz-marker')).toHaveCount(19);
     await expect(page.locator('.vz-warehouse')).toHaveCount(3);
     const kpis = page.getByRole('region', { name: 'Key figures' });
-    await expect(kpis).toContainText('Stations at high risk3of 20 stations');
+    await expect(kpis).toContainText('High-risk stations3of 20 stations');
     await expect(kpis).toContainText('Tankers available5 of 6');
     await expect(kpis).toContainText('No plan yet');
     await expect(page.getByRole('banner')).toContainText('Tue 03 Nov 2026');
@@ -56,8 +56,9 @@ test.describe('network overview', () => {
   test('opens station details from a map marker', async ({ page }) => {
     await stubTiles(page);
     await login(page, 'sara.m');
-    await page.locator('.leaflet-marker-icon[title^="Westside Terminal (ST012)"]').click();
-    await expect(page.getByRole('region', { name: 'Westside Terminal' })).toBeVisible();
+    // An isolated station: close stations can overlap at the overview zoom (list or zoom reach them).
+    await page.locator('.leaflet-marker-icon[title^="Borj Cedria (ST018)"]').click();
+    await expect(page.getByRole('region', { name: 'Borj Cedria' })).toBeVisible();
   });
 
   test('reveals medium, low and no-data stations on demand', async ({ page }) => {
@@ -87,5 +88,39 @@ test.describe('network overview', () => {
     await expect(page.getByRole('region', { name: 'Key figures' })).toContainText(
       'No resources uploaded for this day.',
     );
+  });
+
+  test('keeps the map in its own card: nothing overlaps it (design revision)', async ({ page }) => {
+    await stubTiles(page);
+    await login(page, 'sara.m');
+    await expect(page.locator('.vz-marker')).toHaveCount(19);
+    const box = async (name: string) => (await page.getByRole('region', { name }).boundingBox())!;
+    const map = await box('Network map');
+    const kpis = await box('Key figures');
+    const risk = (await page
+      .getByRole('heading', { name: 'Stations at highest risk' })
+      .boundingBox())!;
+    expect(kpis.y + kpis.height).toBeLessThanOrEqual(map.y); // KPI row above the map
+    expect(map.x + map.width).toBeLessThanOrEqual(risk.x); // risk panel to the right
+    expect(map.height).toBeGreaterThan(300);
+  });
+
+  test('shows the warehouse stock in a dialog, without resizing the map', async ({ page }) => {
+    await stubTiles(page);
+    await login(page, 'sara.m');
+    // While the dialog is open the rest of the page is hidden from assistive technology
+    // (correct modal behavior), so the map card is found by its label attribute.
+    const map = page.locator('[aria-label="Network map"]');
+    // Measure once the layout is final: markers drawn and the Inter font loaded.
+    await expect(page.locator('.vz-marker')).toHaveCount(19);
+    await page.evaluate(() => document.fonts.ready.then(() => undefined));
+    const before = (await map.boundingBox())!;
+    await page.getByRole('button', { name: 'Show stock' }).click();
+    const dialog = page.getByRole('dialog', { name: 'Warehouse stock' });
+    await expect(dialog).toContainText('Rives Depot');
+    await expect(dialog).toContainText('480,000 L');
+    expect((await map.boundingBox())!.height).toBeCloseTo(before.height, 0);
+    await page.keyboard.press('Escape');
+    await expect(dialog).toBeHidden();
   });
 });
