@@ -9,7 +9,7 @@ import { useForecast, useReference, useStations } from '@/api/hooks';
 import { ContentArea } from '@/app/Shell';
 import { Callout } from '@/components/ui/callout';
 import { Panel, PanelLabel } from '@/components/ui/panel';
-import { Select } from '@/components/ui/select';
+import { StationPicker } from '@/components/ui/station-picker';
 import { EmptyState, Skeleton } from '@/components/ui/states';
 import { Segmented } from '@/components/ui/tabs';
 import { ChartLegend, LineBandChart } from '@/features/charts/LineBandChart';
@@ -53,32 +53,18 @@ export function ForecastPage() {
       { replace: true },
     );
 
-  const regions = [...new Set(active.map((s) => s.region))];
-
   return (
     <ContentArea>
       <div className="flex min-h-full flex-col gap-[var(--vz-gap)]">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <ForecastTabs />
           <Panel className="flex items-center gap-3 rounded-full px-2 py-2 shadow-panel">
-            <Select
-              label="Station"
+            <StationPicker
+              stations={active}
+              value={stationId}
               className="w-72"
-              value={stationId ?? ''}
-              onChange={(e) => choose({ station: e.target.value })}
-            >
-              {regions.map((region) => (
-                <optgroup key={region} label={region}>
-                  {active
-                    .filter((s) => s.region === region)
-                    .map((s) => (
-                      <option key={s.station_id} value={s.station_id}>
-                        {s.name} · {s.station_id}
-                      </option>
-                    ))}
-                </optgroup>
-              ))}
-            </Select>
+              onChange={(station) => choose({ station })}
+            />
             {fuelId ? (
               <Segmented
                 label="Fuel type"

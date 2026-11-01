@@ -12,7 +12,9 @@ test('opens the forecast of a station from the network overview (FR-17)', async 
   await page.getByRole('list', { name: 'Stockout alerts' }).getByRole('button').first().click();
   await page.getByRole('link', { name: 'Open forecast' }).click();
   await expectHeading(page, 'Station forecast');
-  await expect(page.getByLabel('Station')).toHaveValue('ST014');
+  await expect(
+    page.getByRole('button', { name: /^Station: Harbor Road \(ST014\)$/ }),
+  ).toBeVisible();
   await expect(
     page.getByRole('img', { name: /7-day forecast, Harbor Road, Petrol 95/ }),
   ).toBeVisible();
@@ -46,7 +48,14 @@ test('changes station and fuel, and shows the 7 days as a table (FR-18, FR-21)',
   page,
 }) => {
   await clientNav(page, '/forecast');
-  await page.getByLabel('Station').selectOption('ST005');
+  // The searchable picker: type part of a name, ID or region, then choose (keyboard only).
+  await page.getByRole('button', { name: /^Station:/ }).click();
+  await page.getByPlaceholder('Search by ID, name or region').fill('borj l');
+  await expect(page.getByRole('option')).toHaveCount(1);
+  await page.keyboard.press('Enter');
+  await expect(
+    page.getByRole('button', { name: /^Station: Borj Louzir \(ST005\)$/ }),
+  ).toBeFocused();
   await page.getByRole('radio', { name: 'Diesel' }).click();
   await expect(page).toHaveURL(/station=ST005&fuel=DIESEL/);
   await page.getByRole('button', { name: /Show as table/ }).click();

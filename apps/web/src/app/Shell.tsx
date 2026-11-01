@@ -1,7 +1,7 @@
 // Layout shell (SDD 5.12.1): the fixed navy canvas (body), with a floating navigation panel and a
 // floating top bar above it.
 import { ROLE_HOME } from '@venzini/contracts';
-import { LogOut } from 'lucide-react';
+import { LogOut, Wrench } from 'lucide-react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router';
 import { useLogout, useMe, usePlanOfDay } from '@/api/hooks';
 import { Button } from '@/components/ui/button';
@@ -10,6 +10,7 @@ import { PlanStatusChip } from '@/components/ui/status-chip';
 import { ROLE_LABEL } from '@/lib/format';
 import { cn } from '@/lib/utils';
 import { useDayStore } from '@/stores/day';
+import { useDevStore } from '@/stores/dev';
 import { MENU, screenFor } from './routes';
 
 export function Shell() {
@@ -21,6 +22,8 @@ export function Shell() {
   const screen = screenFor(location.pathname);
   const isManager = me?.user.role === 'manager';
   const plan = usePlanOfDay(day, isManager && !!screen?.day);
+  const devNote = useDevStore((s) => s.note);
+  const openDev = useDevStore((s) => s.setOpen);
   if (!me) return null;
 
   return (
@@ -84,7 +87,17 @@ export function Shell() {
             {isManager ? <PlanStatusChip status={plan.data?.plan.status ?? null} /> : null}
           </div>
         ) : null}
-        <div className="ml-auto text-right">
+        {devNote ? (
+          <button
+            type="button"
+            onClick={() => openDev(true)}
+            className="ml-auto inline-flex h-7 items-center gap-1.5 rounded-full border border-dashed border-line-strong px-3 text-caption font-semibold text-ink transition-[background-color,transform] duration-150 ease-vz hover:bg-navy-tint active:scale-[0.98]"
+          >
+            <Wrench aria-hidden className="size-3.5" />
+            Dev: {devNote}
+          </button>
+        ) : null}
+        <div className={cn('text-right', !devNote && 'ml-auto')}>
           <p className="text-body font-semibold leading-tight text-ink">{me.user.full_name}</p>
           <p className="text-caption text-muted">{ROLE_LABEL[me.user.role]}</p>
         </div>

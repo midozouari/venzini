@@ -317,5 +317,48 @@ Entry 15 – Build Step 2d
   ```
 
 * What Claude Code gave back (1–2 lines): The read-only decision history (one search box, action filter, date range, newest-first list with paging, entry side panel comparing original and final versions with edits, risks, cost and note) and administration (Users and Stations tabs with create, edit, deactivate / reactivate, tanks per fuel type and delivery window), with unit, e2e and accessibility tests. Fixes found on the way: whole-plan log entries now have the same snapshot shape as the sample history, empty fields give "… is required." (ERR-VAL-01), and the low-risk badge tint was lightened because its text was 4.41:1, below the 4.5:1 minimum.
-* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* What I accepted / rejected / changed: Accepted Step 2d ("Step 2d accepted.", Entry 16) and asked for a neutral grey "no data" map marker for ST017 and new stations without data.
 * How I verified it (tests, manual trace, diff): Lint, format, type-check, 103 unit tests, build, and 224 browser tests in Chrome, Firefox and Edge (1 skipped: the Chromium-only worker-restart test in Firefox); screenshots of every new screen and dialog at 1366×768.
+
+
+Entry 16 – Step 3 plan request
+
+* Prompt (exact):
+
+  ```text
+  Step 2d accepted. Yes to the neutral grey "no data" map marker (for ST017 and new stations without data).
+
+  Ready for the Step 3 plan, the final MVP step. Include:
+  1. The hidden developer toolbar (MVP builds only): scenario switch, forced errors, and quick buttons for the 5 demo flows plus a reset.
+  2. The full Playwright MVP suite for AC-21 (every screen and flow, per role).
+  3. Route-based code splitting: the build is one ~281 KB gzipped file; the SDD budget (NFR-02) is ≤ 250 KB gzipped per page, lazy-loaded per route.
+  4. Update the GitHub Actions versions that rely on Node.js 20.
+  5. Replace the native station dropdown on the forecast screen with a styled searchable picker matching the design.
+  6. Final README (clear for my professor: what Venzini is, how to install and run, demo accounts, demo script, tests, folder structure, where the docs are).
+  7. docs/backlog.md: the product backlog from the user stories and requirements (ID, story, priority Must/Should, FR/UC links, status: done in MVP / v1).
+  8. docs/README.md: an index of all project documents (Proposal, Requirement Elicitation, SRS, SDD, backlog, AI usage log, prompt log, and where the UML diagrams are inside the SRS/SDD).
+
+  Same design rules as before. Show me the plan before building.
+  ```
+
+* What Claude Code gave back (1–2 lines): The Step 3 plan: the grey "no data" marker, the hidden developer toolbar, the full AC-21 Playwright suite, route-based code splitting, updated GitHub Actions, a searchable station picker, the final README, docs/backlog.md and docs/README.md. It asked a few questions before building.
+* What I accepted / rejected / changed: Approved with answers: demo buttons only set up the scene (I do the action on camera); the scenario list is right, SC-02 and SC-04 to SC-08 stay for v1; the MVP-only mock chunk does not count toward the 250 KB page budget but is reported separately (also in the README); GitHub Actions versions must be verified with gh and set to the latest existing release (Entry 17).
+* How I verified it (tests, manual trace, diff): Plan only; checked against SDD 7.1 to 7.3, 8.4, Appendix B and NFR-02, the SRS user stories and requirements, and the current build output and CI workflow.
+
+
+Entry 17 – Build Step 3
+
+* Prompt (exact):
+
+  ```text
+  OK, build Step 3. Answers:
+  1. (a) Set up only: the button prepares the scene, I do the action on camera.
+  2. Yes, that scenario list is right; SC-02 and SC-04 to SC-08 stay for v1.
+  3. Agreed: the MVP-only mock chunk does not count toward the 250 KB per page, but report it separately (also mention this in the README).
+  Before switching GitHub Actions versions, verify that each version actually exists (e.g. with gh), and use the latest existing release.
+  ```
+
+* What Claude Code gave back (1–2 lines): The final MVP step: grey "no data" marker, hidden developer toolbar (4 scenarios, 3 forced errors, 5 demo set-up buttons, reset; left out of v1 builds), route-based code splitting with a `pnpm size` check in CI (largest page 237 kB, mock API reported apart), GitHub Actions on the latest releases verified with gh, a searchable station picker, AC-21 journeys and checklist, the final README, docs/backlog.md and docs/README.md.
+  A Firefox run found a real bug (two quick history filter changes lost the first one), which was fixed.
+* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* How I verified it (tests, manual trace, diff): Lint, format, type-check, 108 unit tests, build, `pnpm size`, a v1 build checked to contain no toolbar or MSW code, and the full browser suite in Chrome, Firefox and Edge (260 passed, 1 skipped: the Chromium-only worker-restart test in Firefox); screenshots of the new marker, picker and toolbar at 1366×768.

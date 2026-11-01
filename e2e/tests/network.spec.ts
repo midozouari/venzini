@@ -3,13 +3,14 @@ import { expect, test } from '@playwright/test';
 import { expectHeading, login, stubTiles } from './helpers';
 
 test.describe('network overview', () => {
-  test('shows a marker per station with data, the warehouses and the key figures (FR-14)', async ({
+  test('shows a marker per station (a grey one without data), the warehouses and the key figures (FR-14)', async ({
     page,
   }) => {
     await stubTiles(page);
     await login(page, 'sara.m');
     await expectHeading(page, 'Network overview');
-    await expect(page.locator('.vz-marker')).toHaveCount(19);
+    await expect(page.locator('.vz-marker')).toHaveCount(20);
+    await expect(page.locator('.vz-marker.vz-marker--nodata')).toHaveCount(1);
     await expect(page.locator('.vz-warehouse')).toHaveCount(3);
     const kpis = page.getByRole('region', { name: 'Key figures' });
     await expect(kpis).toContainText('High-risk stations3of 20 stations');
@@ -69,6 +70,19 @@ test.describe('network overview', () => {
     await expect(page.getByText('Data unavailable for ST017: no tank level.')).toBeVisible();
   });
 
+  test('shows a station without data as a grey "no data" marker that opens its reason', async ({
+    page,
+  }) => {
+    await stubTiles(page);
+    await login(page, 'sara.m');
+    const marker = page.locator('.leaflet-marker-icon[title$="(ST017), no data"]');
+    await expect(marker.locator('.vz-marker--nodata')).toBeVisible();
+    await marker.click();
+    await expect(
+      page.getByRole('region').getByText('Data unavailable for ST017: no tank level.'),
+    ).toBeVisible();
+  });
+
   test('keeps the stations on a plain background when the map is unavailable (ERR-SYS-03)', async ({
     page,
   }) => {
@@ -77,7 +91,7 @@ test.describe('network overview', () => {
     await expect(
       page.getByText('Map background unavailable; routes are still shown.'),
     ).toBeVisible();
-    await expect(page.locator('.vz-marker')).toHaveCount(19);
+    await expect(page.locator('.vz-marker')).toHaveCount(20);
   });
 
   test('changes the delivery day from the top bar', async ({ page }) => {
@@ -95,7 +109,7 @@ test.describe('network overview', () => {
   }) => {
     await stubTiles(page);
     await login(page, 'sara.m');
-    await expect(page.locator('.vz-marker')).toHaveCount(19);
+    await expect(page.locator('.vz-marker')).toHaveCount(20);
     const box = async (name: string) => (await page.getByRole('region', { name }).boundingBox())!;
     const map = await box('Network map');
     const kpis = await box('Key figures');
@@ -120,7 +134,7 @@ test.describe('network overview', () => {
     // (correct modal behavior), so the map card is found by its label attribute.
     const map = page.locator('[aria-label="Network map"]');
     // Measure once the layout is final: markers drawn and the Inter font loaded.
-    await expect(page.locator('.vz-marker')).toHaveCount(19);
+    await expect(page.locator('.vz-marker')).toHaveCount(20);
     await page.evaluate(() => document.fonts.ready.then(() => undefined));
     const before = (await map.boundingBox())!;
     await page.getByRole('button', { name: 'Show stock' }).click();
@@ -142,7 +156,7 @@ test.describe('network overview', () => {
     test.skip(browserName !== 'chromium', 'stopping a service worker needs Chromium DevTools');
     await stubTiles(page);
     await login(page, 'sara.m');
-    await expect(page.locator('.vz-marker')).toHaveCount(19);
+    await expect(page.locator('.vz-marker')).toHaveCount(20);
     const cdp = await page.context().newCDPSession(page);
     await cdp.send('ServiceWorker.enable');
     await cdp.send('ServiceWorker.stopAllWorkers');

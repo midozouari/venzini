@@ -84,9 +84,12 @@ type State = ReturnType<typeof initialState>;
 class Store {
   state: State = initialState();
 
-  reset(): void {
+  /** Back to the fixtures, as after a reload; the developer toolbar may keep the session. */
+  reset({ keepSession = false }: { keepSession?: boolean } = {}): void {
+    const session = this.state.sessionUserId;
     resetClock();
     this.state = initialState();
+    if (keepSession) this.state.sessionUserId = session;
   }
 
   currentUser(): UserRecord | null {

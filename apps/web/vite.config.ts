@@ -9,6 +9,11 @@ export default defineConfig({
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
   },
   server: { port: 5173, strictPort: true },
-  // The MVP mock API chunk carries all fixtures (~230 kB gzipped); it disappears in v1 (SDD 7.4).
-  build: { chunkSizeWarningLimit: 1000 },
+  build: {
+    // The manifest lets `pnpm size` add up what each page loads (NFR-02).
+    manifest: true,
+    // The MVP mock API chunk carries all fixtures; it is not part of v1 (SDD 7.4), so it is
+    // reported apart from the page budget.
+    chunkSizeWarningLimit: 1000,
+  },
 });

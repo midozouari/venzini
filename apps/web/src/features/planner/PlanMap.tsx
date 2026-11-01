@@ -5,6 +5,7 @@ import type { Network, PlanView, RiskLevel, Route } from '@venzini/contracts';
 import L from 'leaflet';
 import { Fragment, useMemo } from 'react';
 import { MapContainer, Marker, Polyline, Tooltip } from 'react-leaflet';
+import { routeClass } from './route-color';
 import { FitToCard, ICON_SVG, Tiles, warehouseIcon } from '@/features/network/NetworkMap';
 import type { Highlight } from './edit';
 
@@ -15,7 +16,6 @@ const WORD: Record<RiskLevel, string> = {
 };
 
 /** The CSS class of a route color token ("route-3" → "vz-r3"). */
-export const routeClass = (route: Pick<Route, 'color'>) => `vz-r${route.color.slice(6)}`;
 
 const ARROW =
   '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 2.5 11 7 3 11.5Z" fill="currentColor" stroke="#FFFDF9" stroke-width="1.2" stroke-linejoin="round"/></svg>';

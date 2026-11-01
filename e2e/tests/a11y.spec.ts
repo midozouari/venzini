@@ -25,7 +25,7 @@ test('login page', async ({ page }) => {
 test('network overview', async ({ page }) => {
   await stubTiles(page);
   await login(page, 'sara.m');
-  await expect(page.locator('.vz-marker')).toHaveCount(19);
+  await expect(page.locator('.vz-marker')).toHaveCount(20);
   await page.waitForTimeout(600); // let entry animations finish
   expect(await seriousViolations(page)).toEqual([]);
 });
@@ -92,7 +92,7 @@ test('administration: users, stations and their dialogs', async ({ page }) => {
   expect(await seriousViolations(page)).toEqual([]);
 });
 
-test('station forecast (uncertain) and totals', async ({ page }) => {
+test('station forecast (uncertain), the station picker and totals', async ({ page }) => {
   await stubTiles(page);
   await login(page, 'sara.m');
   await expect(page).toHaveURL(/\/network$/);
@@ -101,6 +101,11 @@ test('station forecast (uncertain) and totals', async ({ page }) => {
     page.getByText('Confidence is 66%: weather data is missing for 2 of 7 days.'),
   ).toBeVisible();
   expect(await seriousViolations(page)).toEqual([]);
+  // The searchable station picker, open.
+  await page.getByRole('button', { name: /^Station:/ }).click();
+  await expect(page.getByPlaceholder('Search by ID, name or region')).toBeFocused();
+  expect(await seriousViolations(page)).toEqual([]);
+  await page.keyboard.press('Escape');
   await page.getByRole('link', { name: 'Totals' }).click();
   await page.getByRole('radio', { name: 'By warehouse' }).click();
   await expect(page.getByRole('region', { name: /Rives Depot/ })).toBeVisible();
@@ -178,5 +183,14 @@ test('approvals with the reject and approve-all dialogs', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Approve all' }).click();
   await expect(page.getByRole('dialog', { name: 'Approve all 17 pending actions?' })).toBeVisible();
+  expect(await seriousViolations(page)).toEqual([]);
+});
+
+test('the developer toolbar (MVP only)', async ({ page }) => {
+  await stubTiles(page);
+  await login(page, 'sara.m');
+  await expect(page).toHaveURL(/\/network$/);
+  await page.keyboard.press('Control+Alt+KeyD');
+  await expect(page.getByRole('dialog', { name: 'Developer tools' })).toBeVisible();
   expect(await seriousViolations(page)).toEqual([]);
 });

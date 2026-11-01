@@ -5,7 +5,7 @@ import { useReference } from '@/api/hooks';
 import { RiskBadge } from '@/components/ui/risk-badge';
 import { formatLitres } from '@/lib/format';
 import { cn } from '@/lib/utils';
-import { routeClass } from './PlanMap';
+import { routeClass } from './route-color';
 
 /** The route's line color, as a short bar; dashed for a second trip (FR-53). */
 export function RouteSwatch({ route, className }: { route: Route; className?: string }) {

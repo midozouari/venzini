@@ -42,8 +42,16 @@ export function HistoryPage() {
   const [shownEntry, setShownEntry] = useState(entryId);
   if (entryId && entryId !== shownEntry) setShownEntry(entryId);
 
-  const update = (change: Partial<HistoryFilters>) =>
-    setParams(writeFilters({ ...filters, page: 1, ...change }), { replace: true });
+  // The newest filters, also before the address catches up, so quick changes in a row (From,
+  // then To) all count.
+  const latest = useRef(filters);
+  useEffect(() => {
+    latest.current = readFilters(new URLSearchParams(search));
+  }, [search]);
+  const update = (change: Partial<HistoryFilters>) => {
+    latest.current = { ...latest.current, page: 1, ...change };
+    setParams(writeFilters(latest.current), { replace: true });
+  };
 
   const data = decisions.data;
   const items = data?.items ?? [];

@@ -46,3 +46,12 @@ export function EmptyState({
     </div>
   );
 }
+
+/** While a page's code loads (route-level code splitting): a quiet panel-shaped placeholder. */
+export function PageLoading() {
+  return (
+    <div className="absolute inset-0 pb-[var(--vz-gap)] pl-[var(--vz-safe-left)] pr-[var(--vz-gap)] pt-[var(--vz-safe-top)]">
+      <Skeleton className="h-full rounded-panel" />
+    </div>
+  );
+}

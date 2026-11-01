@@ -5,8 +5,6 @@ import L from 'leaflet';
 import { useEffect, useMemo, useRef } from 'react';
 import { MapContainer, Marker, TileLayer, Tooltip, useMap } from 'react-leaflet';
 
-type Station = Network['stations'][number];
-
 export const ICON_SVG: Record<RiskLevel, string> = {
   high: '<path d="M12 4 22 20H2Z" fill="currentColor"/><path d="M12 10v4M12 17h.01" stroke="var(--vz-risk-high)" stroke-width="2.4" stroke-linecap="round"/>',
   medium:
@@ -19,12 +17,16 @@ const WORD: Record<RiskLevel, string> = {
   low: 'low risk',
 };
 
-function stationIcon(level: RiskLevel, selected: boolean) {
+/** A station without data: a neutral grey marker with a question mark, never a risk color. */
+export const NO_DATA_SVG =
+  '<path d="M9.2 9a3 3 0 0 1 5.8 1c0 2-3 2.6-3 4.5M12 18h.01" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>';
+
+function stationIcon(level: RiskLevel | 'nodata', selected: boolean) {
   return L.divIcon({
     className: '',
     iconSize: [28, 28],
     iconAnchor: [14, 14],
-    html: `<span class="vz-marker vz-marker--${level}${selected ? ' vz-marker--selected' : ''}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON_SVG[level]}</svg></span>`,
+    html: `<span class="vz-marker vz-marker--${level}${selected ? ' vz-marker--selected' : ''}"><svg viewBox="0 0 24 24" aria-hidden="true">${level === 'nodata' ? NO_DATA_SVG : ICON_SVG[level]}</svg></span>`,
   });
 }
 
@@ -111,11 +113,13 @@ export function NetworkMap({
   onTilesFailed: () => void;
   onReady?: (map: L.Map) => void;
 }) {
-  const withData = useMemo(
+  // Stations without data get the neutral "no data" marker (FR-14, ERR-DATA-01).
+  const markers = useMemo(
     () =>
-      network.stations.filter(
-        (s): s is Station & { risk_level: RiskLevel } => s.data_available && s.risk_level !== null,
-      ),
+      network.stations.map((s) => ({
+        station: s,
+        level: s.data_available && s.risk_level !== null ? s.risk_level : ('nodata' as const),
+      })),
     [network.stations],
   );
   const points = useMemo<[number, number][]>(
@@ -152,14 +156,14 @@ export function NetworkMap({
           </Tooltip>
         </Marker>
       ))}
-      {withData.map((s) => (
+      {markers.map(({ station: s, level }) => (
         <Marker
           key={s.station_id}
           position={[s.latitude, s.longitude]}
-          icon={stationIcon(s.risk_level, s.station_id === selected)}
-          title={`${s.name} (${s.station_id}), ${WORD[s.risk_level]}`}
+          icon={stationIcon(level, s.station_id === selected)}
+          title={`${s.name} (${s.station_id}), ${level === 'nodata' ? 'no data' : WORD[level]}`}
           keyboard={false}
-          zIndexOffset={s.station_id === selected ? 1000 : s.risk_level === 'high' ? 500 : 0}
+          zIndexOffset={s.station_id === selected ? 1000 : level === 'high' ? 500 : 0}
           eventHandlers={{ click: () => onSelect(s.station_id) }}
         >
           {/* Default label: station name and ID only (FR-49). */}

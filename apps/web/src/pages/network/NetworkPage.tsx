@@ -3,8 +3,16 @@
 // the map except its own legend and zoom controls. One main action: plan the day's deliveries.
 import { formatMessage } from '@venzini/contracts';
 import type { Map as LeafletMap } from 'leaflet';
-import { Check, CircleAlert, MapPinOff, Minus, Plus, TriangleAlert } from 'lucide-react';
-import { useCallback, useState } from 'react';
+import {
+  Check,
+  CircleAlert,
+  CircleQuestionMark,
+  MapPinOff,
+  Minus,
+  Plus,
+  TriangleAlert,
+} from 'lucide-react';
+import { lazy, Suspense, useCallback, useState } from 'react';
 import { Link } from 'react-router';
 import { useNetwork, usePlanOfDay, useReference } from '@/api/hooks';
 import { Button } from '@/components/ui/button';
@@ -20,11 +28,15 @@ import {
 import { Panel, PanelLabel } from '@/components/ui/panel';
 import { PlanStatusChip } from '@/components/ui/status-chip';
 import { EmptyState, Skeleton } from '@/components/ui/states';
-import { NetworkMap } from '@/features/network/NetworkMap';
 import { RiskList } from '@/features/network/RiskPanel';
 import { StationDetails } from '@/features/network/StationDetails';
 import { formatDay, formatLitres } from '@/lib/format';
 import { useDayStore } from '@/stores/day';
+
+// The map library loads beside the page, not in it (NFR-02): the card shows its cream base meanwhile.
+const NetworkMap = lazy(() =>
+  import('@/features/network/NetworkMap').then((m) => ({ default: m.NetworkMap })),
+);
 
 export function NetworkPage() {
   const day = useDayStore((s) => s.day);
@@ -52,13 +64,15 @@ export function NetworkPage() {
           className="relative isolate min-h-0 flex-1 overflow-hidden animate-in fade-in-0 duration-300"
         >
           {data ? (
-            <NetworkMap
-              network={data}
-              selected={selected}
-              onSelect={setSelected}
-              onTilesFailed={onTilesFailed}
-              onReady={setMap}
-            />
+            <Suspense fallback={<div className="h-full w-full bg-cream" />}>
+              <NetworkMap
+                network={data}
+                selected={selected}
+                onSelect={setSelected}
+                onTilesFailed={onTilesFailed}
+                onReady={setMap}
+              />
+            </Suspense>
           ) : (
             <div className="h-full w-full bg-cream" />
           )}
@@ -85,6 +99,12 @@ export function NetworkPage() {
                     <Check aria-hidden className="size-3" />
                   </span>
                   Low
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="vz-legend-dot vz-marker--nodata">
+                    <CircleQuestionMark aria-hidden className="size-3" />
+                  </span>
+                  No data
                 </span>
                 <span className="flex items-center gap-2">
                   <span className="vz-legend-square" />

@@ -1,19 +1,10 @@
 // Shared parts of UI-08 Administration: the tabs, the status chip, the confirmation of a
 // (de)activation and the mapping of API errors to form fields.
 import type { User } from '@venzini/contracts';
-import { CircleCheck, TriangleAlert, type LucideIcon } from 'lucide-react';
-import type { ReactNode } from 'react';
+import { CircleCheck, TriangleAlert } from 'lucide-react';
 import { ApiError } from '@/api/client';
 import { useMe } from '@/api/hooks';
-import { Button } from '@/components/ui/button';
 import { Callout } from '@/components/ui/callout';
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from '@/components/ui/dialog';
 import { RouteTabs, type TabItem } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 
@@ -73,44 +64,5 @@ export function FormError({ message }: { message?: string }) {
   ) : null;
 }
 
-/** Deactivation asks first: it ends sessions or hides a station from the map (SDD 5.12.6). */
-export function ConfirmDialog({
-  title,
-  children,
-  confirm,
-  icon: Icon,
-  pending,
-  error,
-  onConfirm,
-  onClose,
-}: {
-  title: string;
-  children: ReactNode;
-  confirm: string;
-  icon: LucideIcon;
-  pending: boolean;
-  error?: string;
-  onConfirm: () => void;
-  onClose: () => void;
-}) {
-  return (
-    <Dialog open onOpenChange={(o) => !o && !pending && onClose()}>
-      <DialogContent>
-        <DialogTitle>{title}</DialogTitle>
-        <DialogDescription asChild>
-          <div>{children}</div>
-        </DialogDescription>
-        <FormError message={error} />
-        <DialogActions>
-          <Button variant="secondary" onClick={onClose} disabled={pending}>
-            Back
-          </Button>
-          <Button onClick={onConfirm} disabled={pending}>
-            <Icon aria-hidden />
-            {pending ? 'Saving…' : confirm}
-          </Button>
-        </DialogActions>
-      </DialogContent>
-    </Dialog>
-  );
-}
+// Deactivation asks first: it ends sessions or hides a station from the map (SDD 5.12.6).
+export { ConfirmDialog } from '@/components/ui/confirm-dialog';

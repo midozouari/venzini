@@ -18,7 +18,7 @@ import {
   TriangleAlert,
   X,
 } from 'lucide-react';
-import { useCallback, useState } from 'react';
+import { lazy, Suspense, useCallback, useState } from 'react';
 import { useSearchParams } from 'react-router';
 import { useEditPlan, useGeneratePlan, useNetwork, usePlanOfDay } from '@/api/hooks';
 import { ContentArea } from '@/app/Shell';
@@ -30,11 +30,15 @@ import { highlightOf, overloads, previewEdit } from '@/features/planner/edit';
 import { MoveDialog, QuantityDialog } from '@/features/planner/EditDialogs';
 import { ImpactBar, ResetButton } from '@/features/planner/ImpactBar';
 import { RouteSwatch, UnservedList } from '@/features/planner/parts';
-import { PlanMap } from '@/features/planner/PlanMap';
 import { RouteList } from '@/features/planner/RouteList';
 import { formatDay } from '@/lib/format';
 import { cn } from '@/lib/utils';
 import { useDayStore } from '@/stores/day';
+
+// The map library loads beside the page, not in it (NFR-02): the card shows its cream base meanwhile.
+const PlanMap = lazy(() =>
+  import('@/features/planner/PlanMap').then((m) => ({ default: m.PlanMap })),
+);
 
 export function PlannerPage() {
   const day = useDayStore((s) => s.day);
@@ -295,16 +299,18 @@ function Planner({
           aria-label="Route map"
           className="relative isolate min-h-0 flex-1 overflow-hidden animate-in fade-in-0 duration-300"
         >
-          <PlanMap
-            view={view}
-            network={network}
-            tanker={tanker}
-            highlight={highlight}
-            selected={selected}
-            onSelect={select}
-            onTilesFailed={onTilesFailed}
-            onReady={setMap}
-          />
+          <Suspense fallback={<div className="h-full w-full bg-cream" />}>
+            <PlanMap
+              view={view}
+              network={network}
+              tanker={tanker}
+              highlight={highlight}
+              selected={selected}
+              onSelect={select}
+              onTilesFailed={onTilesFailed}
+              onReady={setMap}
+            />
+          </Suspense>
           <div
             role="radiogroup"
             aria-label="Show routes"

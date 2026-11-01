@@ -213,6 +213,13 @@ h3 {
 .vz-marker--low {
   background: var(--vz-risk-low);
 }
+/* No data (ERR-DATA-01): neutral grey with a dashed outline, never a risk color. */
+.vz-marker--nodata {
+  background: var(--vz-line);
+  border-style: dashed;
+  border-color: var(--vz-muted);
+  color: var(--vz-ink);
+}
 .vz-warehouse,
 .vz-legend-square {
   display: flex;
