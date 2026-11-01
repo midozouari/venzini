@@ -1,5 +1,7 @@
 // TanStack Query hooks: server data lives only in the query cache (SDD 5.2.3).
 import {
+  DecisionEntry,
+  DecisionList,
   Forecast,
   ForecastTotals,
   Limits,
@@ -11,16 +13,23 @@ import {
   Reference,
   Resources,
   SaveResourcesResponse,
+  Station,
   StationList,
   StopDecisionResponse,
   Trip,
   TripList,
+  User,
+  UserList,
+  type CreateStationRequest,
+  type CreateUserRequest,
   type EditRequest,
   type LoginRequest,
   type PlanDecisionRequest,
   type SaveResourcesRequest,
   type StopDecisionRequest,
+  type UpdateStationRequest,
   type UpdateTripRequest,
+  type UpdateUserRequest,
 } from '@venzini/contracts';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { ApiError, markSession, request } from './client';
@@ -37,6 +46,9 @@ export const keys = {
   trips: (day: string) => ['trips', day] as const,
   limits: (planId: string, stopId: string, fuel: string) =>
     ['limits', planId, stopId, fuel] as const,
+  decisions: (query: string) => ['decisions', query] as const,
+  decision: (id: string) => ['decisions', 'entry', id] as const,
+  users: ['users'] as const,
 };
 
 /** Treats 404 ERR-API-01 as "nothing yet" for reads that may legitimately be empty. */
@@ -280,5 +292,75 @@ export function usePlanDecision(day: string) {
       request('POST', `/plans/${planId}/decision`, { body, schema: PlanDecisionResponse }),
     onSuccess: () => afterDecision(qc, day),
     onError: (e) => afterPlanError(qc, day, e),
+  });
+}
+
+/** API-17: one page of the decision history, newest first (FR-73). `query` is a URL query string. */
+export function useDecisions(query: string, enabled = true) {
+  return useQuery({
+    queryKey: keys.decisions(query),
+    enabled,
+    queryFn: () => request('GET', `/decisions?${query}`, { schema: DecisionList }),
+    placeholderData: (previous) => previous,
+  });
+}
+
+/** API-18: one full decision log entry; null when the ID is unknown. */
+export function useDecision(id: string | undefined) {
+  return useQuery({
+    queryKey: keys.decision(id ?? ''),
+    enabled: !!id,
+    queryFn: () => orNull(() => request('GET', `/decisions/${id}`, { schema: DecisionEntry })),
+  });
+}
+
+/** API-04: every user account (admin). */
+export function useUsers() {
+  return useQuery({
+    queryKey: keys.users,
+    queryFn: () => request('GET', '/users?page_size=200', { schema: UserList }),
+  });
+}
+
+export function useCreateUser() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (body: CreateUserRequest) => request('POST', '/users', { body, schema: User }),
+    onSuccess: () => qc.invalidateQueries({ queryKey: keys.users }),
+  });
+}
+
+export function useUpdateUser() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, body }: { id: string; body: UpdateUserRequest }) =>
+      request('PATCH', `/users/${id}`, { body, schema: User }),
+    onSuccess: () => qc.invalidateQueries({ queryKey: keys.users }),
+  });
+}
+
+/** Station records feed the map and the station pickers, so every change reloads both. */
+async function afterStationChange(qc: ReturnType<typeof useQueryClient>) {
+  await Promise.all([
+    qc.invalidateQueries({ queryKey: keys.stations }),
+    qc.invalidateQueries({ queryKey: ['network'] }),
+  ]);
+}
+
+export function useCreateStation() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (body: CreateStationRequest) =>
+      request('POST', '/stations', { body, schema: Station }),
+    onSuccess: () => afterStationChange(qc),
+  });
+}
+
+export function useUpdateStation() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, body }: { id: string; body: UpdateStationRequest }) =>
+      request('PATCH', `/stations/${id}`, { body, schema: Station }),
+    onSuccess: () => afterStationChange(qc),
   });
 }

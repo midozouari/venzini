@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  formatCostDiff,
   formatDay,
   formatDayLong,
   formatDayShort,
@@ -47,5 +48,12 @@ describe('formats (NFR-31)', () => {
     expect(formatGap(45, 9.4)).toBe('+45 min (+9.4%)'); // FR-84 example
     expect(formatGap(-10, -2.6)).toBe('−10 min (−2.6%)');
     expect(formatDayShort('2026-11-03')).toBe('03 Nov');
+  });
+
+  it('formats the cost difference of a decision', () => {
+    expect(formatCostDiff(8.6, 2.4)).toBe('+$8.60 (+2.4%)');
+    expect(formatCostDiff(-3, -1)).toBe('−$3.00 (−1%)');
+    expect(formatCostDiff(0, 0)).toBe('$0.00');
+    expect(formatCostDiff(null, null)).toBe('–');
   });
 });

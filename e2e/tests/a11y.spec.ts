@@ -39,7 +39,7 @@ test('stock dialog over the blurred app', async ({ page }) => {
   expect(await seriousViolations(page)).toEqual([]);
 });
 
-test('a screen on the navy canvas (placeholder and no-access card)', async ({ page }) => {
+test('a card on the navy canvas (no-access card)', async ({ page }) => {
   await stubTiles(page);
   await login(page, 'karim.b');
   await expect(page).toHaveURL(/\/resources$/); // wait for the home redirect first
@@ -47,8 +47,48 @@ test('a screen on the navy canvas (placeholder and no-access card)', async ({ pa
   await expect(page.getByText("You don't have access to this page.")).toBeVisible();
   await page.waitForTimeout(400);
   expect(await seriousViolations(page)).toEqual([]);
+});
+
+test('decision history, its filters and the entry side panel', async ({ page }) => {
+  await stubTiles(page);
+  await login(page, 'karim.b');
   await page.getByRole('link', { name: 'Decision history' }).click();
-  await expect(page.getByText('This screen arrives in Step 2d of the MVP.')).toBeVisible();
+  await expect(page.getByRole('region', { name: 'Decisions' }).locator('tbody tr')).toHaveCount(20);
+  expect(await seriousViolations(page)).toEqual([]);
+  await page.getByLabel('From').fill('2026-10-30');
+  await page.getByLabel('To').fill('2026-10-20');
+  await expect(page.getByRole('alert')).toBeVisible();
+  expect(await seriousViolations(page)).toEqual([]);
+  await page.getByLabel('To').fill('');
+  await page.getByLabel('From').fill('');
+  await page.getByRole('searchbox').fill('ST015');
+  await expect(page.getByRole('link', { name: /Open the decision of/ })).toHaveCount(1);
+  await page.getByRole('link', { name: /Open the decision of/ }).click();
+  await expect(page.getByRole('dialog')).toContainText('Original recommendation');
+  await page.getByText('Input versions').click();
+  expect(await seriousViolations(page)).toEqual([]);
+});
+
+test('administration: users, stations and their dialogs', async ({ page }) => {
+  await stubTiles(page);
+  await login(page, 'nadia.a');
+  await expect(page.getByRole('region', { name: 'Users' })).toBeVisible();
+  expect(await seriousViolations(page)).toEqual([]);
+  await page.getByRole('button', { name: 'New user' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Create user' }).click();
+  await expect(page.getByRole('dialog').getByText('Full name is required.')).toBeVisible();
+  expect(await seriousViolations(page)).toEqual([]);
+  await page.keyboard.press('Escape');
+  await page.getByRole('button', { name: 'Deactivate Karim B.' }).click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  expect(await seriousViolations(page)).toEqual([]);
+  await page.keyboard.press('Escape');
+
+  await page.getByRole('link', { name: 'Stations' }).first().click();
+  await expect(page.getByRole('region', { name: 'Stations' })).toBeVisible();
+  expect(await seriousViolations(page)).toEqual([]);
+  await page.getByRole('button', { name: 'Edit ST012 Westside Terminal' }).click();
+  await expect(page.getByRole('dialog')).toBeVisible();
   expect(await seriousViolations(page)).toEqual([]);
 });
 

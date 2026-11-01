@@ -59,7 +59,11 @@ export const UserList = paginated(User);
 export type UserList = z.infer<typeof UserList>;
 
 const FullName = z.string().trim().min(1).max(80);
-const Login = z.string().trim().min(3).max(40);
+const Login = z
+  .string()
+  .trim()
+  .min(3, 'must be 3 to 40 characters')
+  .max(40, 'must be 3 to 40 characters');
 const Password = z.string().min(10, 'must be at least 10 characters').max(200);
 
 export const CreateUserRequest = z.strictObject({

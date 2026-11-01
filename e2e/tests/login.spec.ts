@@ -34,7 +34,7 @@ const ROLES = [
     name: 'Nadia A.',
     role: 'System admin',
     home: '/admin/users',
-    title: 'Users',
+    title: 'Administration',
     menu: ['Users', 'Stations', 'Decision history'],
   },
 ];
@@ -76,7 +76,7 @@ test('a protected page sends to login, then back to that page (FR-01)', async ({
   await page.getByLabel('Password', { exact: true }).fill('venzini-demo');
   await page.getByRole('button', { name: 'Log in' }).click();
   await expect(page).toHaveURL(/\/admin\/stations$/);
-  await expectHeading(page, 'Stations');
+  await expectHeading(page, 'Administration');
 });
 
 test('a page outside the role shows "no access" (ERR-AUTH-04)', async ({ page }) => {
@@ -94,14 +94,4 @@ test('logout ends the session', async ({ page }) => {
   await expect(page).toHaveURL(/\/login$/);
   await clientNav(page, '/admin/users');
   await expect(page).toHaveURL(/\/login\?next=/);
-});
-
-test('screens of later steps open a calm placeholder', async ({ page }) => {
-  await login(page, 'sara.m');
-  await page
-    .getByRole('navigation', { name: 'Main' })
-    .getByRole('link', { name: 'Decision history' })
-    .click();
-  await expectHeading(page, 'Decision history');
-  await expect(page.getByText('This screen arrives in Step 2d of the MVP.')).toBeVisible();
 });

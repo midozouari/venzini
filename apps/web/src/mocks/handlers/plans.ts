@@ -166,7 +166,14 @@ function planForDay(day: string): PlanRecord {
 const SEVERITY_ORDER: Severity[] = ['high', 'medium', 'low'];
 
 function snapshot(view: PlanView, routeStop: { route: Route; stop: Stop } | null) {
-  if (!routeStop) return { plan_id: view.plan.plan_id, totals: view.plan.totals };
+  // A whole-plan snapshot has the same shape as the sample history (UI-07 detail).
+  if (!routeStop)
+    return {
+      plan_id: view.plan.plan_id,
+      routes: view.routes.length,
+      stops: view.routes.reduce((n, r) => n + r.stops.length, 0),
+      total_litres: view.plan.totals.litres,
+    };
   const { route, stop } = routeStop;
   return {
     plan_id: view.plan.plan_id,

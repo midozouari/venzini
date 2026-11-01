@@ -79,8 +79,11 @@ export function validationError(error: z.ZodError) {
   const last = [...issue.path].reverse().find((p) => typeof p === 'string');
   const name = label(typeof last === 'string' ? last : 'Request');
   const field = issue.path.length ? fieldPath(issue.path) : undefined;
-  if (issue.code === 'invalid_type' && issue.message.includes('received undefined'))
-    return fail('ERR-VAL-01', { field: name }, field ? { field } : {});
+  const missing =
+    (issue.code === 'invalid_type' && issue.message.includes('received undefined')) ||
+    // An empty text box is a missing value too (SRS 14.2 ERR-VAL-01).
+    (issue.code === 'too_small' && issue.origin === 'string' && Number(issue.minimum) === 1);
+  if (missing) return fail('ERR-VAL-01', { field: name }, field ? { field } : {});
   return fail('ERR-VAL-02', { field: name, rule: issue.message }, field ? { field } : {});
 }
 

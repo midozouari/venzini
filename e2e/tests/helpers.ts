@@ -26,6 +26,14 @@ export async function login(page: Page, who: string, password = DEMO_PASSWORD) {
   await page.getByRole('button', { name: 'Log in' }).click();
 }
 
+/** Logs in on the login page already shown, without a reload (a reload resets the mock API). */
+export async function loginHere(page: Page, who: string, password = DEMO_PASSWORD) {
+  await expect(page).toHaveURL(/\/login/);
+  await page.getByLabel('Login').fill(who);
+  await page.getByLabel('Password', { exact: true }).fill(password);
+  await page.getByRole('button', { name: 'Log in' }).click();
+}
+
 /** In-app navigation without a page reload (a reload resets the mock API, AC-21). */
 export async function clientNav(page: Page, path: string) {
   await page.evaluate((p) => {

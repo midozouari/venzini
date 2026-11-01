@@ -2,7 +2,10 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { createQueryClient } from '@/api/queryClient';
 import { createBrowserRouter, RouterProvider, type RouteObject } from 'react-router';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { StationsPage } from '@/pages/admin/StationsPage';
+import { UsersPage } from '@/pages/admin/UsersPage';
 import { ApprovalsPage } from '@/pages/approvals/ApprovalsPage';
+import { HistoryPage } from '@/pages/history/HistoryPage';
 import { LoginPage } from '@/pages/login/LoginPage';
 import { ForecastPage } from '@/pages/forecast/ForecastPage';
 import { TotalsPage } from '@/pages/forecast/TotalsPage';
@@ -27,6 +30,9 @@ const BUILT: Record<string, React.ReactNode> = {
   '/resources/warehouse-forecast': <WarehouseForecastPage />,
   '/planner': <PlannerPage />,
   '/approvals': <ApprovalsPage />,
+  '/history': <HistoryPage />,
+  '/admin/users': <UsersPage />,
+  '/admin/stations': <StationsPage />,
 };
 
 function SessionLayout() {
@@ -48,8 +54,8 @@ export const routes: RouteObject[] = [
         children: [
           { index: true, element: <HomeRedirect /> },
           { path: '/admin', element: <HomeRedirect admin /> },
-          ...SCREENS.map((s) => ({
-            path: s.path,
+          ...SCREENS.filter((s) => !s.servedBy).map((s) => ({
+            path: s.routePath ?? s.path,
             element: (
               <ErrorBoundary key={s.path}>
                 <RequireRole roles={s.roles}>{BUILT[s.path] ?? <Placeholder />}</RequireRole>

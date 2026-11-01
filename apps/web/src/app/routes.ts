@@ -22,6 +22,10 @@ export interface ScreenDef {
   day?: boolean;
   /** Step of the MVP that builds the screen (placeholder until then). */
   step?: string;
+  /** Router path when it differs from `path`, so a list and its detail share one page. */
+  routePath?: string;
+  /** Served by the route of another screen (its `routePath`). */
+  servedBy?: string;
 }
 
 const ALL: Role[] = ['manager', 'dispatcher', 'admin'];
@@ -49,10 +53,10 @@ export const SCREENS: ScreenDef[] = [
   },
   { path: '/planner', title: 'Delivery planner', roles: ['manager'], day: true },
   { path: '/approvals', title: 'Review and approve', roles: ['manager'], day: true },
-  { path: '/history', title: 'Decision history', roles: ALL, step: '2d' },
-  { path: '/history/:entryId', title: 'Decision history', roles: ALL, step: '2d' },
-  { path: '/admin/users', title: 'Users', roles: ['admin'], step: '2d' },
-  { path: '/admin/stations', title: 'Stations', roles: ['admin', 'manager'], step: '2d' },
+  { path: '/history', title: 'Decision history', roles: ALL, routePath: '/history/:entryId?' },
+  { path: '/history/:entryId', title: 'Decision history', roles: ALL, servedBy: '/history' },
+  { path: '/admin/users', title: 'Administration', roles: ['admin'] },
+  { path: '/admin/stations', title: 'Administration', roles: ['admin', 'manager'] },
 ];
 
 /** Menu entry of each page key of GET /me (API-03). */

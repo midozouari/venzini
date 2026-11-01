@@ -11,6 +11,14 @@ export const formatLitres = (n: number) => `${grouped.format(n)} L`;
 export const formatUsd = (n: number) => `$${n.toFixed(2)}`;
 export const formatPct = (n: number) => `${Math.round(n)}%`;
 
+/** Cost against the optimal plan (FR-72): "+$8.60 (+2.4%)", "$0.00", or "–" when none. */
+export function formatCostDiff(usd: number | null, pct: number | null): string {
+  if (usd === null) return '–';
+  if (usd === 0) return formatUsd(0);
+  const text = `${usd < 0 ? '−' : '+'}${formatUsd(Math.abs(usd))}`;
+  return pct === null ? text : `${text} (${formatSignedPct(pct)})`;
+}
+
 /** Signed share: 8 → "+8%", -0.7 → "−0.7%" (one decimal unless whole). */
 export function formatSignedPct(n: number): string {
   const abs = Math.abs(n);

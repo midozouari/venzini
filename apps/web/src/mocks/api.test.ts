@@ -1,6 +1,7 @@
 // @vitest-environment node
 import {
   canCall,
+  DecisionEntry,
   DecisionList,
   ENDPOINT_ACCESS,
   ErrorBody,
@@ -457,6 +458,17 @@ describe('planner and approvals with the scripted outcomes (UC-05 to UC-07, SDD 
     const history = DecisionList.parse((await call('GET', '/decisions?page_size=200')).body);
     expect(history.total).toBe(before + 18);
     expect(history.items[0]!.manager.full_name).toBe('Sara M.');
+    // The whole-plan entry has the same snapshot shape as the sample history (UI-07 detail).
+    const planEntry = history.items.find((i) => i.scope === 'plan');
+    const entry = DecisionEntry.parse(
+      (await call('GET', `/decisions/${planEntry!.entry_id}`)).body,
+    );
+    expect(Object.keys(entry.final_version).sort()).toEqual([
+      'plan_id',
+      'routes',
+      'stops',
+      'total_litres',
+    ]);
     expect(
       errorCode(
         await call('POST', '/plans/PL-2211/edits', {
@@ -515,6 +527,17 @@ describe('history and administration (UC-08, UC-09, UC-11)', () => {
     expect(
       errorCode(await call('PATCH', `/users/${admin.body.user.id}`, { status: 'inactive' })),
     ).toBe('ERR-VAL-07');
+    // An empty box is "required" (ERR-VAL-01), with the field named.
+    const empty = await call('POST', '/users', {
+      full_name: ' ',
+      login: 'someone',
+      password: 'init-Passw0rd',
+      role: 'dispatcher',
+    });
+    expect([errorCode(empty), empty.body.error.message]).toEqual([
+      'ERR-VAL-01',
+      'Full name is required.',
+    ]);
     expect((await login('mehdi.r', 'init-Passw0rd')).body.home).toBe('/resources');
   });
 

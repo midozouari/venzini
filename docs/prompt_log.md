@@ -284,5 +284,38 @@ Entry 13 – Build Step 2c
   ```
 
 * What Claude Code gave back (1–2 lines): The delivery planner (route map, route cards with drag and drop, move and quantity dialogs, impact bar, Reset, overload banner) and the approvals screen (grouped actions, reject with re-plan, Approve all / Reject all with confirmation, blocked approval, Adjust), with unit, e2e and accessibility tests and the README demo script. Screenshot reviews fixed uncolored route lines, crowded rows, a narrow risk column and a merged unserved line that showed the wrong risk.
-* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* What I accepted / rejected / changed: Accepted Step 2c as built ("Step 2c accepted", Entry 14) and asked for the Step 2d plan.
 * How I verified it (tests, manual trace, diff): Lint, format, type-check, 95 unit tests, build, and the browser tests in Chrome, Firefox and Edge (planner, approvals and accessibility included); screenshots of every new screen and dialog at 1366×768.
+
+
+Entry 14 – Step 2d plan request
+
+* Prompt (exact):
+
+  ```text
+  We are building the Venzini MVP. Read CLAUDE.md first: it holds all the rules (scope, design, logo, git, prompt log). Steps 0, 1, 2a, 2b and 2c are done and pushed (see git log and docs/prompt_log.md).
+
+  Continue the prompt log in docs/prompt_log.md from the next entry number, using the transcript of this new session for exact prompts. Also fill in Entry 13's "accepted" line: Step 2c accepted.
+
+  Ready for the Step 2d plan: decision history (UI-07) and administration (UI-08). Keep the same design rules (navy canvas, floating cream panels, calm layout, details on demand, hover/press states, blur only behind dialogs, risk colors only for risk). Show me the plan before building.
+  ```
+
+* What Claude Code gave back (1–2 lines): The Step 2d plan: a read-only decision history (filters, newest-first list, detail panel comparing the original recommendation with the final version, edits, risks and note) and administration with Users and Stations tabs (create, edit, activate / deactivate, tanks per fuel type, delivery window). It asked a few questions before building.
+* What I accepted / rejected / changed: Approved with answers: the entry detail opens as a side panel over the blurred list; agreed with both SDD choices (one search box for station and manager, fixed newest-first order); the "No decisions match these filters" message is fine (Entry 15).
+* How I verified it (tests, manual trace, diff): Plan only; checked against SDD 5.6.3, 5.6.5, 5.12.3, 6.1.1 and 7.3, and SRS UI-07, UI-08, FR-05, FR-06, FR-72 and FR-73.
+
+
+Entry 15 – Build Step 2d
+
+* Prompt (exact):
+
+  ```text
+  OK, build Step 2d. Answers:
+  1. Side panel over the blurred list, as you recommend.
+  2. Agreed with both SDD choices: one search box for station and manager, fixed newest-first order.
+  The "No decisions match these filters" message is fine.
+  ```
+
+* What Claude Code gave back (1–2 lines): The read-only decision history (one search box, action filter, date range, newest-first list with paging, entry side panel comparing original and final versions with edits, risks, cost and note) and administration (Users and Stations tabs with create, edit, deactivate / reactivate, tanks per fuel type and delivery window), with unit, e2e and accessibility tests. Fixes found on the way: whole-plan log entries now have the same snapshot shape as the sample history, empty fields give "… is required." (ERR-VAL-01), and the low-risk badge tint was lightened because its text was 4.41:1, below the 4.5:1 minimum.
+* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* How I verified it (tests, manual trace, diff): Lint, format, type-check, 103 unit tests, build, and 224 browser tests in Chrome, Firefox and Edge (1 skipped: the Chromium-only worker-restart test in Firefox); screenshots of every new screen and dialog at 1366×768.

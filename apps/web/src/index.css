@@ -61,7 +61,7 @@
   --vz-risk-medium-ink: #8a4b00; /* text inside medium-risk labels: 6.2:1 */
   --vz-risk-high-tint: rgb(198 40 40 / 0.09);
   --vz-risk-medium-tint: rgb(224 123 0 / 0.12);
-  --vz-risk-low-tint: rgb(46 125 50 / 0.1);
+  --vz-risk-low-tint: rgb(46 125 50 / 0.07); /* keeps "Low" text at 4.6:1 on panels */
 
   /* Route lines (FR-53). */
   --vz-route-1: #1f5fbf;

@@ -36,7 +36,7 @@ This repository currently holds the **MVP** (minimum viable product): a clickabl
 
 The full version (a real server, database and planning engines) comes after the MVP. See the design document in [docs/](docs/).
 
-> **Current status:** Steps 0, 1, 2a, 2b and 2c are done: project skeleton, tooling and CI; the fake sample data and the mock API; the login page, the app shell and the network overview; the station forecast and totals; resources, trips and the warehouse forecast; the delivery planner and approvals. Decision history and administration follow in Step 2d (their menu items already open a placeholder). This README is updated after each step.
+> **Current status:** Steps 0, 1 and 2 (a to d) are done: project skeleton, tooling and CI; the fake sample data and the mock API; all eight screens (login, network overview, station forecast and totals, resources and trips with the warehouse forecast, delivery planner, approvals, decision history and administration). Step 3 adds a hidden developer toolbar, the full Playwright MVP suite and the final README. This README is updated after each step.
 
 ## The fake sample data
 
@@ -97,6 +97,8 @@ Good to know:
 - After 28 idle minutes, a dialog asks whether you want to stay signed in; at 30 minutes you are signed out.
 - The demo trips are on **01 Nov 2026**: as `karim.b`, go back two days with the arrows in the top bar, then open **Trips**.
 - Interesting forecasts: **Harbor Road (ST014), Diesel** is uncertain (66%), and **Khelidia (ST020), Petrol 95** has little sales history.
+- **Decision history** (every role): search by station or manager, filter by action or dates, and open a row to see the original recommendation next to the final version, with the edits, the risks shown and the note. Try **ST015**: it was moved to another tanker before approval. Decisions you make in Approvals appear at the top.
+- **Administration**: as `nadia.a`, create a user, then log out and log in with it; deactivate `karim.b` and try to log in with that account. As `sara.m` or `nadia.a`, add a station (for example ST021 "Lac 2 Centre", 36.8421, 10.2731); it appears on the network page under **Data unavailable**, because the demo has no forecast for it.
 
 ## Demo script: planner and approvals
 
