@@ -360,5 +360,18 @@ Entry 17 – Build Step 3
 
 * What Claude Code gave back (1–2 lines): The final MVP step: grey "no data" marker, hidden developer toolbar (4 scenarios, 3 forced errors, 5 demo set-up buttons, reset; left out of v1 builds), route-based code splitting with a `pnpm size` check in CI (largest page 237 kB, mock API reported apart), GitHub Actions on the latest releases verified with gh, a searchable station picker, AC-21 journeys and checklist, the final README, docs/backlog.md and docs/README.md.
   A Firefox run found a real bug (two quick history filter changes lost the first one), which was fixed.
-* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* What I accepted / rejected / changed: Accepted Step 3 and kept the current page-budget reading, but asked for the README to state it clearly: Leaflet (~46 kB) loads after the page appears and is not counted; with it, the planner page totals about 285 kB (Entry 18).
 * How I verified it (tests, manual trace, diff): Lint, format, type-check, 108 unit tests, build, `pnpm size`, a v1 build checked to contain no toolbar or MSW code, and the full browser suite in Chrome, Firefox and Edge (260 passed, 1 skipped: the Chromium-only worker-restart test in Firefox); screenshots of the new marker, picker and toolbar at 1366×768.
+
+
+Entry 18 – Page budget reading in the README
+
+* Prompt (exact):
+
+  ```text
+  Go with the current budget reading, but state it clearly in the README: Leaflet (~46 kB) loads after the page appears and is not counted; with it, the planner page totals about 285 kB.
+  ```
+
+* What Claude Code gave back (1–2 lines): The README "Page size (NFR-02)" section now says that the budget counts what a page needs before it appears, that Leaflet (about 46 kB) loads after the page appears on the two map pages and is not counted, and that with it the planner totals about 285 kB.
+* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* How I verified it (tests, manual trace, diff): `pnpm size` after a fresh build (planner 237.3 kB + 48.0 kB loaded beside it, about 285 kB); lint, format, type-check, unit tests and build; the README diff.

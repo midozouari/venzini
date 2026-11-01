@@ -146,8 +146,8 @@ The end-to-end suite clicks through every screen and use case for each role (AC-
 
 **Page size (NFR-02).** Each page loads only when you open it (route-based code splitting).
 
-- `pnpm size` lists, for each page, the gzipped JavaScript and CSS it loads. Every page is below 250 kB.
-- The map library (about 46 kB) loads beside the two map pages, so the page shows at once. It is listed separately.
+- `pnpm size` lists, for each page, the gzipped JavaScript and CSS the page needs before it appears. Every page is below 250 kB; the largest is the delivery planner, at about 237 kB.
+- **How the budget is read:** the map library Leaflet (about 46 kB gzipped) loads _after_ the page appears, on the network overview and the delivery planner, so it is **not counted** in the 250 kB. `pnpm size` lists it separately. With Leaflet, the planner page totals about **285 kB**.
 - The **MVP mock API** (Mock Service Worker plus all the sample data, about 190 kB gzipped) loads once at start. It is **not counted** in the page budget, because it is not part of version 1. `pnpm size` reports it on its own line.
 
 The same checks run automatically on GitHub on every push ([.github/workflows/ci.yml](.github/workflows/ci.yml)).
