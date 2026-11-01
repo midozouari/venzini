@@ -2,10 +2,12 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { createQueryClient } from '@/api/queryClient';
 import { createBrowserRouter, RouterProvider, type RouteObject } from 'react-router';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { ApprovalsPage } from '@/pages/approvals/ApprovalsPage';
 import { LoginPage } from '@/pages/login/LoginPage';
 import { ForecastPage } from '@/pages/forecast/ForecastPage';
 import { TotalsPage } from '@/pages/forecast/TotalsPage';
 import { NetworkPage } from '@/pages/network/NetworkPage';
+import { PlannerPage } from '@/pages/planner/PlannerPage';
 import { ResourcesPage } from '@/pages/resources/ResourcesPage';
 import { TripsPage } from '@/pages/resources/TripsPage';
 import { WarehouseForecastPage } from '@/pages/resources/WarehouseForecastPage';
@@ -23,6 +25,8 @@ const BUILT: Record<string, React.ReactNode> = {
   '/resources': <ResourcesPage />,
   '/resources/trips': <TripsPage />,
   '/resources/warehouse-forecast': <WarehouseForecastPage />,
+  '/planner': <PlannerPage />,
+  '/approvals': <ApprovalsPage />,
 };
 
 function SessionLayout() {

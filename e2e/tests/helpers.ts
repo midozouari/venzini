@@ -37,3 +37,14 @@ export async function clientNav(page: Page, path: string) {
 export async function expectHeading(page: Page, title: string) {
   await expect(page.getByRole('heading', { level: 1, name: title })).toBeVisible();
 }
+
+/** The manager opens the planner from the network overview and generates the day's plan. */
+export async function openPlanner(page: Page) {
+  await stubTiles(page);
+  await login(page, 'sara.m');
+  await expect(page).toHaveURL(/\/network$/);
+  await page.getByRole('link', { name: 'Plan deliveries' }).click();
+  await expectHeading(page, 'Delivery planner');
+  await page.getByRole('button', { name: 'Generate plan' }).click();
+  await expect(page.getByRole('region', { name: 'Routes' })).toBeVisible();
+}

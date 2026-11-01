@@ -2,18 +2,24 @@
 import {
   Forecast,
   ForecastTotals,
+  Limits,
   LoginResponse,
   MeResponse,
   Network,
+  PlanDecisionResponse,
   PlanView,
   Reference,
   Resources,
   SaveResourcesResponse,
   StationList,
+  StopDecisionResponse,
   Trip,
   TripList,
+  type EditRequest,
   type LoginRequest,
+  type PlanDecisionRequest,
   type SaveResourcesRequest,
+  type StopDecisionRequest,
   type UpdateTripRequest,
 } from '@venzini/contracts';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
@@ -29,6 +35,8 @@ export const keys = {
   totals: (level: string, fuel: string) => ['totals', level, fuel] as const,
   resources: (day: string) => ['resources', day] as const,
   trips: (day: string) => ['trips', day] as const,
+  limits: (planId: string, stopId: string, fuel: string) =>
+    ['limits', planId, stopId, fuel] as const,
 };
 
 /** Treats 404 ERR-API-01 as "nothing yet" for reads that may legitimately be empty. */
@@ -184,5 +192,93 @@ export function useUpdateTrip(day: string) {
         qc.invalidateQueries({ queryKey: ['resources'] }),
       ]);
     },
+  });
+}
+
+/** API-11: generates the optimal plan of a day (UC-05). */
+export function useGeneratePlan(day: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: () => request('POST', '/plans', { body: { delivery_day: day }, schema: PlanView }),
+    onSuccess: async (view) => {
+      qc.setQueryData(keys.plan(day), view);
+      await qc.invalidateQueries({ queryKey: keys.network(day) });
+    },
+  });
+}
+
+/**
+ * A changed plan: a conflict (ERR-API-03) means someone else changed it first, so the latest
+ * version is loaded again.
+ */
+async function afterPlanError(qc: ReturnType<typeof useQueryClient>, day: string, e: unknown) {
+  if (e instanceof ApiError && (e.code === 'ERR-API-03' || e.code === 'ERR-VAL-04'))
+    await qc.invalidateQueries({ queryKey: keys.plan(day) });
+}
+
+/**
+ * API-13: one edit of the plan (reorder, move, quantity, reset). The answer replaces the plan;
+ * the screen shows the new order meanwhile from the mutation's variables (SDD 5.5).
+ */
+export function useEditPlan(day: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: ({ planId, edit }: { planId: string; edit: EditRequest }) =>
+      request('POST', `/plans/${planId}/edits`, { body: edit, schema: PlanView }),
+    onSuccess: (view) => qc.setQueryData(keys.plan(day), view),
+    onError: (e) => afterPlanError(qc, day, e),
+  });
+}
+
+/** API-14: the maximum quantity of a stop and fuel, with its binding limit (FR-75). */
+export function useLimits(planId: string, stopId: string, fuel: string) {
+  return useQuery({
+    queryKey: keys.limits(planId, stopId, fuel),
+    queryFn: () =>
+      request('GET', `/plans/${planId}/limits?stop=${stopId}&fuel=${fuel}`, { schema: Limits }),
+  });
+}
+
+/** Everything a decision changes: the plan, the network status, the locked day and its trips. */
+async function afterDecision(qc: ReturnType<typeof useQueryClient>, day: string) {
+  await Promise.all([
+    qc.invalidateQueries({ queryKey: keys.plan(day) }),
+    qc.invalidateQueries({ queryKey: keys.network(day) }),
+    qc.invalidateQueries({ queryKey: keys.resources(day) }),
+    qc.invalidateQueries({ queryKey: keys.trips(day) }),
+    qc.invalidateQueries({ queryKey: ['decisions'] }),
+  ]);
+}
+
+/** API-15: approves or rejects one recommended action (FR-69, FR-82). */
+export function useStopDecision(day: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: ({
+      planId,
+      stopId,
+      body,
+    }: {
+      planId: string;
+      stopId: string;
+      body: StopDecisionRequest;
+    }) =>
+      request('POST', `/plans/${planId}/stops/${stopId}/decision`, {
+        body,
+        schema: StopDecisionResponse,
+      }),
+    onSuccess: () => afterDecision(qc, day),
+    onError: (e) => afterPlanError(qc, day, e),
+  });
+}
+
+/** API-16: approves or rejects every pending action at once (FR-80). */
+export function usePlanDecision(day: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: ({ planId, body }: { planId: string; body: PlanDecisionRequest }) =>
+      request('POST', `/plans/${planId}/decision`, { body, schema: PlanDecisionResponse }),
+    onSuccess: () => afterDecision(qc, day),
+    onError: (e) => afterPlanError(qc, day, e),
   });
 }

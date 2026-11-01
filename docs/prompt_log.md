@@ -244,5 +244,45 @@ Entry 11 – Finish Step 2b
   ```
 
 * What Claude Code gave back (1–2 lines): Unit tests for the new formats; Playwright tests for the forecast states, totals (network = sum of warehouses), saving resources with the open-trip warning, the locked day, recording and cancelling trips, the manager's read-only view and the dispatcher's access limits; axe-core checks on every new screen and dialog; docs. Firefox timed out under parallel load, so the suite now runs on 3 workers with a 60 s limit per test. One planned item was dropped: "Start from the fleet list" for a day without resources, because the API offers no fleet list.
-* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* What I accepted / rejected / changed: Accepted Step 2b as built ("Step 2b is accepted.", Entry 12) and asked for the Step 2c plan.
 * How I verified it (tests, manual trace, diff): Lint, format, type-check, 86 unit tests, build, and 119 browser tests in Chrome, Firefox and Edge (1 skipped: the Chromium-only worker-restart test in Firefox).
+
+
+Entry 12 – Step 2c plan request
+
+* Prompt (exact):
+
+  ```text
+  Step 2b is accepted. Ready for the Step 2c plan: delivery planner (UI-05) and approvals (UI-06).
+
+  Keep the same design rules (navy canvas, floating cream panels, calm layout, details on demand, hover/press states, blur only behind dialogs, risk colors only for risk).
+
+  For these screens in particular:
+  - The planner is the main screen of Venzini: the route map should be the centerpiece, with calm, clearly distinct route colors (SDD palette), smooth drag-and-drop for reorder/move with live recalculation, and the risk analysis shown calmly next to the edit.
+  - Unserved stations always show their real reason in a full sentence (as agreed in Step 2a).
+  - Approvals: Approve is the primary navy button, Reject the secondary button with ✕ (never red). Reject all / Approve all open a confirmation dialog. Blocked approval (RISK-01 overload) must be obvious and explained.
+  - Make the scripted demo flows easy to find and click through for my demo video (move ST012 to T-02, reorder on T-03 and T-01, quantity above limit, reject ST014).
+
+  Show me the plan before building.
+  ```
+
+* What Claude Code gave back (1–2 lines): The Step 2c plan: a planner with the route map as the centerpiece, drag and drop in the stop list with Move up / Move down / "Move to tanker…" as the keyboard path, the impact (cost and risks) next to the edit, an approvals list with Approve / ✕ Reject / Adjust and confirmations for Approve all / Reject all, and the 5 scripted demo flows. It asked about a drag-and-drop library, the SRS-vs-SDD difference on dragging on the map, a calm highlight and in-app demo help.
+* What I accepted / rejected / changed: Approved with answers: use @dnd-kit/core and @dnd-kit/sortable; follow the SDD (drag only in the stop list); a steady halo with one soft fade-in; no demo help in the app for now, but quick scenario buttons for the 5 demo flows and a reset in the Step 3 developer toolbar, and a README "Demo script" section now (Entry 13).
+* How I verified it (tests, manual trace, diff): Plan only; checked against SDD 5.5, 5.12.6, 7.2 and 7.3, SRS UI-05, UI-06, FR-55, FR-77 and FR-82, and the scripted outcomes in the fixtures.
+
+
+Entry 13 – Build Step 2c
+
+* Prompt (exact):
+
+  ```text
+  OK, build Step 2c. Answers:
+  1. Yes, use @dnd-kit/core and @dnd-kit/sortable.
+  2. Agreed: follow the SDD, drag only in the stop list; the map updates live but is not draggable.
+  3. Agreed: steady halo with one soft fade-in.
+  4. Not in the app for now; in Step 3, add quick scenario buttons for the 5 demo flows (and a reset) to the hidden developer toolbar. Add the README "Demo script" section in this step.
+  ```
+
+* What Claude Code gave back (1–2 lines): The delivery planner (route map, route cards with drag and drop, move and quantity dialogs, impact bar, Reset, overload banner) and the approvals screen (grouped actions, reject with re-plan, Approve all / Reject all with confirmation, blocked approval, Adjust), with unit, e2e and accessibility tests and the README demo script. Screenshot reviews fixed uncolored route lines, crowded rows, a narrow risk column and a merged unserved line that showed the wrong risk.
+* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* How I verified it (tests, manual trace, diff): Lint, format, type-check, 95 unit tests, build, and the browser tests in Chrome, Firefox and Edge (planner, approvals and accessibility included); screenshots of every new screen and dialog at 1366×768.

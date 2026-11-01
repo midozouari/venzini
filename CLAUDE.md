@@ -108,5 +108,5 @@ Venzini is a fuel demand forecasting and delivery planning web platform. This re
 
 - Step 0: move files, scaffold, configs, CI, README, CLAUDE.md. ✅
 - Step 1: contracts, sample-data generator and fixtures, MSW handlers with role checks and in-memory session state (SDD 7.1, 7.2). ✅
-- Step 2: screens of SDD 7.3: (a) app shell, login, network ✅; (b) forecast and totals, resources and trips ✅; (c) planner and approvals with the scripted edit outcomes; (d) history and administration.
-- Step 3: hidden developer toolbar (scenarios, forced errors), the Playwright MVP suite (every screen and flow per role, AC-21), the final README.
+- Step 2: screens of SDD 7.3: (a) app shell, login, network ✅; (b) forecast and totals, resources and trips ✅; (c) planner and approvals with the scripted edit outcomes ✅; (d) history and administration.
+- Step 3: hidden developer toolbar (scenarios, forced errors, and quick scenario buttons for the 5 demo flows of the README "Demo script" plus a reset), the Playwright MVP suite (every screen and flow per role, AC-21), the final README.

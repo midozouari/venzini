@@ -261,3 +261,160 @@ h3 {
     transform: scale(1);
   }
 }
+
+/* Planner map (UI-05): one line color per tanker (FR-53), numbered stops (FR-46), arrows for the
+   direction (FR-45). A risk highlight is a thicker line with a steady halo that fades in once
+   (FR-65); everything else dims. */
+.vz-route {
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transition:
+    opacity 200ms var(--vz-ease),
+    stroke-width 200ms var(--vz-ease);
+}
+.vz-route--hl {
+  stroke-width: 6.5;
+}
+.vz-route--dim {
+  opacity: 0.22;
+}
+.vz-halo {
+  stroke-width: 18;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  opacity: 0.2;
+  animation: vz-halo-in 300ms var(--vz-ease) backwards;
+}
+.vz-hit {
+  stroke: transparent;
+  stroke-width: 16;
+  fill: none;
+}
+.vz-r1 {
+  --vz-route: var(--vz-route-1);
+}
+.vz-r2 {
+  --vz-route: var(--vz-route-2);
+}
+.vz-r3 {
+  --vz-route: var(--vz-route-3);
+}
+.vz-r4 {
+  --vz-route: var(--vz-route-4);
+}
+.vz-r5 {
+  --vz-route: var(--vz-route-5);
+}
+.vz-r6 {
+  --vz-route: var(--vz-route-6);
+}
+.vz-r7 {
+  --vz-route: var(--vz-route-7);
+}
+.vz-r8 {
+  --vz-route: var(--vz-route-8);
+}
+.vz-route,
+.vz-halo {
+  stroke: var(--vz-route);
+}
+.vz-swatch {
+  background: var(--vz-route);
+}
+.vz-arrow {
+  display: block;
+  width: 14px;
+  height: 14px;
+  color: var(--vz-route);
+  transition: opacity 200ms var(--vz-ease);
+}
+.vz-arrow svg {
+  width: 14px;
+  height: 14px;
+}
+.vz-stop {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  background: var(--vz-route);
+  color: #ffffff;
+  border: 2px solid var(--vz-panel);
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 2px 6px rgb(2 28 69 / 0.3);
+  cursor: pointer;
+  transition:
+    transform 180ms var(--vz-ease),
+    box-shadow 180ms var(--vz-ease),
+    opacity 200ms var(--vz-ease);
+  animation: vz-pop-in 240ms var(--vz-ease) backwards;
+}
+.vz-stop:hover {
+  transform: translateY(-1px) scale(1.06);
+  box-shadow: 0 4px 12px rgb(2 28 69 / 0.35);
+}
+.vz-stop--selected {
+  transform: scale(1.12);
+  box-shadow:
+    0 0 0 3px var(--vz-panel),
+    0 0 0 6px var(--vz-navy-900),
+    0 6px 16px rgb(2 28 69 / 0.3);
+}
+.vz-stop--hl::after {
+  content: '';
+  position: absolute;
+  inset: -9px;
+  border-radius: 9999px;
+  background: var(--vz-route);
+  opacity: 0.22;
+  z-index: -1;
+  animation: vz-halo-in 300ms var(--vz-ease) backwards;
+}
+.vz-stop--dim {
+  opacity: 0.35;
+}
+/* The station's urgency, as a small badge on the stop: color + icon (FR-47, FR-48). */
+.vz-stop-risk {
+  position: absolute;
+  right: -7px;
+  top: -7px;
+  width: 15px;
+  height: 15px;
+  border-width: 1.5px;
+  animation: none;
+}
+.vz-stop-risk svg {
+  width: 9px;
+  height: 9px;
+}
+.vz-unserved {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  border: 2px dashed var(--vz-ink);
+  background: var(--vz-panel);
+  color: var(--vz-ink);
+  box-shadow: 0 2px 6px rgb(2 28 69 / 0.2);
+  cursor: pointer;
+}
+.vz-unserved svg {
+  width: 12px;
+  height: 12px;
+}
+
+@keyframes vz-halo-in {
+  from {
+    opacity: 0;
+  }
+}

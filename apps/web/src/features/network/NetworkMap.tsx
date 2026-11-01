@@ -7,7 +7,7 @@ import { MapContainer, Marker, TileLayer, Tooltip, useMap } from 'react-leaflet'
 
 type Station = Network['stations'][number];
 
-const ICON_SVG: Record<RiskLevel, string> = {
+export const ICON_SVG: Record<RiskLevel, string> = {
   high: '<path d="M12 4 22 20H2Z" fill="currentColor"/><path d="M12 10v4M12 17h.01" stroke="var(--vz-risk-high)" stroke-width="2.4" stroke-linecap="round"/>',
   medium:
     '<path d="M12 6v8M12 18h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>',
@@ -28,7 +28,7 @@ function stationIcon(level: RiskLevel, selected: boolean) {
   });
 }
 
-const warehouseIcon = L.divIcon({
+export const warehouseIcon = L.divIcon({
   className: '',
   iconSize: [28, 28],
   iconAnchor: [14, 14],
@@ -39,7 +39,14 @@ const warehouseIcon = L.divIcon({
  * Fits the stations into the map card, and keeps the map in step with the card when its size
  * changes (first layout, window, KPI row). It stops re-fitting once the user pans or zooms.
  */
-function FitToCard({ points }: { points: [number, number][] }) {
+export function FitToCard({
+  points,
+  padding = { top: 32, bottom: 72 },
+}: {
+  points: [number, number][];
+  /** Room kept free for the card's own controls (legend, filters). */
+  padding?: { top: number; bottom: number };
+}) {
   const map = useMap();
   const userMoved = useRef(false);
   useEffect(() => {
@@ -50,8 +57,8 @@ function FitToCard({ points }: { points: [number, number][] }) {
       if (x < 100 || y < 100) return; // the card has no real size yet
       fitting = true;
       map.fitBounds(L.latLngBounds(points), {
-        paddingTopLeft: [32, 32],
-        paddingBottomRight: [32, 72], // room for the legend
+        paddingTopLeft: [32, padding.top],
+        paddingBottomRight: [32, padding.bottom],
         animate: false,
       });
       fitting = false;
@@ -70,8 +77,25 @@ function FitToCard({ points }: { points: [number, number][] }) {
       observer.disconnect();
       map.off('zoomstart dragstart', onUserMove);
     };
-  }, [map, points]);
+  }, [map, points, padding.top, padding.bottom]);
   return null;
+}
+
+/** The calm, desaturated tile background shared by every map card (SDD 5.12.4). */
+export function Tiles({ onTilesFailed }: { onTilesFailed: () => void }) {
+  // End-to-end tests may set their own tile source (offline tiles, or a failing one).
+  const tileUrl =
+    window.__VENZINI_TEST__?.tileUrl ||
+    import.meta.env.VITE_MAP_TILE_URL ||
+    'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+  return (
+    <TileLayer
+      url={tileUrl}
+      className="vz-tiles"
+      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      eventHandlers={{ tileerror: onTilesFailed }}
+    />
+  );
 }
 
 export function NetworkMap({
@@ -87,11 +111,6 @@ export function NetworkMap({
   onTilesFailed: () => void;
   onReady?: (map: L.Map) => void;
 }) {
-  // End-to-end tests may set their own tile source (offline tiles, or a failing one).
-  const tileUrl =
-    window.__VENZINI_TEST__?.tileUrl ||
-    import.meta.env.VITE_MAP_TILE_URL ||
-    'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
   const withData = useMemo(
     () =>
       network.stations.filter(
@@ -118,12 +137,7 @@ export function NetworkMap({
         if (m) onReady?.(m);
       }}
     >
-      <TileLayer
-        url={tileUrl}
-        className="vz-tiles"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        eventHandlers={{ tileerror: onTilesFailed }}
-      />
+      <Tiles onTilesFailed={onTilesFailed} />
       <FitToCard points={points} />
       {network.warehouses.map((w) => (
         <Marker

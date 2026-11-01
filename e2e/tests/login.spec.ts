@@ -100,8 +100,8 @@ test('screens of later steps open a calm placeholder', async ({ page }) => {
   await login(page, 'sara.m');
   await page
     .getByRole('navigation', { name: 'Main' })
-    .getByRole('link', { name: 'Approvals' })
+    .getByRole('link', { name: 'Decision history' })
     .click();
-  await expectHeading(page, 'Review and approve');
-  await expect(page.getByText('This screen arrives in Step 2c of the MVP.')).toBeVisible();
+  await expectHeading(page, 'Decision history');
+  await expect(page.getByText('This screen arrives in Step 2d of the MVP.')).toBeVisible();
 });

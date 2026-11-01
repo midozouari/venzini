@@ -1,7 +1,7 @@
 // Accessibility (SDD 5.12.6, AC-18): no serious or critical axe-core violation on each screen.
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
-import { clientNav, login, stubTiles } from './helpers';
+import { clientNav, login, openPlanner, stubTiles } from './helpers';
 
 async function seriousViolations(page: Page) {
   // Measure the final look: wait until every entry animation (fade, slide) has finished.
@@ -89,5 +89,54 @@ test('resources, the save confirmation, trips and the record dialog (dispatcher)
   expect(await seriousViolations(page)).toEqual([]);
   await page.getByRole('button', { name: 'Record departure' }).first().click();
   await expect(page.getByRole('dialog')).toBeVisible();
+  expect(await seriousViolations(page)).toEqual([]);
+});
+
+test('delivery planner, with its move and quantity dialogs', async ({ page }) => {
+  await openPlanner(page);
+  await expect(page.locator('.vz-stop')).toHaveCount(17);
+  expect(await seriousViolations(page)).toEqual([]);
+
+  await page
+    .getByRole('button', { name: 'Move Westside Terminal (ST012) to another tanker' })
+    .click();
+  await expect(page.getByRole('dialog', { name: 'Move ST012 to another tanker' })).toBeVisible();
+  expect(await seriousViolations(page)).toEqual([]);
+  await page.getByRole('dialog').getByRole('button', { name: 'Back' }).click();
+
+  await page.getByRole('button', { name: /Westside Terminal · ST012/ }).click();
+  await page.getByRole('button', { name: 'Edit quantity of Petrol 95 for ST012' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Petrol 95 for ST012' });
+  await dialog.getByLabel('Litres').fill('7000');
+  await expect(dialog.getByRole('alert')).toBeVisible();
+  expect(await seriousViolations(page)).toEqual([]);
+});
+
+test('planner with an overload, and approvals blocked by it', async ({ page }) => {
+  await openPlanner(page);
+  await page
+    .getByRole('button', { name: 'Move Westside Terminal (ST012) to another tanker' })
+    .click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Move to T-02' }).click();
+  await expect(page.getByRole('alert').filter({ hasText: 'Approval is blocked.' })).toBeVisible();
+  expect(await seriousViolations(page)).toEqual([]);
+  await page.getByRole('link', { name: 'Go to approvals' }).click();
+  await expect(page.getByRole('button', { name: 'Approve all' })).toBeDisabled();
+  expect(await seriousViolations(page)).toEqual([]);
+});
+
+test('approvals with the reject and approve-all dialogs', async ({ page }) => {
+  await openPlanner(page);
+  await page.getByRole('link', { name: 'Go to approvals' }).click();
+  await expect(page.getByText('Recommendations require manager approval')).toBeVisible();
+  expect(await seriousViolations(page)).toEqual([]);
+
+  await page.getByRole('button', { name: 'Reject ST014' }).click();
+  await expect(page.getByRole('dialog', { name: 'Reject ST014 Harbor Road?' })).toBeVisible();
+  expect(await seriousViolations(page)).toEqual([]);
+  await page.getByRole('dialog').getByRole('button', { name: 'Back' }).click();
+
+  await page.getByRole('button', { name: 'Approve all' }).click();
+  await expect(page.getByRole('dialog', { name: 'Approve all 17 pending actions?' })).toBeVisible();
   expect(await seriousViolations(page)).toEqual([]);
 });

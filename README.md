@@ -36,7 +36,7 @@ This repository currently holds the **MVP** (minimum viable product): a clickabl
 
 The full version (a real server, database and planning engines) comes after the MVP. See the design document in [docs/](docs/).
 
-> **Current status:** Steps 0, 1, 2a and 2b are done: project skeleton, tooling and CI; the fake sample data and the mock API; the login page, the app shell and the network overview; the station forecast and totals; resources, trips and the warehouse forecast. The planner, approvals, history and administration follow in Steps 2c–2d (their menu items already open a placeholder). This README is updated after each step.
+> **Current status:** Steps 0, 1, 2a, 2b and 2c are done: project skeleton, tooling and CI; the fake sample data and the mock API; the login page, the app shell and the network overview; the station forecast and totals; resources, trips and the warehouse forecast; the delivery planner and approvals. Decision history and administration follow in Step 2d (their menu items already open a placeholder). This README is updated after each step.
 
 ## The fake sample data
 
@@ -97,6 +97,22 @@ Good to know:
 - After 28 idle minutes, a dialog asks whether you want to stay signed in; at 30 minutes you are signed out.
 - The demo trips are on **01 Nov 2026**: as `karim.b`, go back two days with the arrows in the top bar, then open **Trips**.
 - Interesting forecasts: **Harbor Road (ST014), Diesel** is uncertain (66%), and **Khelidia (ST020), Petrol 95** has little sales history.
+
+## Demo script: planner and approvals
+
+These five flows have scripted answers in the mock API (SDD 7.2), so they always give the same result. Log in as `sara.m`, click **Plan deliveries** on the network page, then **Generate plan**.
+
+Each flow starts from the untouched recommended plan. Between flows, click **Reset to optimal** (top of the Routes panel). The ST014 rejection works once per session: reload the page to repeat it.
+
+| #   | What you do                                                                                                                                                    | What you see                                                                                                                  |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| 1   | **Move ST012 to T-02.** Drag Westside Terminal (stop 1 of T-01) by its ⠿ handle onto the **T-02** card. Or use the ⇄ button on its row, then **Move to T-02**. | T-02 is overloaded (34,000 L on a 32,000 L tanker). The banner says approval is blocked, and **Show on map** highlights T-02. |
+| 2   | **Reorder on T-03.** Open the **T-03** card and drag La Marsa Corniche (ST003) onto Borj Louzir (ST005), so it becomes stop 3.                                 | A medium risk: "This change makes ST003 arrive 90 min later than planned."                                                    |
+| 3   | **Reorder on T-01.** Click ↓ on Westside Terminal (ST012).                                                                                                     | "No risk: this change keeps all deliveries on time and within limits."                                                        |
+| 4   | **Quantity above the limit.** Click Westside Terminal (ST012), then **Edit quantity** next to Petrol 95, and type 7000.                                        | "This quantity exceeds the space left on tanker T-01. Enter 6,400 L or less." Save stays disabled.                            |
+| 5   | **Reject ST014.** Click **Go to approvals**, then **✕ Reject** on Harbor Road (ST014), then confirm.                                                           | A new plan in which ST019 (Bardo Road) is served. ST014 is listed as not dispatched.                                          |
+
+Then try **Approve all** (it asks for confirmation). The plan becomes decided, and **Go to trips** shows the trips to record.
 
 ## Running the checks and tests
 
