@@ -490,5 +490,5 @@ Entry 25 – CLAUDE.md and AGENTS.md checked against the updated SRS
   ```
 
 * What Claude Code gave back (1–2 lines): One contradiction found: the "Never implement (SRS §20)" line listed FR-26, but the new SRS §20 "DO NOT IMPLEMENT" list does not, and FR-26 (yield-management allocation, Should) is planned for v1 Step 3. FR-26 was removed from that line in CLAUDE.md and AGENTS.md; committed with the updated SRS PDF. No code changed.
-* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* What I accepted / rejected / changed: Accepted. I sent the same prompt a second time by mistake; nothing had changed, so no new entry was added for it.
 * How I verified it (tests, manual trace, diff): Read the new SRS's text (§20 lists, FR-10, FR-26, FR-38, BR-09, BR-10, BR-24, AC-21, UI-01–UI-08, precedence lines) against every SRS reference in both files; format check; the diff (two files, one line each, the SRS PDF and this log); prompt copied from the session transcript.
