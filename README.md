@@ -196,6 +196,9 @@ venzini/
 ├─ docs/                   # project documents, backlog, AI usage log, prompt log
 ├─ .github/workflows/      # continuous integration (GitHub Actions)
 ├─ CLAUDE.md               # working rules for the AI coding assistant
+├─ .gitignore              # keeps out of Git: node_modules, builds, test reports, .env, private-data/, *.dump, demo-output/
+├─ package.json            # root commands (pnpm dev, lint, test, build, e2e, demo:video…)
+├─ pnpm-workspace.yaml     # the packages of the monorepo
 └─ README.md
 ```
 

@@ -445,5 +445,20 @@ Entry 22 – Demo video in the AI usage log and the README
   ```
 
 * What Claude Code gave back (1–2 lines): Added the Microsoft Edge TTS row to "1. Tools used" and a "6. Demo video" section with the link to docs/ai-usage-log.md, and the "Demo video" link under the title of README.md; committed and pushed.
-* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* What I accepted / rejected / changed: Accepted (Entry 23).
 * How I verified it (tests, manual trace, diff): format check and lint; the diff of both files; prompt copied from the session transcript.
+
+
+Entry 23 – Root config files in the README folder tree
+
+* Prompt (exact):
+
+  ```text
+  Accepted Entry 22.
+
+  In the README's folder-structure tree, also show the root config files: .gitignore (with a short comment: what it keeps out — node_modules, builds, reports, .env, private-data/, *.dump, demo-output/), .env.example if it exists, package.json and pnpm-workspace.yaml. Don't change anything else. Commit and push.
+  ```
+
+* What Claude Code gave back (1–2 lines): Added .gitignore (with what it keeps out of Git), package.json and pnpm-workspace.yaml to the README folder tree; .env.example does not exist in the repository, so it was not added. Committed and pushed.
+* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* How I verified it (tests, manual trace, diff): format check; the README diff (only the three tree lines); checked the root folder for .env.example; prompt copied from the session transcript.
