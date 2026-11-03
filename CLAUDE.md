@@ -15,7 +15,7 @@ Venzini is a fuel demand forecasting and delivery planning web platform. This re
 - Build the real frontend, answered by **Mock Service Worker** in the browser with fake fixtures. Nothing is saved; reload resets the state.
 - **Do not build:** a backend, NestJS, Prisma, a database, Docker, or nginx.
 - The mock handlers do no real calculations: they return scripted outcomes (SDD 7.1, 7.2).
-- Never implement (SRS §20): price setting or equipment control; driver accounts or screens; automatic approval or dispatch; LLMs, chatbots, agents or free-text generation; editing or deleting decision-log entries; manager editing of tankers, drivers or stock; loading at another warehouse; split deliveries; mobile, live tracking or real integrations; FR-10, FR-26; plan handover to drivers.
+- Never implement (SRS §20): price setting or equipment control; driver accounts or screens; automatic approval or dispatch; LLMs, chatbots, agents or free-text generation; editing or deleting decision-log entries; manager editing of tankers, drivers or stock; loading at another warehouse; split deliveries; mobile, live tracking or real integrations; FR-10; plan handover to drivers.
 
 ## Data
 

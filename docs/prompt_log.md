@@ -475,5 +475,20 @@ Entry 24 – CLAUDE.md aligned with the updated SDD
   ```
 
 * What Claude Code gave back (1–2 lines): Rewrote the precedence note (the SDD now states that it applies over the SRS) and the distance note (SDD 5.11.3 now uses ALG-09) in CLAUDE.md, and the same two lines in its copy AGENTS.md; committed them with the updated SDD PDF. No code changed. Only the PDF is in the repository; there is no SDD .docx in docs/.
-* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* What I accepted / rejected / changed: Accepted (Entry 25).
 * How I verified it (tests, manual trace, diff): Read the new SDD's text (front-matter precedence line, 5.11.3); format check; the diff (CLAUDE.md, AGENTS.md, the SDD PDF and this log only); prompt copied from the session transcript.
+
+
+Entry 25 – CLAUDE.md and AGENTS.md checked against the updated SRS
+
+* Prompt (exact):
+
+  ```text
+  Accepted Entry 24.
+
+  I replaced docs/Venzini 2 - SRS FV.pdf with the updated SRS. It is now aligned with the SDD: second trips, warehouse fallback, similar-stations forecast (FR-83), carry-over, Argon2id, API-P1–P4, availability-only resources (FR-07/08), stop-list drag only, steady halo, history search; all open questions and "Proposed" labels are gone. Check CLAUDE.md and AGENTS.md for anything that now contradicts the SRS and fix only that. Don't change any code. Commit and push.
+  ```
+
+* What Claude Code gave back (1–2 lines): One contradiction found: the "Never implement (SRS §20)" line listed FR-26, but the new SRS §20 "DO NOT IMPLEMENT" list does not, and FR-26 (yield-management allocation, Should) is planned for v1 Step 3. FR-26 was removed from that line in CLAUDE.md and AGENTS.md; committed with the updated SRS PDF. No code changed.
+* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* How I verified it (tests, manual trace, diff): Read the new SRS's text (§20 lists, FR-10, FR-26, FR-38, BR-09, BR-10, BR-24, AC-21, UI-01–UI-08, precedence lines) against every SRS reference in both files; format check; the diff (two files, one line each, the SRS PDF and this log); prompt copied from the session transcript.
