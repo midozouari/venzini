@@ -4,6 +4,8 @@
 
 # Venzini
 
+Demo video: <https://youtu.be/lIsLhDI3NMA>
+
 **An AI-Assisted Yield Management Platform for Data-Driven Optimization in the Petroleum Industry**
 
 ## 1. What is Venzini?

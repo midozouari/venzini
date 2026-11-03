@@ -429,5 +429,21 @@ Entry 21 – Commit the demo video pipeline and document it
   ```
 
 * What Claude Code gave back (1–2 lines): Committed and pushed scripts/demo-video/, docs/demo-script.md and the workspace changes (demo-output/ stays ignored). Added Entries 20–21, a "Demo video" section in the README, the pipeline folder in the folder tree and the demo script in docs/README.md.
-* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* What I accepted / rejected / changed: Accepted; next I asked to declare the demo video in the AI usage log and link the published video (Entry 22).
 * How I verified it (tests, manual trace, diff): lint, format check, typecheck, unit tests (108 passing) and build; checked `git status` and the staged file list, so nothing from demo-output/ is committed; prompts copied from the session transcripts.
+
+
+Entry 22 – Demo video in the AI usage log and the README
+
+* Prompt (exact):
+
+  ```text
+  Update docs/ai-usage-log.md:
+  - In "1. Tools used", add a row: Microsoft Edge TTS (en-US-AndrewNeural) – AI voice-over for the demo video.
+  - Add a short "Demo video" note: I decided to automate the demo video and defined what it had to cover (the main functions and flows of Venzini, per role). Claude drafted the narration script (docs/demo-script.md) from my requirements; I reviewed, edited and approved it. Claude Code built the Playwright recording pipeline; the voice-over is AI-generated. I reviewed the final video. Link: https://youtu.be/lIsLhDI3NMA
+  Also add the video link at the top of README.md, under the title: "Demo video: https://youtu.be/lIsLhDI3NMA". Commit and push.
+  ```
+
+* What Claude Code gave back (1–2 lines): Added the Microsoft Edge TTS row to "1. Tools used" and a "6. Demo video" section with the link to docs/ai-usage-log.md, and the "Demo video" link under the title of README.md; committed and pushed.
+* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* How I verified it (tests, manual trace, diff): format check and lint; the diff of both files; prompt copied from the session transcript.

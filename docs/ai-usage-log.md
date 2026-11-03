@@ -11,6 +11,7 @@
 | **Claude Code** (Anthropic) | VS Code extension, working in the `venzini` repository | Building the MVP (see Phase 2) |
 | **Stitch** (Google) | Web app | Generating the preliminary UI/UX screen designs |
 | **ChatGPT** (OpenAI) | Web app | Generating the Venzini logo |
+| **Microsoft Edge TTS** (en-US-AndrewNeural) | Through the `edge-tts` tool, called by the demo video pipeline | AI voice-over for the demo video |
 
 ## 2. How AI was used (working rules)
 
@@ -55,3 +56,9 @@ While reviewing the AI's output, I found and corrected these problems:
 ## 5. Phase 2 – MVP (Claude Code)
 
 The coding phase is documented prompt by prompt in [prompt_log.md](prompt_log.md): each prompt, what Claude Code gave back, what I decided and how it was verified.
+
+## 6. Demo video
+
+I decided to automate the demo video and defined what it had to cover: the main functions and flows of Venzini, per role. Claude drafted the narration script ([demo-script.md](demo-script.md)) from my requirements; I reviewed, edited and approved it. Claude Code built the Playwright recording pipeline (`pnpm demo:video`, see [prompt_log.md](prompt_log.md), Entries 19–21); the voice-over is AI-generated (Microsoft Edge TTS). I reviewed the final video.
+
+Video: <https://youtu.be/lIsLhDI3NMA>
