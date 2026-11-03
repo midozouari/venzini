@@ -129,6 +129,22 @@ The MVP build has a hidden toolbar for demos and testing (SDD 7.1). Press **Ctrl
 
 The toolbar exists only in the MVP: a version 1 build (`VITE_USE_MOCKS=false`) does not contain it.
 
+### Demo video
+
+The MVP demo video (about 6 minutes, 1080p) is made automatically from the written script [docs/demo-script.md](docs/demo-script.md):
+
+- **Recording:** Playwright opens the production build of the app (with the mock API) in Chromium at 1920×1080 and performs each scene's actions at a person's pace, with a visible cursor and a short title at the start of each scene. The developer toolbar is never shown.
+- **Voice-over:** each scene's narration is spoken by Microsoft Edge's text-to-speech voice _en-US-AndrewNeural_ (through the `edge-tts` tool). Each scene lasts at least as long as its narration.
+- **Assembly:** ffmpeg puts the picture and the voice clips together and exports an H.264 MP4.
+
+To make it again, install `edge-tts` once (`pip install edge-tts`; it needs Python and internet access), then run:
+
+```bash
+pnpm demo:video
+```
+
+It takes about 10 minutes. The video is saved as `demo-output/venzini-demo.mp4`; that folder is not saved in Git. Details and options are in [scripts/demo-video/README.md](scripts/demo-video/README.md).
+
 ## 6. Tests and checks
 
 | Command                                                                      | What it does                                                                                                      |
@@ -174,6 +190,7 @@ venzini/
 │  ├─ sample-data/         # generator of the fake sample data (seed 42) and the generated fixtures
 │  └─ config/              # shared ESLint, Prettier and TypeScript settings
 ├─ e2e/                    # end-to-end tests (Playwright) and the AC-21 checklist
+├─ scripts/demo-video/     # the automated demo video pipeline (pnpm demo:video)
 ├─ docs/                   # project documents, backlog, AI usage log, prompt log
 ├─ .github/workflows/      # continuous integration (GitHub Actions)
 ├─ CLAUDE.md               # working rules for the AI coding assistant

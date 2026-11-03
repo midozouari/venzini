@@ -373,5 +373,61 @@ Entry 18 – Page budget reading in the README
   ```
 
 * What Claude Code gave back (1–2 lines): The README "Page size (NFR-02)" section now says that the budget counts what a page needs before it appears, that Leaflet (about 46 kB) loads after the page appears on the two map pages and is not counted, and that with it the planner totals about 285 kB.
-* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* What I accepted / rejected / changed: No change asked; I moved on to the next task, the automated demo video (Entry 19).
 * How I verified it (tests, manual trace, diff): `pnpm size` after a fresh build (planner 237.3 kB + 48.0 kB loaded beside it, about 285 kB); lint, format, type-check, unit tests and build; the README diff.
+
+
+Entry 19 – Automated demo video plan request
+
+* Prompt (exact):
+
+  ```text
+  New task: an automated demo video, fully generated from docs/demo-script.md.
+
+  Build a pipeline in the repo (e.g. scripts/demo-video/) that:
+  1. Generates the voice-over: one audio file per scene from the "Narration" text, using edge-tts (Microsoft neural voice, e.g. en-US-AndrewNeural; pick a calm, natural male voice and tell me which). Measure each clip's duration.
+  2. Records the app with Playwright (Chromium, 1920×1080, video recording on), running the production preview build with the mock API, following the "Actions" of each scene in order:
+     - human-like pace: smooth mouse movements, ~1 s pause after clicks, human typing speed;
+     - a visible fake cursor (injected overlay) that moves smoothly and shows a soft click ripple;
+     - each scene waits at least as long as its narration lasts, so voice and actions stay in sync;
+     - a short on-screen title at the start of each scene (small, elegant, matching the app's design: navy and cream);
+     - use the dev toolbar's Set up buttons or a fresh session where useful so each flow starts from the right state, but the toolbar itself must never appear in the video.
+  3. Assembles the final video with ffmpeg: video + the narration clips placed at each scene's start time, a short fade in and out, exported as MP4 (H.264, 1080p) to a git-ignored folder (demo-output/).
+  4. One command to run everything: pnpm demo:video.
+
+  If an action in the script can't be done exactly as written, adapt it to the real UI and list every change in your summary. Install edge-tts and ffmpeg if missing and tell me how. Don't commit the video file itself.
+  Show me the plan before building.
+  ```
+
+* What Claude Code gave back (1–2 lines): The plan for a `pnpm demo:video` pipeline in scripts/demo-video/ (edge-tts voice-over, Playwright recording with a fake cursor and scene titles, ffmpeg assembly to demo-output/), with every action of docs/demo-script.md checked against the real UI and the needed adaptations listed. It asked about the voice, ffmpeg and the capture method.
+* What I accepted / rejected / changed: Accepted the plan with "OK" (Entry 20), without answering its three questions, so Claude Code used its recommendations: en-US-AndrewNeural at −5%, ffmpeg-static and Chromium screencast capture.
+* How I verified it (tests, manual trace, diff): Plan only; each scripted action checked against the app's code (labels, dialogs, scripted outcomes) and the installed tools (Python 3.12 present; edge-tts and ffmpeg missing).
+
+
+Entry 20 – Build the demo video pipeline
+
+* Prompt (exact):
+
+  ```text
+  OK
+  ```
+
+* What Claude Code gave back (1–2 lines): The `pnpm demo:video` pipeline in scripts/demo-video/ (script parser, edge-tts voice-over with cached clips, Playwright recording with a fake cursor, click ripple and scene titles, ffmpeg-static assembly to demo-output/venzini-demo.mp4) and its README listing every adaptation to the real UI. The session hit the usage limit right after the third full run.
+* What I accepted / rejected / changed: Accepted the final video as it is (no more video work); asked to commit the pipeline, log the prompts and add a README section (Entry 21).
+* How I verified it (tests, manual trace, diff): Three full runs of `pnpm demo:video` (one run got no audio back from edge-tts; fixed by speaking a clip again when its cached copy can't be read); I watched the final video; typecheck and lint.
+
+
+Entry 21 – Commit the demo video pipeline and document it
+
+* Prompt (exact):
+
+  ```text
+  Read CLAUDE.md first. In the previous session you built the automated demo video pipeline (pnpm demo:video, scripts/demo-video/). The final video in demo-output/venzini-demo.mp4 is good: no more video work.
+  1. Check git status, make sure lint, typecheck and tests still pass, then commit and push the pipeline (never the demo-output/ files).
+  2. Add the prompt-log entries for the demo-video prompts (exact prompts from the session transcripts), including this one.
+  3. Add a short "Demo video" section to the README: how it was made (Playwright recording + Microsoft Edge TTS voice-over) and the command to regenerate it.
+  ```
+
+* What Claude Code gave back (1–2 lines): Committed and pushed scripts/demo-video/, docs/demo-script.md and the workspace changes (demo-output/ stays ignored). Added Entries 20–21, a "Demo video" section in the README, the pipeline folder in the folder tree and the demo script in docs/README.md.
+* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* How I verified it (tests, manual trace, diff): lint, format check, typecheck, unit tests (108 passing) and build; checked `git status` and the staged file list, so nothing from demo-output/ is committed; prompts copied from the session transcripts.

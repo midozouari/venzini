@@ -15,6 +15,9 @@ coverage/
 playwright-report/
 test-results/
 
+# Generated demo video, voice-over clips and captured frames (pnpm demo:video)
+demo-output/
+
 # Logs
 *.log
 

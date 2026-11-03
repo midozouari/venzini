@@ -13,6 +13,7 @@ Every document of the Venzini project, in reading order, and where to find each 
 | [backlog.md](backlog.md) | Product backlog: every user story and requirement, with its priority and its status (done in the MVP, v1, not planned). |
 | [ai-usage-log.md](ai-usage-log.md) | How AI tools were used in the project, and the rules followed. |
 | [prompt_log.md](prompt_log.md) | Every prompt sent to Claude Code while building the MVP, what came back, what was decided and how it was checked. |
+| [demo-script.md](demo-script.md) | The MVP demo video script: 13 scenes, each with its on-screen title, actions and narration. `pnpm demo:video` makes the video from it. |
 | [../e2e/AC-21.md](../e2e/AC-21.md) | MVP acceptance checklist (AC-21): every use case and screen per role, with its tests. |
 
 Where the SRS and the SDD differ, the project follows the SDD.

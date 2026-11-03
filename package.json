@@ -15,6 +15,7 @@
     "test": "pnpm -r --if-present test",
     "size": "pnpm --filter @venzini/web size",
     "e2e": "pnpm --filter @venzini/e2e e2e",
+    "demo:video": "pnpm --filter @venzini/demo-video demo:video",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

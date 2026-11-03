@@ -2,5 +2,8 @@ packages:
   - apps/*
   - packages/*
   - e2e
+  - scripts/demo-video
 allowBuilds:
   esbuild: false
+  # Downloads the ffmpeg binary used by the demo video (scripts/demo-video).
+  ffmpeg-static: true
