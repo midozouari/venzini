@@ -460,5 +460,20 @@ Entry 23 – Root config files in the README folder tree
   ```
 
 * What Claude Code gave back (1–2 lines): Added .gitignore (with what it keeps out of Git), package.json and pnpm-workspace.yaml to the README folder tree; .env.example does not exist in the repository, so it was not added. Committed and pushed.
-* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* What I accepted / rejected / changed: Accepted (Entry 24).
 * How I verified it (tests, manual trace, diff): format check; the README diff (only the three tree lines); checked the root folder for .env.example; prompt copied from the session transcript.
+
+
+Entry 24 – CLAUDE.md aligned with the updated SDD
+
+* Prompt (exact):
+
+  ```text
+  Accepted Entry 23.
+
+  I replaced docs/Venzini 3 - SDD FV.docx and .pdf with the updated SDD. It now says the SDD applies over the SRS, uses ALG-09 distances in 5.11.3, fc-sim-1.1.0, ST012 instead of ST032, ST009/ST010 instead of ST021, the 3/5/11 + ST017 counts, new templates (TPL-LIM-01–04, TPL-UNS-02, TPL-HIST-01–03), the cream/navy design system (5.12.1, 5.12.4, Figure 42), and an "MVP repository" paragraph in Appendix B. Update CLAUDE.md where it now contradicts the SDD (the precedence note and the 5.11.3 distance note). Don't change any code. Commit and push.
+  ```
+
+* What Claude Code gave back (1–2 lines): Rewrote the precedence note (the SDD now states that it applies over the SRS) and the distance note (SDD 5.11.3 now uses ALG-09) in CLAUDE.md, and the same two lines in its copy AGENTS.md; committed them with the updated SDD PDF. No code changed. Only the PDF is in the repository; there is no SDD .docx in docs/.
+* What I accepted / rejected / changed: Pending: filled in from my reply to this step.
+* How I verified it (tests, manual trace, diff): Read the new SDD's text (front-matter precedence line, 5.11.3); format check; the diff (CLAUDE.md, AGENTS.md, the SDD PDF and this log only); prompt copied from the session transcript.

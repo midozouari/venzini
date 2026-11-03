@@ -7,7 +7,7 @@ Venzini is a fuel demand forecasting and delivery planning web platform. This re
 - `docs/Venzini 3 - SDD FV.pdf`: the design. For the MVP, the key parts are ch. 7 (MVP: mock layer, fixtures, screens and flows), 5.6 (API contracts the mocks must follow), 5.12 (UI design view, design system), 6.1.1 (RBAC matrix), 8.4 (AC-21) and Appendix B (repo structure).
 - `docs/Venzini 2 - SRS FV.pdf`: the requirements (UI-01–UI-08, FR, BR, AC-21; UC-01–UC-11 are cited there).
 - `docs/Venzini 1 - Requirement Elicitation FV.pdf`: defines UC-01–UC-11.
-- **Precedence: the SDD wins** over the SRS (the user's decision, which overrides the SDD's own "SRS applies" line). Always tell the user when they differ.
+- **Precedence: the SDD wins** over the SRS, as the SDD itself states ("Where this SDD and the SRS differ, this SDD applies"). Always tell the user when they differ.
 - Never invent features that are in neither document. If something is unclear, **ask first**.
 
 ## Scope: MVP only (SDD ch. 7, AC-21, D-26)
@@ -100,7 +100,7 @@ Venzini is a fuel demand forecasting and delivery planning web platform. This re
 
 - Stations are ST001–ST020. The SDD's ST032 is **ST012 "Westside Terminal"**. Any SDD example with ST021 must map to an existing station; tell the user which.
 - Risk mix on 03 Nov 2026: 3 high, 5 medium, 11 low, plus 1 station with data unavailable (ST017).
-- Distances follow ALG-09 (Floyd–Warshall, 50 km/h ≤ 12 km, 70 km/h above); ignore the straight line × 1.3 rule in SDD 5.11.3. Forecast model version: `fc-sim-1.1.0`.
+- Distances follow ALG-09 (Floyd–Warshall, 50 km/h ≤ 12 km, 70 km/h above), as SDD 5.11.3 states. Forecast model version: `fc-sim-1.1.0`.
 - Demo clock: 02 Nov 2026 08:00 Tunis time (it runs on from there); delivery day 03 Nov 2026; 01 Nov is a decided past day.
 - Fixtures are generated (`pnpm --filter @venzini/sample-data generate`) and committed; a test fails when they are out of date. Never edit them by hand.
 
